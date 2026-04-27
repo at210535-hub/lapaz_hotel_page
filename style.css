@@ -299,7 +299,7 @@ nav.menu-open {
 
 /* ── ABOUT ── */
 .about { padding: 7rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-.about-imgs { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 260px 140px; gap: 8px; }
+.about-imgs { display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: 450px 140px; gap: 8px; }
 .about-imgs img {
     width: 100%; height: 100%; object-fit: cover;
     border-radius: var(--radius); display: block;
