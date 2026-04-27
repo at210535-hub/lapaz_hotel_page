@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Paz Hotel — Khách sạn & Cà phê · Yên Thuỷ, Hoà Bình</title>
+    <meta name="description" content="La Paz Hotel — Khách sạn & quán cà phê sân vườn gia đình tại Yên Thuỷ, Hoà Bình. Không gian xanh, yên tĩnh, thư giãn.">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Preconnect để giảm latency font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Preload 3 ảnh hero — hiển thị ngay khi load -->
+    <link rel="preload" as="image" href="/lapaz_page/2.webp">
+    <link rel="preload" as="image" href="/lapaz_page/1.webp">
+    <link rel="preload" as="image" href="/lapaz_page/6.webp">
+
+    <!-- Font với display=swap để không chặn render -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <a href="#" class="logo">
+            <img src="logo_lapaz.png" alt="La Paz Hotel" class="logo-img">
+            <span class="logo-text">La Paz <em>Hotel</em></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">Giới thiệu</a></li>
+            <li><a href="#gallery">Không gian</a></li>
+            <li><a href="#rooms">Phòng nghỉ</a></li>
+            <li><a href="#cafe">Cà phê</a></li>
+            <li><a href="#directions">Đường đến</a></li>
+            <li><a href="#attractions">Tham quan</a></li>
+            <li><a href="#contact" class="nav-cta">Liên hệ đặt phòng</a></li>
+        </ul>
+        <div class="burger" onclick="toggleMenu()">
+            <b></b><b></b><b></b>
+        </div>
+    </nav>
+
+    <div class="m-nav" id="mNav">
+        <a href="#about" onclick="closeMenu()">Giới thiệu</a>
+        <a href="#gallery" onclick="closeMenu()">Không gian</a>
+        <a href="#rooms" onclick="closeMenu()">Phòng nghỉ</a>
+        <a href="#cafe" onclick="closeMenu()">Cà phê</a>
+        <a href="#directions" onclick="closeMenu()">Đường đến</a>
+        <a href="#attractions" onclick="closeMenu()">Tham quan</a>
+        <a href="#contact" onclick="closeMenu()" style="color:var(--moss)">Liên hệ đặt phòng</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-l">
+            <p class="hero-location">Yên Thuỷ · Tỉnh Hoà Bình</p>
+            <h1 class="hero-h1">Nơi yên bình<br>chờ đón <em>bạn</em></h1>
+            <p class="hero-desc">Khách sạn & quán cà phê sân vườn gia đình giữa không gian cây xanh mát mẻ, yên bình của vùng núi Hoà Bình.</p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-solid">Liên hệ đặt phòng ↗</a>
+                <a href="#cafe" class="btn-line">Menu đồ uống</a>
+            </div>
+        </div>
+        <div class="hero-r">
+            <div class="hero-img-wrap">
+                <img src="/lapaz_page/2.webp" alt="La Paz Hotel dãy phòng" fetchpriority="high" decoding="sync" width="1280" height="960">
+            </div>
+            <div class="hero-img-wrap-split">
+                <div class="hero-img-wrap">
+                    <img src="/lapaz_page/1.webp" alt="La Paz Hotel cây hoa giấy" fetchpriority="high" decoding="async" width="960" height="1280">
+                </div>
+                <div class="hero-img-wrap">
+                    <img src="/lapaz_page/6.webp" alt="La Paz Hotel toàn cảnh" fetchpriority="high" decoding="async" width="960" height="1280">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-imgs reveal">
+            <img loading="lazy" decoding="async" class="a-big" src="/lapaz_page/4.webp" alt="La Paz Hotel cây xanh">
+            <img loading="lazy" decoding="async" src="/lapaz_page/3.webp" alt="La Paz Hotel phòng nghỉ">
+            <img loading="lazy" decoding="async" src="/lapaz_page/5.webp" alt="La Paz Hotel sân vườn">
+        </div>
+        <div class="about-text">
+            <div class="reveal">
+                <p class="sh-eye">Về chúng tôi</p>
+                <h2 class="sh-h">Không gian <em>xanh</em><br>như ở nhà</h2>
+                <br>
+            </div>
+            <div class="about-img-mobile about-img-mobile--1 reveal">
+                <img loading="lazy" decoding="async" src="/lapaz_page/4.webp" alt="La Paz Hotel cây xanh">
+            </div>
+            <div class="reveal reveal-delay-1">
+                <p style="margin-top:1.4rem">La Paz Hotel là khu nghỉ dưỡng gia đình gồm quán cà phê và phòng nghỉ tại thị trấn Hàng Trạm, xã Yên Thuỷ, tỉnh Hoà Bình. Cây xanh bao quanh, không khí trong lành và không gian yên tĩnh là điều chúng tôi tự hào nhất.</p>
+                <p>Mỗi phòng được chăm chút tỉ mỉ. Quán cà phê phục vụ đồ uống tươi ngon. Mọi thứ được vận hành bởi cả gia đình — từ tốn, ân cần và thật lòng.</p>
+            </div>
+            <div class="about-img-mobile about-img-mobile--2 reveal">
+                <img loading="lazy" decoding="async" src="/lapaz_page/3.webp" alt="La Paz Hotel phòng nghỉ">
+                <img loading="lazy" decoding="async" src="/lapaz_page/5.webp" alt="La Paz Hotel sân vườn">
+            </div>
+            <div class="about-chips reveal reveal-delay-2">
+                <span class="chip">Wifi miễn phí</span>
+                <span class="chip">Bãi xe rộng</span>
+                <span class="chip">Cây xanh</span>
+                <span class="chip">Yên tĩnh</span>
+                <span class="chip">Sạch sẽ</span>
+                <span class="chip">Thân thiện</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="sh reveal">
+            <p class="sh-eye">Không gian</p>
+            <h2 class="sh-h">La Paz Hotel <em>qua ảnh</em></h2>
+        </div>
+        <div class="gal-grid">
+            <div class="gi reveal"><img loading="lazy" decoding="async" src="/lapaz_page/11.webp" alt="La Paz Coffee toàn cảnh"></div>
+            <div class="gi reveal reveal-delay-1"><img loading="lazy" decoding="async" src="/lapaz_page/6.webp" alt="La Paz Hotel toàn cảnh"></div>
+            <div class="gi reveal reveal-delay-2"><img loading="lazy" decoding="async" src="/lapaz_page/3.webp" alt="La Paz Hotel phòng nghỉ"></div>
+            <div class="gi reveal"><img loading="lazy" decoding="async" src="/lapaz_page/7.webp" alt="La Paz Hotel đèn lồng"></div>
+            <div class="gi reveal reveal-delay-1"><img loading="lazy" decoding="async" src="/lapaz_page/8.webp" alt="La Paz Hotel cà phê"></div>
+            <div class="gi reveal reveal-delay-2"><img loading="lazy" decoding="async" src="/lapaz_page/10.webp" alt="La Paz Coffee toàn cảnh"></div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ROOMS -->
+    <section class="rooms" id="rooms">
+        <div class="sh reveal">
+            <p class="sh-eye">Lưu trú</p>
+            <h2 class="sh-h">Các loại <em>phòng nghỉ</em></h2>
+        </div>
+        <div class="rooms-grid rooms-grid--2">
+            <div class="room-card reveal">
+                <div class="room-img-wrap">
+                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80" alt="Phòng Standard">
+                    <!-- <span class="room-avail">Còn phòng</span> -->
+                </div>
+                <div class="room-body">
+                    <p class="room-type">Phòng đơn</p>
+                    <h3 class="room-name">Standard</h3>
+                    <p class="room-desc">Phòng tiêu chuẩn đầy đủ tiện nghi, phù hợp cho 1–2 người. Nhìn ra vườn cây, yên tĩnh, thoáng mát.</p>
+                    <div class="room-feats">
+                        <span class="rf">Điều hoà</span>
+                        <span class="rf">Wifi</span>
+                        <span class="rf">Nước nóng</span>
+                        <span class="rf">TV</span>
+                    </div>
+                    <div class="room-foot">
+                        <div class="room-price">250.000đ<small>/đêm</small></div>
+                        <a href="#contact" class="room-cta">Liên hệ →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="room-card reveal reveal-delay-1">
+                <div class="room-img-wrap">
+                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&q=80" alt="Phòng Deluxe">
+                    <!-- <span class="room-avail">Còn phòng</span> -->
+                </div>
+                <div class="room-body">
+                    <p class="room-type">Phòng đôi</p>
+                    <h3 class="room-name">Deluxe</h3>
+                    <p class="room-desc">Phòng rộng với giường đôi, cửa sổ riêng nhìn ra khuôn viên xanh. Lý tưởng cho cặp đôi hoặc hai bạn.</p>
+                    <div class="room-feats">
+                        <span class="rf">Điều hoà</span>
+                        <span class="rf">Wifi</span>
+                        <span class="rf">Nước nóng</span>
+                        <span class="rf">TV</span>
+                    </div>
+                    <div class="room-foot">
+                        <div class="room-price">350.000đ<small>/đêm</small></div>
+                        <a href="#contact" class="room-cta">Liên hệ →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CAFE MENU -->
+    <section class="cafe" id="cafe">
+        <div class="cafe-visual reveal">
+            <img loading="lazy" decoding="async" class="cafe-img-main" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85" alt="Quán cà phê La Paz">
+            <p class="cafe-note"><span class="cafe-note-dot"></span>Phục vụ từ 6:00 sáng — 10:00 tối mỗi ngày</p>
+        </div>
+        <div class="cafe-menu">
+            <div class="reveal">
+                <p class="sh-eye">Quán cà phê</p>
+                <h2 class="sh-h">Menu <em>đồ uống</em></h2>
+            </div>
+            <div class="menu-tabs reveal reveal-delay-1">
+                <button class="mtab on" onclick="switchTab(this,'t1')">Cà phê</button>
+                <button class="mtab" onclick="switchTab(this,'t2')">Trà & nước</button>
+                <button class="mtab" onclick="switchTab(this,'t3')">Sinh tố</button>
+            </div>
+            <div class="mpanel on" id="t1">
+                <div class="menu-list">
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Cà phê đen</span>
+                            <span class="mi-note">Robusta Đắk Lắk · nóng hoặc đá</span>
+                        </div>
+                        <span class="mi-price">20k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Cà phê sữa</span>
+                            <span class="mi-note">Phin truyền thống, sữa đặc</span>
+                        </div>
+                        <span class="mi-price">25k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Bạc xỉu</span>
+                            <span class="mi-note">Nhiều sữa, ít cà phê</span>
+                        </div>
+                        <span class="mi-price">25k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Cappuccino</span>
+                            <span class="mi-note">Espresso, sữa đánh bông</span>
+                        </div>
+                        <span class="mi-price">40k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Cold brew</span>
+                            <span class="mi-note">Ủ lạnh 18 tiếng — êm, không đắng</span>
+                        </div>
+                        <span class="mi-price">45k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Cà phê trứng</span>
+                            <span class="mi-note">Đặc sản Hà Nội — béo, ngậy</span>
+                        </div>
+                        <span class="mi-price">35k</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mpanel" id="t2">
+                <div class="menu-list">
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Trà đào</span>
+                            <span class="mi-note">Đào tươi, trà xanh · đá</span>
+                        </div>
+                        <span class="mi-price">30k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Trà sữa trân châu</span>
+                            <span class="mi-note">Trân châu nấu tươi hàng ngày</span>
+                        </div>
+                        <span class="mi-price">35k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Trà gừng mật ong</span>
+                            <span class="mi-note">Nóng hoặc ấm · tốt cho sức khoẻ</span>
+                        </div>
+                        <span class="mi-price">25k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Nước ép cam</span>
+                            <span class="mi-note">Cam tươi vắt tại chỗ</span>
+                        </div>
+                        <span class="mi-price">30k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Soda chanh</span>
+                            <span class="mi-note">Chanh tươi, soda · mát lạnh</span>
+                        </div>
+                        <span class="mi-price">20k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Nước dừa tươi</span>
+                            <span class="mi-note">Nguyên trái hoặc ly</span>
+                        </div>
+                        <span class="mi-price">25k</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mpanel" id="t3">
+                <div class="menu-list">
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Sinh tố xoài</span>
+                            <span class="mi-note">Xoài cát Hoà Lộc · ngọt tự nhiên</span>
+                        </div>
+                        <span class="mi-price">35k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Sinh tố bơ</span>
+                            <span class="mi-note">Bơ tươi, sữa đặc, đá bào</span>
+                        </div>
+                        <span class="mi-price">40k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Sinh tố dâu</span>
+                            <span class="mi-note">Dâu tây Đà Lạt tươi</span>
+                        </div>
+                        <span class="mi-price">38k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Sinh tố chuối</span>
+                            <span class="mi-note">Chuối chín · sữa tươi</span>
+                        </div>
+                        <span class="mi-price">30k</span>
+                    </div>
+                    <div class="mi">
+                        <div class="mi-l">
+                            <span class="mi-name">Sinh tố mix</span>
+                            <span class="mi-note">Theo trái cây mùa — hỏi nhân viên</span>
+                        </div>
+                        <span class="mi-price">40k</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cafe-badge-bar reveal reveal-delay-2">
+                <span style="font-size:1.1rem">🎁</span>
+                <span class="cbd">Khách lưu trú tại La Paz Hotel được <strong>giảm 20%</strong> tất cả đồ uống tại quán.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIRECTIONS -->
+    <section class="directions" id="directions">
+        <div>
+            <div class="sh reveal">
+                <p class="sh-eye">Tìm chúng tôi</p>
+                <h2 class="sh-h">Đường <em>đến</em><br>La Paz Hotel</h2>
+            </div>
+            <div class="dir-ways">
+                <div class="dw reveal">
+                    <div class="dw-num">1</div>
+                    <div>
+                        <p class="dw-label">Từ Hà Nội</p>
+                        <p class="dw-desc">Đi theo Quốc lộ 6 hướng Hòa Bình, đến ngã ba Mãn Đức rẽ trái vào Quốc lộ 12B là đến Yên Thủy. Tổng khoảng 115km mất ~2.5 giờ.</p>
+                    </div>
+                </div>
+                <div class="dw reveal reveal-delay-1">
+                    <div class="dw-num">2</div>
+                    <div>
+                        <p class="dw-label">Xe khách</p>
+                        <p class="dw-desc">Bắt xe khách từ bến xe Yên Nghĩa đi Yên Thủy, xuống tại bến xe và đi bộ khoảng 2 phút là đến nơi.</p>
+                    </div>
+                </div>
+                <div class="dw reveal reveal-delay-2">
+                    <div class="dw-num">3</div>
+                    <div>
+                        <p class="dw-label">Gọi trước</p>
+                        <p class="dw-desc">Không chắc đường? Nhắn Zalo cho chúng tôi — sẽ hướng dẫn chi tiết hoặc ra đón tại bến xe nếu cần.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-box reveal reveal-delay-1">
+            <iframe
+                loading="lazy"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3739.6997725545534!2d105.61598367585296!3d20.39526500923396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313429e40c3b8ccf%3A0x3e2eb79912934e4f!2zTGEgUGF6IEhvdGVsIFnDqm4gVGjhu6d5!5e0!3m2!1sen!2s!4v1776886055288!5m2!1sen!2s"
+                class="map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="map-detail">
+                <p class="map-addr">📍 Thị trấn Hàng Trạm,<br>Xã Yên Thuỷ, Tỉnh Hoà Bình</p>
+                <div class="map-meta">
+                    <div class="map-meta-row"><span class="map-meta-dot"></span>Cách Hà Nội ~115km · 2.5 giờ lái xe</div>
+                    <div class="map-meta-row"><span class="map-meta-dot"></span>Bãi đỗ xe rộng, miễn phí</div>
+                    <div class="map-meta-row"><span class="map-meta-dot"></span>Không gian nhiều cây xanh</div>
+                </div>
+                <a href="https://maps.app.goo.gl/wGjYZHfP18MF8A" target="_blank" class="btn-maps">
+                    📍 Mở Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ATTRACTIONS -->
+    <section class="attractions" id="attractions">
+        <div class="sh reveal">
+            <p class="sh-eye">Khám phá</p>
+            <h2 class="sh-h">Địa điểm <em>tham quan</em> gần đây</h2>
+        </div>
+        <div class="attr-grid">
+            <div class="ac reveal">
+                <img loading="lazy" decoding="async" class="ac-img" src="https://images.unsplash.com/photo-1596396457380-0080350d757a?w=600&q=80" alt="Chùa Hang Yên Thủy">
+                <div class="ac-body">
+                    <p class="ac-dist">~7 km · 10 phút</p>
+                    <h3 class="ac-name">Chùa Hang (Thanh Lam Tự)</h3>
+                    <p class="ac-desc">Ngôi chùa độc đáo nằm trong động Văn Quang, nơi giao thoa giữa kiến trúc tâm linh và vẻ đẹp kỳ ảo của hang động tự nhiên.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Hang+Yên+Thủy" target="_blank" class="ac-mapbtn">
+                        <span>🗺</span> Xem trên Google Maps
+                    </a>
+                </div>
+            </div>
+            <div class="ac reveal reveal-delay-1">
+                <img loading="lazy" decoding="async" class="ac-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80" alt="Động Thiên Long">
+                <div class="ac-body">
+                    <p class="ac-dist">~12 km · 20 phút</p>
+                    <h3 class="ac-name">Động Thiên Long</h3>
+                    <p class="ac-desc">Di tích danh thắng quốc gia với hệ thống thạch nhũ lộng lẫy, mang vẻ đẹp hoang sơ và hùng vĩ của vùng núi đá vôi Yên Thủy.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Động+Thiên+Long+Yên+Thủy" target="_blank" class="ac-mapbtn">
+                        <span>🗺</span> Xem trên Google Maps
+                    </a>
+                </div>
+            </div>
+            <div class="ac reveal reveal-delay-2">
+                <img loading="lazy" decoding="async" class="ac-img" src="https://images.unsplash.com/photo-1623910626382-7f4153923974?w=600&q=80" alt="Đình Xàm">
+                <div class="ac-body">
+                    <p class="ac-dist">~3 km · 5 phút</p>
+                    <h3 class="ac-name">Đình Xàm</h3>
+                    <p class="ac-desc">Di tích lịch sử văn hóa cấp quốc gia, nơi lưu giữ những giá trị truyền thống đặc sắc và là tâm điểm lễ hội vùng Mường cổ.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Đình+Xàm+Yên+Thủy" target="_blank" class="ac-mapbtn">
+                        <span>🗺</span> Xem trên Google Maps
+                    </a>
+                </div>
+            </div>
+            <div class="ac reveal">
+                <img loading="lazy" decoding="async" class="ac-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80" alt="Vườn Quốc gia Cúc Phương">
+                <div class="ac-body">
+                    <p class="ac-dist">~25 km · 40 phút</p>
+                    <h3 class="ac-name">Vườn Quốc gia Cúc Phương</h3>
+                    <p class="ac-desc">Khám phá thiên nhiên hoang sơ, hệ sinh thái đa dạng và cây chò ngàn năm tuổi ngay tại vùng giáp ranh giữa Hòa Bình và Ninh Bình.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Vườn+Quốc+gia+Cúc+Phương" target="_blank" class="ac-mapbtn">
+                        <span>🗺</span> Xem trên Google Maps
+                    </a>
+                </div>
+            </div>
+            <div class="ac reveal reveal-delay-1">
+                <img loading="lazy" decoding="async" class="ac-img" src="https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80" alt="Chùa Tác Đức">
+                <div class="ac-body">
+                    <p class="ac-dist">~4 km · 8 phút</p>
+                    <h3 class="ac-name">Chùa Tác Đức</h3>
+                    <p class="ac-desc">Ngôi chùa yên bình dưới chân núi Khụ Khôi, nổi tiếng với sự thanh tịnh và tán cây gạo cổ thụ hàng trăm năm tuổi.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Tác+Đức+Yên+Thủy" target="_blank" class="ac-mapbtn">
+                        <span>🗺</span> Xem trên Google Maps
+                    </a>
+                </div>
+            </div>
+            <div class="ac reveal reveal-delay-2">
+                <img loading="lazy" decoding="async" class="ac-img" src="https://images.unsplash.com/photo-1598970434722-5c4c343059eb?w=600&q=80" alt="Chùa Bái Đính">
+                <div class="ac-body">
+                    <p class="ac-dist">~35 km · 50 phút</p>
+                    <h3 class="ac-name">Chùa Bái Đính</h3>
+                    <p class="ac-desc">Quần thể chùa lớn nhất Đông Nam Á với nhiều kỷ lục ấn tượng, chỉ cách Yên Thủy một cung đường di chuyển ngắn qua tỉnh Ninh Bình.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Bái+Đính" target="_blank" class="ac-mapbtn">
+                        <span>🗺</span> Xem trên Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / BOOKING -->
+    <section class="contact" id="contact">
+        <div>
+            <div class="reveal">
+                <p class="sh-eye">Liên hệ & Đặt phòng</p>
+                <h2 class="sh-h">Liên hệ để<br>đặt <em>phòng</em></h2>
+            </div>
+            <p class="contact-desc reveal reveal-delay-1">Chúng tôi phản hồi nhanh qua Zalo và Messenger. Bạn chỉ cần nhắn ngày đến, ngày đi và loại phòng — chúng tôi xác nhận ngay.</p>
+            <div class="contact-info reveal reveal-delay-2">
+                <div class="ci-row">
+                    <span class="ci-icon">📍</span>
+                    <div class="ci-text">
+                        <span class="ci-label">Địa chỉ</span>
+                        <span class="ci-val">Thị trấn Hàng Trạm, Yên Thuỷ<br>Tỉnh Hoà Bình, Việt Nam</span>
+                    </div>
+                </div>
+                <div class="ci-row">
+                    <span class="ci-icon">🕐</span>
+                    <div class="ci-text">
+                        <span class="ci-label">Giờ mở cửa</span>
+                        <span class="ci-val">Cà phê: 06:00 – 22:00 · Nhận phòng: 14:00 · Trả phòng: 12:00</span>
+                    </div>
+                </div>
+                <div class="ci-row">
+                    <span class="ci-icon">🅿️</span>
+                    <div class="ci-text">
+                        <span class="ci-label">Tiện ích</span>
+                        <span class="ci-val">Wifi miễn phí · Bãi đỗ xe rộng · Không gian xanh</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-btns reveal reveal-delay-1">
+            <a href="https://zalo.me/0912680203" target="_blank" class="cbtn cbtn-zalo">
+                <div class="cbtn-icon">💬</div>
+                <div class="cbtn-text">
+                    <span class="cbtn-label">Nhắn Zalo</span>
+                    <span class="cbtn-val">0912 680 203</span>
+                </div>
+                <span class="cbtn-arrow">↗</span>
+            </a>
+            <a href="https://www.facebook.com/trung.bi.7330" target="_blank" class="cbtn cbtn-mess">
+                <div class="cbtn-icon">📩</div>
+                <div class="cbtn-text">
+                    <span class="cbtn-label">Facebook Messenger</span>
+                    <span class="cbtn-val">La Paz Hotel</span>
+                </div>
+                <span class="cbtn-arrow">↗</span>
+            </a>
+            <a href="tel:0912680203" class="cbtn cbtn-phone">
+                <div class="cbtn-icon">📞</div>
+                <div class="cbtn-text">
+                    <span class="cbtn-label">Gọi điện</span>
+                    <span class="cbtn-val">0912 680 203</span>
+                </div>
+                <span class="cbtn-arrow">↗</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews">
+        <div class="sh reveal">
+            <p class="sh-eye">Cảm nhận</p>
+            <h2 class="sh-h">Khách hàng <em>nói gì</em></h2>
+        </div>
+        <div class="rv-grid">
+            <div class="rv reveal">
+                <div class="rv-stars">★★★★★</div>
+                <p class="rv-text">"Phòng sạch, yên tĩnh, chủ nhà rất nhiệt tình. Buổi sáng ngồi uống cà phê nhìn ra vườn cây thật sự thư thái. Mình sẽ quay lại."</p>
+                <p class="rv-author">Nguyễn Minh Tuấn</p>
+                <p class="rv-from">Hà Nội</p>
+            </div>
+            <div class="rv reveal reveal-delay-1">
+                <div class="rv-stars">★★★★★</div>
+                <p class="rv-text">"Cà phê ngon, không gian đẹp và mát. Giá rất hợp lý, nhân viên thân thiện. Điểm dừng chân lý tưởng khi qua Hoà Bình."</p>
+                <p class="rv-author">Trần Thị Lan</p>
+                <p class="rv-from">Hà Nam</p>
+            </div>
+            <div class="rv reveal reveal-delay-2">
+                <div class="rv-stars">★★★★★</div>
+                <p class="rv-text">"Đưa cả gia đình đến nghỉ 2 ngày, phòng family rộng thoải mái. Tối mát mẻ, yên tĩnh. Bọn trẻ rất thích không gian xanh ở đây."</p>
+                <p class="rv-author">Lê Quang Hải</p>
+                <p class="rv-from">Hoà Bình</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <img src="logo_lapaz.png" alt="La Paz Hotel" class="footer-logo-img">
+                    <span>La Paz <span>Hotel</span></span>
+                </a>
+                <p>Khách sạn & quán cà phê sân vườn gia đình tại Yên Thuỷ, Hoà Bình. Không gian xanh, yên tĩnh và ấm cúng.</p>
+            </div>
+            <div class="fcol">
+                <h4>Khách sạn</h4>
+                <ul>
+                    <li><a href="#rooms">Phòng Standard</a></li>
+                    <li><a href="#rooms">Phòng Deluxe</a></li>
+                    <li><a href="#rooms">Phòng Family</a></li>
+                    <li><a href="#contact">Đặt phòng</a></li>
+                </ul>
+            </div>
+            <div class="fcol">
+                <h4>Cà phê</h4>
+                <ul>
+                    <li><a href="#cafe">Cà phê</a></li>
+                    <li><a href="#cafe">Trà & nước</a></li>
+                    <li><a href="#cafe">Sinh tố</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="fcol">
+                <h4>Thông tin</h4>
+                <ul>
+                    <li><a href="#attractions">Tham quan</a></li>
+                    <li><a href="#directions">Đường đến</a></li>
+                    <li><a href="tel:0123456789">0123 456 789</a></li>
+                    <li><a href="https://zalo.me/0123456789">Zalo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 La Paz Hotel · Yên Thuỷ, Hoà Bình</p>
+            <!-- <p>From ctm66 with ❤️</p> -->
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
