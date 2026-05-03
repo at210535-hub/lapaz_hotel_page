@@ -397,6 +397,74 @@ nav.menu-open {
 }
 .room-cta:hover { gap: .65rem; }
 
+/* ── NEARBY ── */
+.nearby { padding: 7rem 5rem; background: var(--bg); }
+.nearby-header { max-width: 640px; margin-bottom: 3.5rem; }
+.nearby-text {
+    font-size: .9rem; line-height: 1.9; color: var(--ink-3);
+    margin-top: 1rem; font-weight: 300;
+}
+.nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.nb-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.6rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    transition: background .35s cubic-bezier(.22,1,.36,1), border-color .35s, transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1);
+}
+.nb-card:hover {
+    background: var(--bg-3);
+    border-color: var(--moss-pale);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0,0,0,.35);
+}
+.nb-icon-wrap {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(var(--moss-rgb, 134,179,139), .12);
+    border: 1px solid var(--moss-pale);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.nb-icon { width: 20px; height: 20px; color: var(--moss); }
+.nb-body { display: flex; flex-direction: column; gap: .4rem; }
+.nb-name {
+    font-family: 'Cormorant', serif;
+    font-size: 1.15rem; font-weight: 400;
+    color: var(--ink); letter-spacing: .01em;
+}
+.nb-loc {
+    font-size: .62rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--moss);
+    font-weight: 500;
+}
+.nb-desc {
+    font-size: .8rem; line-height: 1.75;
+    color: var(--ink-3); font-weight: 300;
+    margin-top: .2rem; flex: 1;
+}
+.nb-tag {
+    display: inline-flex; align-items: center;
+    font-size: .58rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: .25rem .7rem; border-radius: var(--radius-pill);
+    background: var(--bg-3); color: var(--ink-4);
+    border: 1px solid var(--line);
+    margin-top: .6rem; align-self: flex-start; font-weight: 500;
+}
+.nb-tag--in {
+    background: rgba(var(--moss-rgb, 134,179,139), .15);
+    color: var(--moss); border-color: var(--moss-pale);
+}
+.nb-tag--near {
+    background: rgba(var(--moss-rgb, 134,179,139), .08);
+    color: var(--moss-2); border-color: var(--line);
+}
+
 /* ── CAFE ── */
 .cafe { padding: 7rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
 .cafe-visual { position: sticky; top: 100px; }
@@ -506,7 +574,7 @@ nav.menu-open {
 .ac-body  { padding: 1.3rem; display: flex; flex-direction: column; gap: .35rem; }
 .ac-dist  { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--moss); font-weight: 500; }
 .ac-name  { font-family: 'Cormorant', serif; font-size: 1.1rem; font-weight: 300; color: var(--ink); }
-.ac-desc  { font-size: .78rem; line-height: 1.65; color: var(--ink-4); font-weight: 300; flex: 1; }
+.ac-desc  { font-size: .78rem; line-height: 1.65; color: var(--ink-3); font-weight: 300; flex: 1; }
 .ac-mapbtn {
     display: inline-flex; align-items: center; gap: .4rem;
     margin-top: .5rem;
@@ -538,7 +606,7 @@ nav.menu-open {
 .ci-row  { display: flex; align-items: flex-start; gap: .9rem; }
 .ci-icon { font-size: 1rem; margin-top: 2px; flex-shrink: 0; }
 .ci-text { display: flex; flex-direction: column; gap: .1rem; }
-.ci-label { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); }
+.ci-label { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--moss); }
 .ci-val   { font-size: .85rem; color: var(--ink-2); line-height: 1.5; }
 
 .cbtn {
@@ -567,7 +635,7 @@ nav.menu-open {
 .cbtn:active .cbtn-arrow  { color: rgba(15,42,42,.6); }
 .cbtn-icon   { width: 36px; height: 36px; border-radius: 50%; background: var(--moss-mist); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: background .25s; }
 .cbtn-text   { display: flex; flex-direction: column; gap: .1rem; flex: 1; }
-.cbtn-label  { font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); font-weight: 400; transition: color .25s; }
+.cbtn-label  { font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); font-weight: 400; transition: color .25s; }
 .cbtn-val    { font-family: 'Cormorant', serif; font-size: 1.05rem; color: var(--ink); font-weight: 400; transition: color .25s; }
 .cbtn-arrow  { font-size: .8rem; color: var(--ink-4); transition: color .25s, transform .25s; flex-shrink: 0; }
 
@@ -597,7 +665,7 @@ footer { padding: 5rem 5rem 2.5rem; border-top: 1px solid var(--line); }
 .footer-logo-img   { width: 44px; height: 28px; border-radius: 0; object-fit: contain; }
 .footer-logo span  { font-family: 'Cormorant', serif; font-size: 1.2rem; font-weight: 300; color: var(--ink); letter-spacing: .06em; }
 .footer-logo span span { color: var(--moss); font-style: italic; }
-.footer-brand p    { font-size: .8rem; line-height: 1.8; color: var(--ink-4); font-weight: 300; max-width: 220px; }
+.footer-brand p    { font-size: .8rem; line-height: 1.8; color: var(--ink-3); font-weight: 300; max-width: 220px; }
 .fcol h4   { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--moss); margin-bottom: 1rem; font-weight: 500; }
 .fcol ul   { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
 .fcol a    { font-size: .8rem; text-decoration: none; color: var(--ink-3); font-weight: 300; transition: color .25s; }
@@ -618,8 +686,14 @@ footer { padding: 5rem 5rem 2.5rem; border-top: 1px solid var(--line); }
     .hero-img-wrap-split     { grid-template-columns: 1fr 1fr; gap: 6px; }
     .scroll-hint             { display: none; }
 
-    .about, .rooms, .cafe, .contact, .directions, .attractions, .gallery, .reviews, footer { padding: 5rem 1.8rem; }
+    .about, .rooms, .cafe, .contact, .directions, .attractions, .gallery, .reviews, .nearby, footer { padding: 5rem 1.8rem; }
     .about, .cafe, .contact, .directions { grid-template-columns: 1fr; gap: 2rem; }
+    .nearby-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+    .nb-card { flex-direction: column; align-items: center; text-align: center; gap: .6rem; padding: 1.2rem 1rem; }
+    .nb-desc, .nb-tag { display: none; }
+    .nb-loc { font-size: .58rem; }
+    .nb-body { gap: .25rem; align-items: center; }
+    .nb-name { font-size: 1rem; }
     .about              { display: block; }
     .about-imgs         { display: none; }
     .about-img-mobile   { display: block; }
