@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Paz Hotel — Khách sạn & Cà phê · Yên Thuỷ, Phú Thọ</title>
+    <title>La Paz Hotel — Khách sạn & Cafe · Yên Thuỷ, Phú Thọ</title>
     <meta name="description"
-        content="La Paz Hotel — Khách sạn & quán cà phê sân vườn gia đình tại Yên Thuỷ, Phú Thọ. Không gian xanh, yên tĩnh, thư giãn.">
+        content="La Paz Hotel — Khách sạn & Cafe sân vườn tại Yên Thuỷ, Phú Thọ. Không gian xanh, yên tĩnh, thư giãn.">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -40,7 +40,7 @@
             <li><a href="#gallery">Không gian</a></li>
             <li><a href="#rooms">Phòng nghỉ</a></li>
             <li><a href="#nearby">Tiện ích</a></li>
-            <!-- <li><a href="#cafe">Cà phê</a></li> -->
+            <li><a href="#cafe">Cafe</a></li>
             <li><a href="#directions">Đường đến</a></li>
             <li><a href="#attractions">Tham quan</a></li>
             <li><a href="#contact" class="nav-cta">Liên hệ đặt phòng</a></li>
@@ -55,7 +55,7 @@
         <a href="#gallery" onclick="closeMenu()">Không gian</a>
         <a href="#rooms" onclick="closeMenu()">Phòng nghỉ</a>
         <a href="#nearby" onclick="closeMenu()">Tiện ích</a>
-        <!-- <a href="#cafe" onclick="closeMenu()">Cà phê</a> -->
+        <a href="#cafe" onclick="closeMenu()">Cafe</a>
         <a href="#directions" onclick="closeMenu()">Đường đến</a>
         <a href="#attractions" onclick="closeMenu()">Tham quan</a>
         <a href="#contact" onclick="closeMenu()" style="color:var(--moss)">Liên hệ đặt phòng</a>
@@ -156,7 +156,7 @@
             <div class="gi reveal"><img loading="lazy" decoding="async" src="photos/7.webp" 
                     alt="La Paz Hotel đèn lồng"></div>
             <div class="gi reveal reveal-delay-1"><img loading="lazy" decoding="async" src="photos/8.webp"
-                    alt="La Paz Hotel cà phê"></div>
+                    alt="La Paz Hotel Cafe"></div>
             <div class="gi reveal reveal-delay-2\"><img loading="lazy" decoding="async" src="photos/10.webp"
                     alt="La Paz Coffee toàn cảnh"></div>
 
@@ -169,7 +169,7 @@
             <div class="gi reveal"><img loading="lazy" decoding="async" src="photos/7.webp" 
                     alt="La Paz Hotel đèn lồng"></div>
             <div class="gi reveal reveal-delay-1"><img loading="lazy" decoding="async" src="photos/8.webp"
-                    alt="La Paz Hotel cà phê"></div>
+                    alt="La Paz Hotel Cafe"></div>
             <div class="gi reveal reveal-delay-2\"><img loading="lazy" decoding="async" src="photos/10.webp"
                     alt="La Paz Coffee toàn cảnh"></div> -->
         </div>
@@ -249,7 +249,10 @@
                     <h3 class="nb-name">Cafe sân vườn</h3>
                     <p class="nb-loc">Trong khuôn viên</p>
                     <p class="nb-desc">Không gian xanh mát ngay trong khuôn viên La Paz, phục vụ các loại đồ uống và ăn nhẹ hàng ngày</p>
-                    <span class="nb-tag nb-tag--in">Trong khuôn viên</span>
+                    <div class="nb-foot">
+                        <span class="nb-tag nb-tag--in">Trong khuôn viên</span>
+                        <a href="#cafe" class="nb-cta">Xem menu →</a>
+                    </div>
                 </div>
             </div>
             <div class="nb-card reveal reveal-delay-1">
@@ -260,7 +263,7 @@
                     <h3 class="nb-name">Nhà hàng & ăn uống</h3>
                     <p class="nb-loc">~900m</p>
                     <p class="nb-desc">Nhiều nhà hàng, quán ăn địa phương phục vụ đặc sản Hoà Bình và các món Việt đa dạng ngay gần khách sạn.</p>
-                    <span class="nb-tag nb-tag--near">Gần khách sạn</span>
+                    <div class="nb-foot"><span class="nb-tag nb-tag--near">Gần khách sạn</span></div>
                 </div>
             </div>
             <div class="nb-card reveal reveal-delay-2">
@@ -271,7 +274,7 @@
                     <h3 class="nb-name">Dịch vụ Karaoke</h3>
                     <p class="nb-loc">~50m</p>
                     <p class="nb-desc">Phòng karaoke hiện đại với hệ thống âm thanh chuyên nghiệp, lý tưởng cho buổi tối vui vẻ cùng bạn bè và gia đình.</p>
-                    <span class="nb-tag nb-tag--near">Gần khách sạn</span>
+                    <div class="nb-foot"><span class="nb-tag nb-tag--near">Gần khách sạn</span></div>
                 </div>
             </div>
             <div class="nb-card reveal reveal-delay-3">
@@ -282,7 +285,7 @@
                     <h3 class="nb-name">Sân Pickleball</h3>
                     <p class="nb-loc">~200m</p>
                     <p class="nb-desc">Sân pickleball tiêu chuẩn với đầy đủ tiện nghi. Môn thể thao thú vị phù hợp mọi lứa tuổi.</p>
-                    <span class="nb-tag nb-tag--near">Gần khách sạn</span>
+                    <div class="nb-foot"><span class="nb-tag nb-tag--near">Gần khách sạn</span></div>
                 </div>
             </div>
             <div class="nb-card reveal reveal-delay-4">
@@ -293,25 +296,41 @@
                     <h3 class="nb-name">Chợ quê thị trấn</h3>
                     <p class="nb-loc">~50m</p>
                     <p class="nb-desc">Chợ truyền thống nhộn nhịp với đặc sản địa phương, nông sản tươi và hàng thủ công — trải nghiệm văn hoá đặc sắc.</p>
-                    <span class="nb-tag nb-tag--near">Gần khách sạn</span>
+                    <div class="nb-foot">
+                        <span class="nb-tag nb-tag--near">Gần khách sạn</span>
+                    </div>
+                </div>
+            </div>
+            <div class="nb-card reveal reveal-delay-4">
+                <div class="nb-icon-wrap">
+                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                </div>
+                <div class="nb-body">
+                    <h3 class="nb-name">Tham quan</h3>
+                    <p class="nb-loc">Quanh khu vực</p>
+                    <p class="nb-desc">Suối khoáng Kim Bôi, rừng Cúc Phương, thác Mây, chùa Hang và nhiều địa danh hấp dẫn quanh vùng.</p>
+                    <div class="nb-foot">
+                        <span class="nb-tag nb-tag--in">Khám phá ngay</span>
+                        <a href="#attractions" class="nb-cta">Xem địa điểm →</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CAFE MENU -->
-    <!-- <section class="cafe" id="cafe">
+    <section class="cafe" id="cafe">
         <div class="cafe-visual reveal">
-            <img loading="lazy" decoding="async" class="cafe-img-main" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85" alt="Quán cà phê La Paz">
+            <img loading="lazy" decoding="async" class="cafe-img-main" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85" alt="Quán Cafe La Paz">
             <p class="cafe-note"><span class="cafe-note-dot"></span>Phục vụ từ 6:00 sáng — 10:00 tối mỗi ngày</p>
         </div>
         <div class="cafe-menu">
             <div class="reveal">
-                <p class="sh-eye">Quán cà phê</p>
+                <p class="sh-eye">Quán Cafe</p>
                 <h2 class="sh-h">Menu <em>đồ uống</em></h2>
             </div>
             <div class="menu-tabs reveal reveal-delay-1">
-                <button class="mtab on" onclick="switchTab(this,'t1')">Cà phê</button>
+                <button class="mtab on" onclick="switchTab(this,'t1')">Cafe</button>
                 <button class="mtab" onclick="switchTab(this,'t2')">Trà & nước</button>
                 <button class="mtab" onclick="switchTab(this,'t3')">Sinh tố</button>
             </div>
@@ -319,14 +338,14 @@
                 <div class="menu-list">
                     <div class="mi">
                         <div class="mi-l">
-                            <span class="mi-name">Cà phê đen</span>
+                            <span class="mi-name">Cafe đen</span>
                             <span class="mi-note">Robusta Đắk Lắk · nóng hoặc đá</span>
                         </div>
                         <span class="mi-price">20k</span>
                     </div>
                     <div class="mi">
                         <div class="mi-l">
-                            <span class="mi-name">Cà phê sữa</span>
+                            <span class="mi-name">Cafe sữa</span>
                             <span class="mi-note">Phin truyền thống, sữa đặc</span>
                         </div>
                         <span class="mi-price">25k</span>
@@ -334,7 +353,7 @@
                     <div class="mi">
                         <div class="mi-l">
                             <span class="mi-name">Bạc xỉu</span>
-                            <span class="mi-note">Nhiều sữa, ít cà phê</span>
+                            <span class="mi-note">Nhiều sữa, ít Cafe</span>
                         </div>
                         <span class="mi-price">25k</span>
                     </div>
@@ -354,7 +373,7 @@
                     </div>
                     <div class="mi">
                         <div class="mi-l">
-                            <span class="mi-name">Cà phê trứng</span>
+                            <span class="mi-name">Cafe trứng</span>
                             <span class="mi-note">Đặc sản Hà Nội — béo, ngậy</span>
                         </div>
                         <span class="mi-price">35k</span>
@@ -446,12 +465,12 @@
                     </div>
                 </div>
             </div>
-            <div class="cafe-badge-bar reveal reveal-delay-2">
+            <!-- <div class="cafe-badge-bar reveal reveal-delay-2">
                 <span style="font-size:1.1rem">🎁</span>
                 <span class="cbd">Khách lưu trú tại La Paz Hotel được <strong>giảm 20%</strong> tất cả đồ uống tại quán.</span>
-            </div>
+            </div> -->
         </div>
-    </section> -->
+    </section>
 
     <!-- DIRECTIONS -->
     <section class="directions" id="directions">
@@ -682,7 +701,7 @@
                     <span class="ci-icon">🕐</span>
                     <div class="ci-text">
                         <span class="ci-label">Giờ mở cửa</span>
-                        <span class="ci-val">Cà phê: 06:00 – 22:00 · Nhận phòng: 14:00 · Trả phòng: 12:00</span>
+                        <span class="ci-val">Cafe: 06:00 – 22:00 · Nhận phòng: 14:00 · Trả phòng: 12:00</span>
                     </div>
                 </div> -->
                 <div class="ci-row">
@@ -739,13 +758,13 @@
         <div class="rv-grid">
             <div class="rv reveal">
                 <div class="rv-stars">★★★★★</div>
-                <p class="rv-text">"Phòng sạch, yên tĩnh, chủ nhà rất nhiệt tình. Buổi sáng ngồi uống cà phê nhìn ra vườn cây thật sự thư thái. Mình sẽ quay lại."</p>
+                <p class="rv-text">"Phòng sạch, yên tĩnh, chủ nhà rất nhiệt tình. Buổi sáng ngồi uống Cafe nhìn ra vườn cây thật sự thư thái. Mình sẽ quay lại."</p>
                 <p class="rv-author">Nguyễn Minh Tuấn</p>
                 <p class="rv-from">Hà Nội</p>
             </div>
             <div class="rv reveal reveal-delay-1">
                 <div class="rv-stars">★★★★★</div>
-                <p class="rv-text">"Cà phê ngon, không gian đẹp và mát. Giá rất hợp lý, nhân viên thân thiện. Điểm dừng chân lý tưởng khi qua Hoà Bình."</p>
+                <p class="rv-text">"Cafe ngon, không gian đẹp và mát. Giá rất hợp lý, nhân viên thân thiện. Điểm dừng chân lý tưởng khi qua Hoà Bình."</p>
                 <p class="rv-author">Trần Thị Lan</p>
                 <p class="rv-from">Hà Nam</p>
             </div>
@@ -766,8 +785,7 @@
                     <img src="logo_lapaz.png" alt="La Paz Hotel" class="footer-logo-img">
                     <span>La Paz <span>Hotel</span></span>
                 </a>
-                <p>Khách sạn & quán cà phê sân vườn gia đình tại Yên Thuỷ, Phú Thọ. Không gian xanh, yên tĩnh và ấm
-                    cúng.</p>
+                <p>La Paz Hotel — Khách sạn & Cafe sân vườn tại Yên Thuỷ, Phú Thọ. Không gian xanh, yên tĩnh, thư giãn.</p>
             </div>
             <div class="fcol">
                 <h4>Khách sạn</h4>
@@ -777,15 +795,14 @@
                     <li><a href="#contact">Đặt phòng</a></li>
                 </ul>
             </div>
-            <!-- <div class="fcol">
-                <h4>Cà phê</h4>
+            <div class="fcol">
+                <h4>Quán Cafe</h4>
                 <ul>
-                    <li><a href="#cafe">Cà phê</a></li>
-                    <li><a href="#cafe">Trà & nước</a></li>
-                    <li><a href="#cafe">Sinh tố</a></li>
-                    <li><a href="#contact">Liên hệ</a></li>
+                    <li><a href="#cafe" onclick="goToCafeTab('t1')">Cafe</a></li>
+                    <li><a href="#cafe" onclick="goToCafeTab('t2')">Trà & nước</a></li>
+                    <li><a href="#cafe" onclick="goToCafeTab('t3')">Sinh tố</a></li>
                 </ul>
-            </div> -->
+            </div>
             <div class="fcol">
                 <h4>Thông tin</h4>
                 <ul>
@@ -803,6 +820,12 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function goToCafeTab(tabId) {
+            const btn = document.querySelector(`button[onclick="switchTab(this,'${tabId}')"]`);
+            if (btn) switchTab(btn, tabId);
+        }
+    </script>
 </body>
 
 </html>
