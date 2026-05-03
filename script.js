@@ -61,19 +61,16 @@ document.addEventListener('click', (e) => {
 });
 
 
-// ── SCROLL REVEAL (2 chiều — giống Apple) ────────────────────────────────────
-// Scroll xuống → visible (fade up vào)
-// Scroll lên   → hiding  (fade xuống ra) → sau đó reset để reveal lại được
+// ── SCROLL REVEAL (2 chiều, đa hướng) ───────────────────────────────────────
+const REVEAL_SEL = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
+
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         const el = entry.target;
         if (entry.isIntersecting) {
-            // Vào viewport: bỏ hiding, thêm visible
             el.classList.remove('hiding');
-            // Dùng rAF để browser kịp apply bỏ hiding trước khi thêm visible
             requestAnimationFrame(() => el.classList.add('visible'));
         } else {
-            // Ra khỏi viewport: reset để có thể reveal lại khi scroll xuống
             if (el.classList.contains('visible')) {
                 el.classList.add('hiding');
                 el.classList.remove('visible');
@@ -82,10 +79,10 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, {
     threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'   // Trigger khi vào 40px trong viewport
+    rootMargin: '0px 0px -40px 0px'
 });
 
-document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+document.querySelectorAll(REVEAL_SEL).forEach((el) => revealObserver.observe(el));
 
 
 // ── BLUR-UP IMAGE LOADING ─────────────────────────────────────────────────────

@@ -60,30 +60,74 @@ body {
     50%       { opacity: .55; }
 }
 
-/* ── SCROLL REVEAL ── */
-.reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity .7s cubic-bezier(.22, 1, .36, 1),
-                transform .7s cubic-bezier(.22, 1, .36, 1);
+/* ── SCROLL REVEAL ──────────────────────────────────────────────────────────
+   Mặc định: fade-up. Thêm class để đổi hướng:
+     .reveal-left  → trượt từ trái
+     .reveal-right → trượt từ phải
+     .reveal-scale → phóng to từ nhỏ
+   Delay CHỈ áp dụng khi entering (visible), không áp dụng khi hiding.
+*/
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
     will-change: opacity, transform;
 }
-.reveal.visible {
+
+/* ── Trạng thái ẨN (mặc định) ── */
+.reveal        { opacity: 0; transform: translateY(32px); }
+.reveal-left   { opacity: 0; transform: translateX(-40px); }
+.reveal-right  { opacity: 0; transform: translateX(40px); }
+.reveal-scale  { opacity: 0; transform: scale(.94); }
+
+/* ── Transition khi ENTERING — mượt, có spring ── */
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible {
     opacity: 1;
     transform: none;
     will-change: auto;
+    transition: opacity .65s cubic-bezier(.16, 1, .3, 1),
+                transform .65s cubic-bezier(.16, 1, .3, 1);
 }
-/* Scroll lên lại — ẩn nhanh hơn hiện để không bị giật */
-.reveal.hiding {
+
+/* ── Transition khi HIDING (scroll lên) — nhanh, không delay ── */
+.reveal.hiding,
+.reveal-left.hiding,
+.reveal-right.hiding,
+.reveal-scale.hiding {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity .4s cubic-bezier(.4, 0, 1, 1),
-                transform .4s cubic-bezier(.4, 0, 1, 1);
+    transition: opacity .3s cubic-bezier(.4, 0, 1, 1),
+                transform .3s cubic-bezier(.4, 0, 1, 1);
+    transition-delay: 0s !important;
 }
-.reveal-delay-1 { transition-delay: .08s; }
-.reveal-delay-2 { transition-delay: .16s; }
-.reveal-delay-3 { transition-delay: .24s; }
-.reveal-delay-4 { transition-delay: .32s; }
+.reveal.hiding        { transform: translateY(16px); }
+.reveal-left.hiding   { transform: translateX(-20px); }
+.reveal-right.hiding  { transform: translateX(20px); }
+.reveal-scale.hiding  { transform: scale(.97); }
+
+/* ── Delay khi entering — chỉ áp dụng lúc .visible ── */
+.reveal.visible.reveal-delay-1,
+.reveal-left.visible.reveal-delay-1,
+.reveal-right.visible.reveal-delay-1,
+.reveal-scale.visible.reveal-delay-1  { transition-delay: .08s; }
+
+.reveal.visible.reveal-delay-2,
+.reveal-left.visible.reveal-delay-2,
+.reveal-right.visible.reveal-delay-2,
+.reveal-scale.visible.reveal-delay-2  { transition-delay: .16s; }
+
+.reveal.visible.reveal-delay-3,
+.reveal-left.visible.reveal-delay-3,
+.reveal-right.visible.reveal-delay-3,
+.reveal-scale.visible.reveal-delay-3  { transition-delay: .24s; }
+
+.reveal.visible.reveal-delay-4,
+.reveal-left.visible.reveal-delay-4,
+.reveal-right.visible.reveal-delay-4,
+.reveal-scale.visible.reveal-delay-4  { transition-delay: .32s; }
+
 
 /* ── BLUR-UP IMAGE LOADING (hiệu ứng Apple) ──
    Ảnh bắt đầu mờ + blur → fade in mượt khi load xong.
