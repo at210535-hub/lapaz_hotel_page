@@ -18,16 +18,45 @@
     <link rel="dns-prefetch" href="https://www.google.com">
 
     <!--
-        Preload 3 ảnh hero — fetchpriority="high" để browser ưu tiên tải ngay.
-        Thêm imagesrcset để browser chọn đúng kích thước theo màn hình,
-        giúp tiết kiệm băng thông trên 4G mà vẫn nét trên desktop.
+        NHÓM 1 — HERO (tải ngay, ưu tiên cao nhất)
+        imagesrcset + imagesizes giúp browser chọn đúng kích thước:
+        mobile (<960px) tải _sm.webp (~50KB), desktop tải full (~150KB).
     -->
     <link rel="preload" as="image" href="photos/2.webp"
-        imagesrcset="photos/2.webp 1280w" imagesizes="50vw">
+        imagesrcset="photos/2_sm.webp 480w, photos/2.webp 1280w"
+        imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
     <link rel="preload" as="image" href="photos/1.webp"
-        imagesrcset="photos/1.webp 960w"  imagesizes="25vw">
+        imagesrcset="photos/1_sm.webp 480w, photos/1.webp 960w"
+        imagesizes="(max-width: 960px) 50vw, 25vw" fetchpriority="high">
     <link rel="preload" as="image" href="photos/6.webp"
-        imagesrcset="photos/6.webp 960w"  imagesizes="25vw">
+        imagesrcset="photos/6_sm.webp 480w, photos/6.webp 960w"
+        imagesizes="(max-width: 960px) 50vw, 25vw" fetchpriority="high">
+
+    <!--
+        NHÓM 2 — ABOUT + GALLERY (tải sớm, ưu tiên thấp hơn hero)
+        Chỉ preload ảnh full — browser tự chọn _sm nếu cần qua srcset trong <img>.
+    -->
+    <link rel="preload" as="image" href="photos/4.webp"
+        imagesrcset="photos/4_sm.webp 480w, photos/4.webp 800w"
+        imagesizes="(max-width: 960px) 100vw, 35vw" fetchpriority="low">
+    <link rel="preload" as="image" href="photos/3.webp"
+        imagesrcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 18vw" fetchpriority="low">
+    <link rel="preload" as="image" href="photos/5.webp"
+        imagesrcset="photos/5_sm.webp 480w, photos/5.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 18vw" fetchpriority="low">
+    <link rel="preload" as="image" href="photos/11.webp"
+        imagesrcset="photos/11_sm.webp 480w, photos/11.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="photos/7.webp"
+        imagesrcset="photos/7_sm.webp 480w, photos/7.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 25vw" fetchpriority="low">
+    <link rel="preload" as="image" href="photos/8.webp"
+        imagesrcset="photos/8_sm.webp 480w, photos/8.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 33vw" fetchpriority="low">
+    <link rel="preload" as="image" href="photos/10.webp"
+        imagesrcset="photos/10_sm.webp 480w, photos/10.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 42vw" fetchpriority="low">
 
     <!-- Font với display=swap để không chặn render -->
     <link
@@ -91,6 +120,8 @@
         <div class="hero-r">
             <div class="hero-img-wrap">
                 <img src="photos/2.webp"
+                    srcset="photos/2_sm.webp 480w, photos/2.webp 1280w"
+                    sizes="(max-width: 960px) 100vw, 50vw"
                     alt="La Paz Hotel dãy phòng"
                     fetchpriority="high"
                     decoding="sync"
@@ -99,6 +130,8 @@
             <div class="hero-img-wrap-split">
                 <div class="hero-img-wrap">
                     <img src="photos/1.webp"
+                        srcset="photos/1_sm.webp 480w, photos/1.webp 960w"
+                        sizes="(max-width: 960px) 50vw, 25vw"
                         alt="La Paz Hotel cây hoa giấy"
                         fetchpriority="high"
                         decoding="async"
@@ -106,6 +139,8 @@
                 </div>
                 <div class="hero-img-wrap">
                     <img src="photos/6.webp"
+                        srcset="photos/6_sm.webp 480w, photos/6.webp 960w"
+                        sizes="(max-width: 960px) 50vw, 25vw"
                         alt="La Paz Hotel toàn cảnh"
                         fetchpriority="high"
                         decoding="async"
@@ -120,14 +155,23 @@
     <!-- ABOUT -->
     <section class="about" id="about">
         <div class="about-imgs reveal">
-            <img loading="lazy" decoding="async" class="a-big"
-                src="photos/4.webp" alt="La Paz Hotel cây xanh"
+            <img decoding="async" class="a-big"
+                src="photos/4.webp"
+                srcset="photos/4_sm.webp 480w, photos/4.webp 800w"
+                sizes="(max-width: 960px) 100vw, 35vw"
+                alt="La Paz Hotel cây xanh"
                 width="1200" height="800">
-            <img loading="lazy" decoding="async"
-                src="photos/3.webp" alt="La Paz Hotel phòng nghỉ"
+            <img decoding="async"
+                src="photos/3.webp"
+                srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+                sizes="(max-width: 960px) 50vw, 18vw"
+                alt="La Paz Hotel phòng nghỉ"
                 width="800" height="533">
-            <img loading="lazy" decoding="async"
-                src="photos/5.webp" alt="La Paz Hotel sân vườn"
+            <img decoding="async"
+                src="photos/5.webp"
+                srcset="photos/5_sm.webp 480w, photos/5.webp 800w"
+                sizes="(max-width: 960px) 50vw, 18vw"
+                alt="La Paz Hotel sân vườn"
                 width="800" height="533">
         </div>
         <div class="about-text">
@@ -137,8 +181,11 @@
                 <br>
             </div>
             <div class="about-img-mobile about-img-mobile--1 reveal">
-                <img loading="lazy" decoding="async"
-                    src="photos/4.webp" alt="La Paz Hotel cây xanh"
+                <img decoding="async"
+                    src="photos/4_sm.webp"
+                    srcset="photos/4_sm.webp 480w, photos/4.webp 800w"
+                    sizes="100vw"
+                    alt="La Paz Hotel cây xanh"
                     width="800" height="533">
             </div>
             <div class="reveal reveal-delay-1">
@@ -150,11 +197,17 @@
                 </p>
             </div>
             <div class="about-img-mobile about-img-mobile--2 reveal">
-                <img loading="lazy" decoding="async"
-                    src="photos/3.webp" alt="La Paz Hotel phòng nghỉ"
+                <img decoding="async"
+                    src="photos/3_sm.webp"
+                    srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+                    sizes="50vw"
+                    alt="La Paz Hotel phòng nghỉ"
                     width="800" height="533">
-                <img loading="lazy" decoding="async"
-                    src="photos/5.webp" alt="La Paz Hotel sân vườn"
+                <img decoding="async"
+                    src="photos/5_sm.webp"
+                    srcset="photos/5_sm.webp 480w, photos/5.webp 800w"
+                    sizes="50vw"
+                    alt="La Paz Hotel sân vườn"
                     width="800" height="533">
             </div>
             <div class="reveal reveal-delay-1">
@@ -176,33 +229,51 @@
         </div>
         <div class="gal-grid">
             <div class="gi reveal">
-                <img loading="lazy" decoding="async"
-                    src="photos/11.webp" alt="La Paz Coffee toàn cảnh"
+                <img decoding="async"
+                    src="photos/11.webp"
+                    srcset="photos/11_sm.webp 480w, photos/11.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 40vw"
+                    alt="La Paz Coffee toàn cảnh"
                     width="800" height="533">
             </div>
             <div class="gi reveal reveal-delay-1">
-                <img loading="lazy" decoding="async"
-                    src="photos/6.webp" alt="La Paz Hotel toàn cảnh"
+                <img decoding="async"
+                    src="photos/6.webp"
+                    srcset="photos/6_sm.webp 480w, photos/6.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 25vw"
+                    alt="La Paz Hotel toàn cảnh"
                     width="800" height="533">
             </div>
             <div class="gi reveal reveal-delay-2">
-                <img loading="lazy" decoding="async"
-                    src="photos/3.webp" alt="La Paz Hotel phòng nghỉ"
+                <img decoding="async"
+                    src="photos/3.webp"
+                    srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 33vw"
+                    alt="La Paz Hotel phòng nghỉ"
                     width="800" height="533">
             </div>
             <div class="gi reveal">
-                <img loading="lazy" decoding="async"
-                    src="photos/7.webp" alt="La Paz Hotel đèn lồng"
+                <img decoding="async"
+                    src="photos/7.webp"
+                    srcset="photos/7_sm.webp 480w, photos/7.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 25vw"
+                    alt="La Paz Hotel đèn lồng"
                     width="800" height="533">
             </div>
             <div class="gi reveal reveal-delay-1">
-                <img loading="lazy" decoding="async"
-                    src="photos/8.webp" alt="La Paz Hotel Cafe"
+                <img decoding="async"
+                    src="photos/8.webp"
+                    srcset="photos/8_sm.webp 480w, photos/8.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 33vw"
+                    alt="La Paz Hotel Cafe"
                     width="800" height="533">
             </div>
             <div class="gi reveal reveal-delay-2">
-                <img loading="lazy" decoding="async"
-                    src="photos/10.webp" alt="La Paz Coffee toàn cảnh"
+                <img decoding="async"
+                    src="photos/10.webp"
+                    srcset="photos/10_sm.webp 480w, photos/10.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 42vw"
+                    alt="La Paz Coffee toàn cảnh"
                     width="800" height="533">
             </div>
         </div>
@@ -220,7 +291,10 @@
             <div class="room-card reveal">
                 <div class="room-img-wrap">
                     <img loading="lazy" decoding="async"
-                        src="photos/phong_2_giuong.webp" alt="Phòng Standard"
+                        src="photos/phong_2_giuong.webp"
+                        srcset="photos/phong_2_giuong_sm.webp 480w, photos/phong_2_giuong.webp 800w"
+                        sizes="(max-width: 960px) 100vw, 45vw"
+                        alt="Phòng Standard"
                         width="800" height="533">
                 </div>
                 <div class="room-body">
@@ -245,7 +319,10 @@
             <div class="room-card reveal reveal-delay-1">
                 <div class="room-img-wrap">
                     <img loading="lazy" decoding="async"
-                        src="photos/phong_1_giuong.webp" alt="Phòng Deluxe"
+                        src="photos/phong_1_giuong.webp"
+                        srcset="photos/phong_1_giuong_sm.webp 480w, photos/phong_1_giuong.webp 800w"
+                        sizes="(max-width: 960px) 100vw, 45vw"
+                        alt="Phòng Deluxe"
                         width="800" height="533">
                 </div>
                 <div class="room-body">
@@ -633,7 +710,10 @@
 
             <div class="ac reveal">
                 <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/kim_boi.webp" alt="Suối khoáng Kim Bôi"
+                    src="photos/kim_boi.webp"
+                    srcset="photos/kim_boi_sm.webp 480w, photos/kim_boi.webp 800w"
+                    sizes="(max-width: 960px) 100vw, 33vw"
+                    alt="Suối khoáng Kim Bôi"
                     width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~55 km · 1 giờ 10 phút</p>
@@ -654,7 +734,10 @@
 
             <div class="ac reveal reveal-delay-1">
                 <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/thac_may.webp" alt="Thác Mây"
+                    src="photos/thac_may.webp"
+                    srcset="photos/thac_may_sm.webp 480w, photos/thac_may.webp 800w"
+                    sizes="(max-width: 960px) 100vw, 33vw"
+                    alt="Thác Mây"
                     width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~29 km · 41 phút</p>
@@ -675,7 +758,10 @@
 
             <div class="ac reveal reveal-delay-2">
                 <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/cuc_phuong.webp" alt="Vườn Quốc gia Cúc Phương"
+                    src="photos/cuc_phuong.webp"
+                    srcset="photos/cuc_phuong_sm.webp 480w, photos/cuc_phuong.webp 800w"
+                    sizes="(max-width: 960px) 100vw, 33vw"
+                    alt="Vườn Quốc gia Cúc Phương"
                     width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~42 km · 1 giờ 3 phút</p>
@@ -696,7 +782,10 @@
 
             <div class="ac reveal">
                 <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/trang_an.webp" alt="Quần thể danh thắng Tràng An"
+                    src="photos/trang_an.webp"
+                    srcset="photos/trang_an_sm.webp 480w, photos/trang_an.webp 800w"
+                    sizes="(max-width: 960px) 100vw, 33vw"
+                    alt="Quần thể danh thắng Tràng An"
                     width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~44 km · 1 giờ</p>
@@ -717,7 +806,10 @@
 
             <div class="ac reveal reveal-delay-1">
                 <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/chua_hang.webp" alt="Chùa Hang Yên Thủy"
+                    src="photos/chua_hang.webp"
+                    srcset="photos/chua_hang_sm.webp 480w, photos/chua_hang.webp 800w"
+                    sizes="(max-width: 960px) 100vw, 33vw"
+                    alt="Chùa Hang Yên Thủy"
                     width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~6 km · 8 phút</p>
@@ -738,7 +830,10 @@
 
             <div class="ac reveal reveal-delay-2">
                 <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/chua_tac_duc.webp" alt="Chùa Tác Đức"
+                    src="photos/chua_tac_duc.webp"
+                    srcset="photos/chua_tac_duc_sm.webp 480w, photos/chua_tac_duc.webp 800w"
+                    sizes="(max-width: 960px) 100vw, 33vw"
+                    alt="Chùa Tác Đức"
                     width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~9 km · 15 phút</p>
@@ -759,7 +854,10 @@
 
             <div class="ac reveal reveal-delay-2">
                 <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/suoi_ca_cam_thuy.webp" alt="Suối cá Cẩm Thủy"
+                    src="photos/suoi_ca_cam_thuy.webp"
+                    srcset="photos/suoi_ca_cam_thuy_sm.webp 480w, photos/suoi_ca_cam_thuy.webp 800w"
+                    sizes="(max-width: 960px) 100vw, 33vw"
+                    alt="Suối cá Cẩm Thủy"
                     width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~45 km · 58 phút</p>
@@ -885,6 +983,46 @@
             const btn = document.querySelector(`button[onclick="switchTab(this,'${tabId}')"]`);
             if (btn) switchTab(btn, tabId);
         }
+
+        // ── PRELOAD CHỦ ĐỘNG NHÓM 3 ─────────────────────────────────────────
+        // Tải trước toàn bộ ảnh phòng, attractions, cafe ngay khi hero đã xong.
+        // Dùng new Image() để browser tải vào cache ngay, không chờ scroll.
+        // Kết quả: khi user nhảy đến bất kỳ section nào, ảnh đã sẵn sàng.
+        (function preloadBelowFold() {
+            const GROUP3 = [
+                'photos/phong_2_giuong.webp',
+                'photos/phong_1_giuong.webp',
+                'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop',
+                'photos/kim_boi.webp',
+                'photos/thac_may.webp',
+                'photos/cuc_phuong.webp',
+                'photos/trang_an.webp',
+                'photos/chua_hang.webp',
+                'photos/chua_tac_duc.webp',
+                'photos/suoi_ca_cam_thuy.webp',
+            ];
+
+            // Đợi hero (ảnh lớn nhất) load xong rồi mới kéo nhóm 3
+            const heroImg = document.querySelector('.hero-img-wrap img');
+            function startPreload() {
+                // Tải từng ảnh cách nhau 150ms để không bão hoà băng thông 4G
+                GROUP3.forEach((src, i) => {
+                    setTimeout(() => {
+                        const img = new Image();
+                        img.src = src;
+                    }, i * 150);
+                });
+            }
+
+            if (heroImg && !heroImg.complete) {
+                heroImg.addEventListener('load', startPreload, { once: true });
+                // Fallback: nếu hero chưa load sau 3s thì vẫn bắt đầu preload
+                setTimeout(startPreload, 3000);
+            } else {
+                // Hero đã có trong cache hoặc load xong rồi
+                startPreload();
+            }
+        })();
     </script>
 </body>
 

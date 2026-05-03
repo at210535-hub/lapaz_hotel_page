@@ -62,13 +62,15 @@ document.addEventListener('click', (e) => {
 
 
 // ── SCROLL REVEAL ────────────────────────────────────────────────────────────
+// rootMargin: '600px' — trigger reveal khi phần tử còn cách viewport 600px,
+// đủ thời gian để CSS transition + ảnh hiện ra mượt trên 4G.
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('visible');
         revealObserver.unobserve(entry.target);
     });
-}, { threshold: 0.12 });
+}, { threshold: 0.05, rootMargin: '600px 0px' });
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
