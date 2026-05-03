@@ -1,5 +1,22 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/*
+ * Giữ kích thước chỗ trống cho ảnh TRƯỚC khi load xong,
+ * tránh layout shift (CLS) — đặc biệt quan trọng khi mạng chậm.
+ */
+img { display: block; max-width: 100%; height: auto; }
+
+/*
+ * content-visibility: auto — browser bỏ qua render các section
+ * chưa nằm trong viewport, giúp trang load nhanh hơn đáng kể.
+ * contain-intrinsic-size là chiều cao ước tính để tránh scroll giật.
+ */
+.about, .gallery, .rooms, .nearby, .cafe,
+.directions, .attractions, .contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+}
+
 :root {
     --bg:         #0F2A2A;
     --bg-2:       #153232;

@@ -11,14 +11,23 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <!-- Preconnect để giảm latency font -->
+    <!-- Preconnect để giảm latency font và CDN ảnh -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://www.google.com">
 
-    <!-- Preload 3 ảnh hero — hiển thị ngay khi load -->
-    <link rel="preload" as="image" href="photos/2.webp">
-    <link rel="preload" as="image" href="photos/1.webp">
-    <link rel="preload" as="image" href="photos/6.webp">
+    <!--
+        Preload 3 ảnh hero — fetchpriority="high" để browser ưu tiên tải ngay.
+        Thêm imagesrcset để browser chọn đúng kích thước theo màn hình,
+        giúp tiết kiệm băng thông trên 4G mà vẫn nét trên desktop.
+    -->
+    <link rel="preload" as="image" href="photos/2.webp"
+        imagesrcset="photos/2.webp 1280w" imagesizes="50vw">
+    <link rel="preload" as="image" href="photos/1.webp"
+        imagesrcset="photos/1.webp 960w"  imagesizes="25vw">
+    <link rel="preload" as="image" href="photos/6.webp"
+        imagesrcset="photos/6.webp 960w"  imagesizes="25vw">
 
     <!-- Font với display=swap để không chặn render -->
     <link
@@ -32,7 +41,7 @@
     <!-- NAV -->
     <nav id="nav">
         <a href="#" class="logo">
-            <img src="logo_lapaz.png" alt="La Paz Hotel" class="logo-img">
+            <img src="logo_lapaz.png" alt="La Paz Hotel" class="logo-img" width="44" height="28">
             <span class="logo-text">La Paz <em>Hotel</em></span>
         </a>
         <ul class="nav-links">
@@ -51,42 +60,55 @@
     </nav>
 
     <div class="m-nav" id="mNav">
-        <a href="#about" onclick="closeMenu()">Giới thiệu</a>
-        <a href="#gallery" onclick="closeMenu()">Không gian</a>
-        <a href="#rooms" onclick="closeMenu()">Phòng nghỉ</a>
-        <a href="#nearby" onclick="closeMenu()">Tiện ích</a>
-        <a href="#cafe" onclick="closeMenu()">Cafe</a>
-        <a href="#directions" onclick="closeMenu()">Đường đến</a>
+        <a href="#about"       onclick="closeMenu()">Giới thiệu</a>
+        <a href="#gallery"     onclick="closeMenu()">Không gian</a>
+        <a href="#rooms"       onclick="closeMenu()">Phòng nghỉ</a>
+        <a href="#nearby"      onclick="closeMenu()">Tiện ích</a>
+        <a href="#cafe"        onclick="closeMenu()">Cafe</a>
+        <a href="#directions"  onclick="closeMenu()">Đường đến</a>
         <a href="#attractions" onclick="closeMenu()">Tham quan</a>
-        <a href="#contact" onclick="closeMenu()" style="color:var(--moss)">Liên hệ đặt phòng</a>
+        <a href="#contact"     onclick="closeMenu()" style="color:var(--moss)">Liên hệ đặt phòng</a>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO
+         3 ảnh hero đã được preload ở <head>, nên dùng fetchpriority="high"
+         và KHÔNG dùng loading="lazy" để hiển thị ngay lập tức.
+         decoding="sync" cho ảnh chính (to nhất), "async" cho 2 ảnh phụ.
+    -->
     <section class="hero">
         <div class="hero-l">
             <p class="hero-location">Yên Thuỷ · Tỉnh Phú Thọ</p>
             <h1 class="hero-h1">Nơi yên bình<br>chờ đón <em>bạn</em></h1>
-            <p class="hero-desc">Khách sạn & Cafe vườn giữa không gian
-                <br>xanh mát, bình yên của vùng núi Hoà Bình
-                <br>(Nay thuộc tỉnh Phú Thọ).
+            <p class="hero-desc">
+                Khách sạn & Cafe vườn giữa không gian<br>
+                xanh mát, bình yên của vùng núi Hoà Bình<br>
+                (Nay thuộc tỉnh Phú Thọ).
             </p>
             <div class="hero-ctas">
                 <a href="#contact" class="btn-solid">Liên hệ đặt phòng ↗</a>
-                <!-- <a href="#cafe" class="btn-line">Menu đồ uống</a> -->
             </div>
         </div>
         <div class="hero-r">
             <div class="hero-img-wrap">
-                <img src="photos/2.webp" alt="La Paz Hotel dãy phòng" fetchpriority="high" decoding="sync" width="1280"
-                    height="960">
+                <img src="photos/2.webp"
+                    alt="La Paz Hotel dãy phòng"
+                    fetchpriority="high"
+                    decoding="sync"
+                    width="1280" height="960">
             </div>
             <div class="hero-img-wrap-split">
                 <div class="hero-img-wrap">
-                    <img src="photos/1.webp" alt="La Paz Hotel cây hoa giấy" fetchpriority="high" decoding="async"
+                    <img src="photos/1.webp"
+                        alt="La Paz Hotel cây hoa giấy"
+                        fetchpriority="high"
+                        decoding="async"
                         width="960" height="1280">
                 </div>
                 <div class="hero-img-wrap">
-                    <img src="photos/6.webp" alt="La Paz Hotel toàn cảnh" fetchpriority="high" decoding="async"
+                    <img src="photos/6.webp"
+                        alt="La Paz Hotel toàn cảnh"
+                        fetchpriority="high"
+                        decoding="async"
                         width="960" height="1280">
                 </div>
             </div>
@@ -98,9 +120,15 @@
     <!-- ABOUT -->
     <section class="about" id="about">
         <div class="about-imgs reveal">
-            <img loading="lazy" decoding="async" class="a-big" src="photos/4.webp" alt="La Paz Hotel cây xanh">
-            <img loading="lazy" decoding="async" src="photos/3.webp" alt="La Paz Hotel phòng nghỉ">
-            <img loading="lazy" decoding="async" src="photos/5.webp" alt="La Paz Hotel sân vườn">
+            <img loading="lazy" decoding="async" class="a-big"
+                src="photos/4.webp" alt="La Paz Hotel cây xanh"
+                width="1200" height="800">
+            <img loading="lazy" decoding="async"
+                src="photos/3.webp" alt="La Paz Hotel phòng nghỉ"
+                width="800" height="533">
+            <img loading="lazy" decoding="async"
+                src="photos/5.webp" alt="La Paz Hotel sân vườn"
+                width="800" height="533">
         </div>
         <div class="about-text">
             <div class="reveal">
@@ -109,17 +137,25 @@
                 <br>
             </div>
             <div class="about-img-mobile about-img-mobile--1 reveal">
-                <img loading="lazy" decoding="async" src="photos/4.webp" alt="La Paz Hotel cây xanh">
+                <img loading="lazy" decoding="async"
+                    src="photos/4.webp" alt="La Paz Hotel cây xanh"
+                    width="800" height="533">
             </div>
             <div class="reveal reveal-delay-1">
-                <p style="margin-top:1.4rem">La Paz Hotel Là khu nghỉ dưỡng gia đình nhưng đồng thời cũng rất phù hợp
-                    cho nhiều nhóm đối tượng khác: đoàn công tác, hội họp, họp lớp hay nhóm picnic. Điểm mạnh của nơi
-                    này là view “chill” giữa không gian xanh, thoáng mát, trong lành và yên tĩnh của vùng núi Yên Thuỷ,
-                    Hoà Bình (Nay thuộc tỉnh Phú Thọ).</p>
+                <p style="margin-top:1.4rem">
+                    La Paz Hotel là khu nghỉ dưỡng gia đình nhưng đồng thời cũng rất phù hợp
+                    cho nhiều nhóm đối tượng khác: đoàn công tác, hội họp, họp lớp hay nhóm picnic.
+                    Điểm mạnh của nơi này là view "chill" giữa không gian xanh, thoáng mát, trong lành
+                    và yên tĩnh của vùng núi Yên Thuỷ, Hoà Bình (Nay thuộc tỉnh Phú Thọ).
+                </p>
             </div>
             <div class="about-img-mobile about-img-mobile--2 reveal">
-                <img loading="lazy" decoding="async" src="photos/3.webp" alt="La Paz Hotel phòng nghỉ">
-                <img loading="lazy" decoding="async" src="photos/5.webp" alt="La Paz Hotel sân vườn">
+                <img loading="lazy" decoding="async"
+                    src="photos/3.webp" alt="La Paz Hotel phòng nghỉ"
+                    width="800" height="533">
+                <img loading="lazy" decoding="async"
+                    src="photos/5.webp" alt="La Paz Hotel sân vườn"
+                    width="800" height="533">
             </div>
             <div class="reveal reveal-delay-1">
                 <p style="margin-top:1.4rem">Các dịch vụ và tiện ích trong khuôn viên La Paz Hotel:</p>
@@ -129,14 +165,6 @@
                 <span class="chip">📶 Wifi miễn phí</span>
                 <span class="chip">🚗 Bãi đỗ xe rộng</span>
             </div>
-            <!-- <div class="reveal reveal-delay-1">
-                <p style="margin-top:1.4rem">Các dịch vụ khác lân cận:</p>
-            </div>
-            <div class="about-chips reveal reveal-delay-2">
-                <span class="chip">🎤 Karaoke</span>
-                <span class="chip">🍽️ Dịch vụ ăn uống</span>
-                <span class="chip">🚗 Du lịch, tham quan</span>
-            </div> -->
         </div>
     </section>
 
@@ -147,31 +175,36 @@
             <h2 class="sh-h">La Paz Hotel <em>qua ảnh</em></h2>
         </div>
         <div class="gal-grid">
-            <div class="gi reveal"><img loading="lazy" decoding="async" src="photos/11.webp"
-                    alt="La Paz Coffee toàn cảnh"></div>
-            <div class="gi reveal reveal-delay-1"><img loading="lazy" decoding="async" src="photos/6.webp"
-                    alt="La Paz Hotel toàn cảnh"></div>
-            <div class="gi reveal reveal-delay-2"><img loading="lazy" decoding="async" src="photos/3.webp"
-                    alt="La Paz Hotel phòng nghỉ"></div>
-            <div class="gi reveal"><img loading="lazy" decoding="async" src="photos/7.webp" 
-                    alt="La Paz Hotel đèn lồng"></div>
-            <div class="gi reveal reveal-delay-1"><img loading="lazy" decoding="async" src="photos/8.webp"
-                    alt="La Paz Hotel Cafe"></div>
-            <div class="gi reveal reveal-delay-2\"><img loading="lazy" decoding="async" src="photos/10.webp"
-                    alt="La Paz Coffee toàn cảnh"></div>
-
-            <!-- <div class="gi reveal"><img loading="lazy" decoding="async" src="photos/11.webp"
-                    alt="La Paz Coffee toàn cảnh"></div>
-            <div class="gi reveal reveal-delay-1"><img loading="lazy" decoding="async" src="photos/6.webp"
-                    alt="La Paz Hotel toàn cảnh"></div>
-            <div class="gi reveal reveal-delay-2"><img loading="lazy" decoding="async" src="photos/3.webp"
-                    alt="La Paz Hotel phòng nghỉ"></div>
-            <div class="gi reveal"><img loading="lazy" decoding="async" src="photos/7.webp" 
-                    alt="La Paz Hotel đèn lồng"></div>
-            <div class="gi reveal reveal-delay-1"><img loading="lazy" decoding="async" src="photos/8.webp"
-                    alt="La Paz Hotel Cafe"></div>
-            <div class="gi reveal reveal-delay-2\"><img loading="lazy" decoding="async" src="photos/10.webp"
-                    alt="La Paz Coffee toàn cảnh"></div> -->
+            <div class="gi reveal">
+                <img loading="lazy" decoding="async"
+                    src="photos/11.webp" alt="La Paz Coffee toàn cảnh"
+                    width="800" height="533">
+            </div>
+            <div class="gi reveal reveal-delay-1">
+                <img loading="lazy" decoding="async"
+                    src="photos/6.webp" alt="La Paz Hotel toàn cảnh"
+                    width="800" height="533">
+            </div>
+            <div class="gi reveal reveal-delay-2">
+                <img loading="lazy" decoding="async"
+                    src="photos/3.webp" alt="La Paz Hotel phòng nghỉ"
+                    width="800" height="533">
+            </div>
+            <div class="gi reveal">
+                <img loading="lazy" decoding="async"
+                    src="photos/7.webp" alt="La Paz Hotel đèn lồng"
+                    width="800" height="533">
+            </div>
+            <div class="gi reveal reveal-delay-1">
+                <img loading="lazy" decoding="async"
+                    src="photos/8.webp" alt="La Paz Hotel Cafe"
+                    width="800" height="533">
+            </div>
+            <div class="gi reveal reveal-delay-2">
+                <img loading="lazy" decoding="async"
+                    src="photos/10.webp" alt="La Paz Coffee toàn cảnh"
+                    width="800" height="533">
+            </div>
         </div>
     </section>
 
@@ -186,14 +219,17 @@
         <div class="rooms-grid rooms-grid--2">
             <div class="room-card reveal">
                 <div class="room-img-wrap">
-                    <img loading="lazy" decoding="async" src="photos/phong_2_giuong.webp" alt="Phòng Standard">
-                    <!-- <span class="room-avail">Còn phòng</span> -->
+                    <img loading="lazy" decoding="async"
+                        src="photos/phong_2_giuong.webp" alt="Phòng Standard"
+                        width="800" height="533">
                 </div>
                 <div class="room-body">
                     <p class="room-type">Phòng đơn</p>
                     <h3 class="room-name">Standard</h3>
-                    <p class="room-desc">Phòng tiêu chuẩn gồm 2 giường, phù hợp cho 1–2 người. Nhìn ra vườn cây, yên
-                        tĩnh, thoáng mát.</p>
+                    <p class="room-desc">
+                        Phòng tiêu chuẩn gồm 2 giường, phù hợp cho 1–2 người.
+                        Nhìn ra vườn cây, yên tĩnh, thoáng mát.
+                    </p>
                     <div class="room-feats">
                         <span class="rf">Điều hoà</span>
                         <span class="rf">Wifi</span>
@@ -208,14 +244,17 @@
             </div>
             <div class="room-card reveal reveal-delay-1">
                 <div class="room-img-wrap">
-                    <img loading="lazy" decoding="async" src="photos/phong_1_giuong.webp" alt="Phòng Deluxe">
-                    <!-- <span class="room-avail">Còn phòng</span> -->
+                    <img loading="lazy" decoding="async"
+                        src="photos/phong_1_giuong.webp" alt="Phòng Deluxe"
+                        width="800" height="533">
                 </div>
                 <div class="room-body">
                     <p class="room-type">Phòng đôi</p>
                     <h3 class="room-name">Deluxe</h3>
-                    <p class="room-desc">Phòng rộng với giường đôi, cửa sổ riêng nhìn ra khuôn viên xanh. Lý tưởng cho
-                        cặp đôi hoặc hai bạn.</p>
+                    <p class="room-desc">
+                        Phòng rộng với giường đôi, cửa sổ riêng nhìn ra khuôn viên xanh.
+                        Lý tưởng cho cặp đôi hoặc hai bạn.
+                    </p>
                     <div class="room-feats">
                         <span class="rf">Điều hoà</span>
                         <span class="rf">Wifi</span>
@@ -233,22 +272,31 @@
 
     <div class="divider"></div>
 
+    <!-- NEARBY -->
     <section class="nearby" id="nearby">
         <div class="nearby-header reveal">
             <p class="sh-eye">Tiện ích</p>
             <h2 class="sh-h">Các <em>dịch vụ & tiện ích</em> xung quanh</h2>
-            <p class="nearby-text">Khám phá các dịch vụ và tiện ích ngay trong khuôn viên và xung quanh La Paz Hotel,
-            <br>giúp bạn có một kỳ nghỉ trọn vẹn.</p>
+            <p class="nearby-text">
+                Khám phá các dịch vụ và tiện ích ngay trong khuôn viên và xung quanh La Paz Hotel,<br>
+                giúp bạn có một kỳ nghỉ trọn vẹn.
+            </p>
         </div>
         <div class="nearby-grid">
             <div class="nb-card reveal">
                 <div class="nb-icon-wrap">
-                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+                        <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/>
+                        <line x1="6" y1="2" x2="6" y2="4"/>
+                        <line x1="10" y1="2" x2="10" y2="4"/>
+                        <line x1="14" y1="2" x2="14" y2="4"/>
+                    </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Cafe sân vườn</h3>
                     <p class="nb-loc">Trong khuôn viên</p>
-                    <p class="nb-desc">Không gian xanh mát ngay trong khuôn viên La Paz, phục vụ các loại đồ uống và ăn nhẹ hàng ngày</p>
+                    <p class="nb-desc">Không gian xanh mát ngay trong khuôn viên La Paz, phục vụ các loại đồ uống và ăn nhẹ hàng ngày.</p>
                     <div class="nb-foot">
                         <span class="nb-tag nb-tag--in">Trong khuôn viên</span>
                         <a href="#cafe" class="nb-cta">Xem menu →</a>
@@ -257,40 +305,64 @@
             </div>
             <div class="nb-card reveal reveal-delay-1">
                 <div class="nb-icon-wrap">
-                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                        <line x1="6" y1="1" x2="6" y2="4"/>
+                        <line x1="10" y1="1" x2="10" y2="4"/>
+                        <line x1="14" y1="1" x2="14" y2="4"/>
+                    </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Nhà hàng & ăn uống</h3>
                     <p class="nb-loc">~900m</p>
                     <p class="nb-desc">Nhiều nhà hàng, quán ăn địa phương phục vụ đặc sản Hoà Bình và các món Việt đa dạng ngay gần khách sạn.</p>
-                    <div class="nb-foot"><span class="nb-tag nb-tag--near">Gần khách sạn</span></div>
+                    <div class="nb-foot">
+                        <span class="nb-tag nb-tag--near">Gần khách sạn</span>
+                    </div>
                 </div>
             </div>
             <div class="nb-card reveal reveal-delay-2">
                 <div class="nb-icon-wrap">
-                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M9 18V5l12-2v13"/>
+                        <circle cx="6" cy="18" r="3"/>
+                        <circle cx="18" cy="16" r="3"/>
+                    </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Dịch vụ Karaoke</h3>
                     <p class="nb-loc">~50m</p>
                     <p class="nb-desc">Phòng karaoke hiện đại với hệ thống âm thanh chuyên nghiệp, lý tưởng cho buổi tối vui vẻ cùng bạn bè và gia đình.</p>
-                    <div class="nb-foot"><span class="nb-tag nb-tag--near">Gần khách sạn</span></div>
+                    <div class="nb-foot">
+                        <span class="nb-tag nb-tag--near">Gần khách sạn</span>
+                    </div>
                 </div>
             </div>
             <div class="nb-card reveal reveal-delay-3">
                 <div class="nb-icon-wrap">
-                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 15l4-4 4 4"/><circle cx="12" cy="9" r="1"/></svg>
+                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
+                        <path d="M8 15l4-4 4 4"/>
+                        <circle cx="12" cy="9" r="1"/>
+                    </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Sân Pickleball</h3>
                     <p class="nb-loc">~200m</p>
                     <p class="nb-desc">Sân pickleball tiêu chuẩn với đầy đủ tiện nghi. Môn thể thao thú vị phù hợp mọi lứa tuổi.</p>
-                    <div class="nb-foot"><span class="nb-tag nb-tag--near">Gần khách sạn</span></div>
+                    <div class="nb-foot">
+                        <span class="nb-tag nb-tag--near">Gần khách sạn</span>
+                    </div>
                 </div>
             </div>
             <div class="nb-card reveal reveal-delay-4">
                 <div class="nb-icon-wrap">
-                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Chợ quê thị trấn</h3>
@@ -303,7 +375,10 @@
             </div>
             <div class="nb-card reveal reveal-delay-4">
                 <div class="nb-icon-wrap">
-                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                    <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                    </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Tham quan</h3>
@@ -320,9 +395,19 @@
 
     <!-- CAFE MENU -->
     <section class="cafe" id="cafe">
+        <!--
+            Ảnh cafe từ Unsplash: thêm &auto=format&fit=crop để CDN tự
+            chuyển sang định dạng tốt nhất (AVIF/WebP) và crop đúng tỷ lệ.
+            Dùng loading="lazy" vì nằm dưới fold.
+        -->
         <div class="cafe-visual reveal">
-            <img loading="lazy" decoding="async" class="cafe-img-main" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85" alt="Quán Cafe La Paz">
-            <p class="cafe-note"><span class="cafe-note-dot"></span>Phục vụ từ 6:00 sáng — 10:00 tối mỗi ngày</p>
+            <img loading="lazy" decoding="async" class="cafe-img-main"
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop"
+                alt="Quán Cafe La Paz"
+                width="800" height="500">
+            <p class="cafe-note">
+                <span class="cafe-note-dot"></span>Phục vụ từ 6:00 sáng — 10:00 tối mỗi ngày
+            </p>
         </div>
         <div class="cafe-menu">
             <div class="reveal">
@@ -331,8 +416,8 @@
             </div>
             <div class="menu-tabs reveal reveal-delay-1">
                 <button class="mtab on" onclick="switchTab(this,'t1')">Cafe</button>
-                <button class="mtab" onclick="switchTab(this,'t2')">Trà & nước</button>
-                <button class="mtab" onclick="switchTab(this,'t3')">Sinh tố</button>
+                <button class="mtab"    onclick="switchTab(this,'t2')">Trà & nước</button>
+                <button class="mtab"    onclick="switchTab(this,'t3')">Sinh tố</button>
             </div>
             <div class="mpanel on" id="t1">
                 <div class="menu-list">
@@ -353,7 +438,7 @@
                     <div class="mi">
                         <div class="mi-l">
                             <span class="mi-name">Bạc xỉu</span>
-                            <span class="mi-note">Nhiều sữa, ít Cafe</span>
+                            <span class="mi-note">Nhiều sữa, ít cafe</span>
                         </div>
                         <span class="mi-price">25k</span>
                     </div>
@@ -465,10 +550,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="cafe-badge-bar reveal reveal-delay-2">
-                <span style="font-size:1.1rem">🎁</span>
-                <span class="cbd">Khách lưu trú tại La Paz Hotel được <strong>giảm 20%</strong> tất cả đồ uống tại quán.</span>
-            </div> -->
         </div>
     </section>
 
@@ -484,40 +565,56 @@
                     <div class="dw-num">1</div>
                     <div>
                         <p class="dw-label">Từ Hà Nội</p>
-                        <p class="dw-desc">Đi theo Quốc lộ 6 hướng Hòa Bình, đến ngã ba Mãn Đức rẽ trái vào Quốc lộ 12B
-                            là đến Yên Thủy. Tổng khoảng 115km mất ~2.5 giờ.</p>
+                        <p class="dw-desc">
+                            Đi theo Quốc lộ 6 hướng Hòa Bình, đến ngã ba Mãn Đức rẽ trái vào Quốc lộ 12B
+                            là đến Yên Thủy. Tổng khoảng 115km, mất ~2.5 giờ.
+                        </p>
                     </div>
                 </div>
                 <div class="dw reveal reveal-delay-1">
                     <div class="dw-num">2</div>
                     <div>
                         <p class="dw-label">Xe khách</p>
-                        <p class="dw-desc">Bắt xe khách từ bến xe Yên Nghĩa đi Yên Thủy, xuống tại bến xe và đi bộ
-                            khoảng 2 phút là đến nơi.</p>
+                        <p class="dw-desc">
+                            Bắt xe khách từ bến xe Yên Nghĩa đi Yên Thủy, xuống tại bến xe và đi bộ
+                            khoảng 2 phút là đến nơi.
+                        </p>
                     </div>
                 </div>
                 <div class="dw reveal reveal-delay-2">
                     <div class="dw-num">3</div>
                     <div>
                         <p class="dw-label">Gọi trước</p>
-                        <p class="dw-desc">Không chắc đường? Nhắn Zalo cho chúng tôi — sẽ hướng dẫn chi tiết hoặc ra đón
-                            tại bến xe nếu cần.</p>
+                        <p class="dw-desc">
+                            Không chắc đường? Nhắn Zalo cho chúng tôi — sẽ hướng dẫn chi tiết hoặc ra đón
+                            tại bến xe nếu cần.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="map-box reveal reveal-delay-1">
-            <iframe loading="lazy"
+            <!-- iframe dùng loading="lazy" (không lặp thuộc tính) -->
+            <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3739.6997725545534!2d105.61598367585296!3d20.39526500923396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313429e40c3b8ccf%3A0x3e2eb79912934e4f!2zTGEgUGF6IEhvdGVsIFnDqm4gVGjhu6d5!5e0!3m2!1sen!2s!4v1776886055288!5m2!1sen!2s"
-                class="map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                class="map-iframe"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Bản đồ La Paz Hotel">
             </iframe>
             <div class="map-detail">
                 <p class="map-addr">📍 Thị trấn Hàng Trạm,<br>Xã Yên Thuỷ, Tỉnh Phú Thọ</p>
                 <div class="map-meta">
-                    <div class="map-meta-row"><span class="map-meta-dot"></span>Cách Hà Nội ~115km · 2.5 giờ lái xe
+                    <div class="map-meta-row">
+                        <span class="map-meta-dot"></span>Cách Hà Nội ~115km · 2.5 giờ lái xe
                     </div>
-                    <div class="map-meta-row"><span class="map-meta-dot"></span>Bãi đỗ xe rộng, miễn phí</div>
-                    <div class="map-meta-row"><span class="map-meta-dot"></span>Không gian nhiều cây xanh</div>
+                    <div class="map-meta-row">
+                        <span class="map-meta-dot"></span>Bãi đỗ xe rộng, miễn phí
+                    </div>
+                    <div class="map-meta-row">
+                        <span class="map-meta-dot"></span>Không gian nhiều cây xanh
+                    </div>
                 </div>
                 <a href="https://maps.app.goo.gl/wGjYZHfP18MF8A" target="_blank" class="btn-maps">
                     📍 Mở Google Maps
@@ -526,6 +623,7 @@
         </div>
     </section>
 
+    <!-- ATTRACTIONS -->
     <section class="attractions" id="attractions">
         <div class="sh reveal">
             <p class="sh-eye">Khám phá</p>
@@ -534,18 +632,19 @@
         <div class="attr-grid">
 
             <div class="ac reveal">
-                <img loading="lazy" decoding="async" class="ac-img" src="photos/kim_boi.webp" alt="Suối khoáng Kim Bôi">
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="photos/kim_boi.webp" alt="Suối khoáng Kim Bôi"
+                    width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~55 km · 1 giờ 10 phút</p>
                     <h3 class="ac-name">Suối khoáng Kim Bôi</h3>
-                    <p class="ac-desc">Khu nghỉ dưỡng nổi tiếng với nguồn khoáng nóng tự nhiên, mang lại trải nghiệm thư
-                        giãn và trị liệu sức khỏe tuyệt vời.</p>
+                    <p class="ac-desc">Khu nghỉ dưỡng nổi tiếng với nguồn khoáng nóng tự nhiên, mang lại trải nghiệm thư giãn và trị liệu sức khỏe tuyệt vời.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Suối+khoáng+Kim+Bôi" target="_blank"
-                            class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Suối+khoáng+Kim+Bôi"
+                            target="_blank" class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
-                        <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Khu+Du+L%E1%BB%8Bch+Su%E1%BB%91i+Kho%C3%A1ng+Kim+B%C3%B4i,+MGV4%2BQ57,+Khu,+M%E1%BB%9B+%C4%90%C3%A1,+Kim+B%C3%B4i,+Ph%C3%BA+Th%E1%BB%8D,+Vietnam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJ6-3RzTY5NDERUm5IRMcG8e0!2m2!1d105.5089426!2d20.6947075!3e0"
+                        <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Khu+Du+L%E1%BB%8Bch+Su%E1%BB%91i+Kho%C3%A1ng+Kim+B%C3%B4i,+MGV4%2BQ57,+Khu,+M%E1%BB%9F+%C4%90%C3%A1,+Kim+B%C3%B4i,+Ph%C3%BA+Th%E1%BB%8D,+Vietnam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJ6-3RzTY5NDERUm5IRMcG8e0!2m2!1d105.5089426!2d20.6947075!3e0"
                             target="_blank" class="ac-mapbtn">
                             <span>🚗</span> Đường đi từ khách sạn
                         </a>
@@ -554,15 +653,16 @@
             </div>
 
             <div class="ac reveal reveal-delay-1">
-                <img loading="lazy" decoding="async" class="ac-img" src="photos/thac_may.webp" alt="Thác Mây">
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="photos/thac_may.webp" alt="Thác Mây"
+                    width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~29 km · 41 phút</p>
                     <h3 class="ac-name">Thác Mây (Thạch Lâm)</h3>
-                    <p class="ac-desc">Danh thắng "Chín bậc tình yêu" với dòng nước trong vắt đổ xuống các tầng đá vôi
-                        kỳ ảo giữa đại ngàn xanh mát.</p>
+                    <p class="ac-desc">Danh thắng "Chín bậc tình yêu" với dòng nước trong vắt đổ xuống các tầng đá vôi kỳ ảo giữa đại ngàn xanh mát.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Thác+Mây+Thanh+Hoá" target="_blank"
-                            class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Thác+Mây+Thanh+Hoá"
+                            target="_blank" class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Th%C3%A1c+M%C3%A2y+Thanh+Ho%C3%A1,+9C7X%2BV3C,+Th%E1%BA%A1ch+L%C3%A2m,+Th%E1%BA%A1ch+Qu%E1%BA%A3ng,+Thanh+H%C3%B3a,+Vi%E1%BB%87t+Nam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJEen2MwCfNjERS6ZhqDZAKOE!2m2!1d105.4477232!2d20.3648918!3e0"
@@ -574,13 +674,13 @@
             </div>
 
             <div class="ac reveal reveal-delay-2">
-                <img loading="lazy" decoding="async" class="ac-img" src="photos/cuc_phuong.webp"
-                    alt="Vườn Quốc gia Cúc Phương">
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="photos/cuc_phuong.webp" alt="Vườn Quốc gia Cúc Phương"
+                    width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~42 km · 1 giờ 3 phút</p>
                     <h3 class="ac-name">Vườn Quốc gia Cúc Phương</h3>
-                    <p class="ac-desc">Vườn quốc gia đầu tiên của Việt Nam, nơi bảo tồn hệ sinh thái rừng nguyên sinh đa
-                        dạng và cây chò ngàn năm tuổi.</p>
+                    <p class="ac-desc">Vườn quốc gia đầu tiên của Việt Nam, nơi bảo tồn hệ sinh thái rừng nguyên sinh đa dạng và cây chò ngàn năm tuổi.</p>
                     <div class="ac-btns">
                         <a href="https://www.google.com/maps/search/?api=1&query=Vườn+Quốc+gia+Cúc+Phương"
                             target="_blank" class="ac-mapbtn secondary">
@@ -595,16 +695,16 @@
             </div>
 
             <div class="ac reveal">
-                <img loading="lazy" decoding="async" class="ac-img" src="photos/trang_an.webp"
-                    alt="Quần thể danh thắng Tràng An">
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="photos/trang_an.webp" alt="Quần thể danh thắng Tràng An"
+                    width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~44 km · 1 giờ</p>
                     <h3 class="ac-name">Di sản Thế giới Tràng An</h3>
-                    <p class="ac-desc">Quần thể danh thắng được UNESCO công nhận với cảnh quan núi đá vôi tráng lệ và hệ
-                        thống hang động xuyên thủy độc đáo.</p>
+                    <p class="ac-desc">Quần thể danh thắng được UNESCO công nhận với cảnh quan núi đá vôi tráng lệ và hệ thống hang động xuyên thuỷ độc đáo.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Tràng+An+Ninh+Bình" target="_blank"
-                            class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Tràng+An+Ninh+Bình"
+                            target="_blank" class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Trang+An,+Tr%C3%A0ng+An,+Hoa+L%C6%B0,+Ninh+B%C3%ACnh,+Vietnam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJL9TQ1GJ5NjERctWf-ezAU2Q!2m2!1d105.9182585!2d20.2526659!3e0"
@@ -616,16 +716,16 @@
             </div>
 
             <div class="ac reveal reveal-delay-1">
-                <img loading="lazy" decoding="async" class="ac-img" src="photos/chua_hang.webp"
-                    alt="Chùa Hang Yên Thủy">
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="photos/chua_hang.webp" alt="Chùa Hang Yên Thủy"
+                    width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~6 km · 8 phút</p>
                     <h3 class="ac-name">Chùa Hang (Văn Quang Động)</h3>
-                    <p class="ac-desc">Ngôi chùa cổ linh thiêng nằm sâu trong lòng động đá tự nhiên, điểm đến tâm linh
-                        đặc sắc nhất của vùng đất Yên Thủy.</p>
+                    <p class="ac-desc">Ngôi chùa cổ linh thiêng nằm sâu trong lòng động đá tự nhiên, điểm đến tâm linh đặc sắc nhất của vùng đất Yên Thủy.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Hang+Yên+Thủy" target="_blank"
-                            class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Hang+Yên+Thủy"
+                            target="_blank" class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Ch%C3%B9a+Hang,+9M62%2B4WH,+Qu%E1%BB%91c+l%E1%BB%99+12B,+Y%C3%AAn+Tr%E1%BB%8B,+Ph%C3%BA+Th%E1%BB%8D,+Vietnam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJ23tq8GWCNjER4bvw-VIV4Z4!2m2!1d105.65235489999999!2d20.3603131!3e0"
@@ -637,15 +737,16 @@
             </div>
 
             <div class="ac reveal reveal-delay-2">
-                <img loading="lazy" decoding="async" class="ac-img" src="photos/chua_tac_duc.webp" alt="Chùa Tác Đức">
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="photos/chua_tac_duc.webp" alt="Chùa Tác Đức"
+                    width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~9 km · 15 phút</p>
                     <h3 class="ac-name">Chùa Tác Đức</h3>
-                    <p class="ac-desc">Điểm đến thanh tịnh dưới chân núi Khụ Khôi, nổi tiếng với không gian yên bình và
-                        cây gạo cổ thụ hàng trăm năm tuổi.</p>
+                    <p class="ac-desc">Điểm đến thanh tịnh dưới chân núi Khụ Khôi, nổi tiếng với không gian yên bình và cây gạo cổ thụ hàng trăm năm tuổi.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Tác+Đức+Yên+Thủy" target="_blank"
-                            class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Tác+Đức+Yên+Thủy"
+                            target="_blank" class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Ch%C3%B9a+T%C3%A1c+%C4%90%E1%BB%A9c,+CHJ7%2B45J,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJgdNwO7MnNDERfsgG1xkM-fo!2m2!1d105.5624862!2d20.429886399999997!3e0"
@@ -657,13 +758,13 @@
             </div>
 
             <div class="ac reveal reveal-delay-2">
-                <img loading="lazy" decoding="async" class="ac-img" src="photos/suoi_ca_cam_thuy.webp"
-                    alt="Suối cá Cẩm Thủy">
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="photos/suoi_ca_cam_thuy.webp" alt="Suối cá Cẩm Thủy"
+                    width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~45 km · 58 phút</p>
                     <h3 class="ac-name">Suối cá Thần Cẩm Lương</h3>
-                    <p class="ac-desc">Điểm đến nổi tiếng tại Thanh Hóa với hàng nghìn con cá lạ bơi lội dày đặc, gắn
-                        liền với những câu chuyện tâm linh huyền bí.</p>
+                    <p class="ac-desc">Điểm đến nổi tiếng tại Thanh Hóa với hàng nghìn con cá lạ bơi lội dày đặc, gắn liền với những câu chuyện tâm linh huyền bí.</p>
                     <div class="ac-btns">
                         <a href="https://maps.google.com/?cid=11314954403387051081&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ"
                             target="_blank" class="ac-mapbtn secondary">
@@ -687,8 +788,10 @@
                 <p class="sh-eye">Liên hệ & Đặt phòng</p>
                 <h2 class="sh-h">Liên hệ để<br>đặt <em>phòng</em></h2>
             </div>
-            <p class="contact-desc reveal reveal-delay-1">Chúng tôi phản hồi nhanh qua Zalo. Bạn chỉ cần nhắn ngày đến,
-                ngày đi và số lượng người — chúng tôi sẽ trả lời sớm nhất có thể.</p>
+            <p class="contact-desc reveal reveal-delay-1">
+                Chúng tôi phản hồi nhanh qua Zalo. Bạn chỉ cần nhắn ngày đến,
+                ngày đi và số lượng người — chúng tôi sẽ trả lời sớm nhất có thể.
+            </p>
             <div class="contact-info reveal reveal-delay-2">
                 <div class="ci-row">
                     <span class="ci-icon">📍</span>
@@ -697,13 +800,6 @@
                         <span class="ci-val">Thị trấn Hàng Trạm, Yên Thuỷ<br>Tỉnh Phú Thọ, Việt Nam</span>
                     </div>
                 </div>
-                <!-- <div class="ci-row">
-                    <span class="ci-icon">🕐</span>
-                    <div class="ci-text">
-                        <span class="ci-label">Giờ mở cửa</span>
-                        <span class="ci-val">Cafe: 06:00 – 22:00 · Nhận phòng: 14:00 · Trả phòng: 12:00</span>
-                    </div>
-                </div> -->
                 <div class="ci-row">
                     <span class="ci-icon">🅿️</span>
                     <div class="ci-text">
@@ -722,14 +818,6 @@
                 </div>
                 <span class="cbtn-arrow">↗</span>
             </a>
-            <!-- <a href="https://www.facebook.com/trung.bi.7330" target="_blank" class="cbtn cbtn-mess">
-                <div class="cbtn-icon">📩</div>
-                <div class="cbtn-text">
-                    <span class="cbtn-label">Facebook Messenger</span>
-                    <span class="cbtn-val">La Paz Hotel</span>
-                </div>
-                <span class="cbtn-arrow">↗</span>
-            </a> -->
             <a href="tel:0846208028" class="cbtn cbtn-phone">
                 <div class="cbtn-icon">📞</div>
                 <div class="cbtn-text">
@@ -749,40 +837,13 @@
         </div>
     </section>
 
-    <!-- REVIEWS
-    <section class="reviews">
-        <div class="sh reveal">
-            <p class="sh-eye">Cảm nhận</p>
-            <h2 class="sh-h">Khách hàng <em>nói gì</em></h2>
-        </div>
-        <div class="rv-grid">
-            <div class="rv reveal">
-                <div class="rv-stars">★★★★★</div>
-                <p class="rv-text">"Phòng sạch, yên tĩnh, chủ nhà rất nhiệt tình. Buổi sáng ngồi uống Cafe nhìn ra vườn cây thật sự thư thái. Mình sẽ quay lại."</p>
-                <p class="rv-author">Nguyễn Minh Tuấn</p>
-                <p class="rv-from">Hà Nội</p>
-            </div>
-            <div class="rv reveal reveal-delay-1">
-                <div class="rv-stars">★★★★★</div>
-                <p class="rv-text">"Cafe ngon, không gian đẹp và mát. Giá rất hợp lý, nhân viên thân thiện. Điểm dừng chân lý tưởng khi qua Hoà Bình."</p>
-                <p class="rv-author">Trần Thị Lan</p>
-                <p class="rv-from">Hà Nam</p>
-            </div>
-            <div class="rv reveal reveal-delay-2">
-                <div class="rv-stars">★★★★★</div>
-                <p class="rv-text">"Đưa cả gia đình đến nghỉ 2 ngày, phòng family rộng thoải mái. Tối mát mẻ, yên tĩnh. Bọn trẻ rất thích không gian xanh ở đây."</p>
-                <p class="rv-author">Lê Quang Hải</p>
-                <p class="rv-from">Hoà Bình</p>
-            </div>
-        </div>
-    </section> -->
-
     <!-- FOOTER -->
     <footer>
         <div class="footer-top">
             <div class="footer-brand">
                 <a href="#" class="footer-logo">
-                    <img src="logo_lapaz.png" alt="La Paz Hotel" class="footer-logo-img">
+                    <img src="logo_lapaz.png" alt="La Paz Hotel" class="footer-logo-img"
+                        loading="lazy" width="44" height="28">
                     <span>La Paz <span>Hotel</span></span>
                 </a>
                 <p>La Paz Hotel — Khách sạn & Cafe sân vườn tại Yên Thuỷ, Phú Thọ. Không gian xanh, yên tĩnh, thư giãn.</p>
@@ -815,7 +876,6 @@
         </div>
         <div class="footer-bottom">
             <p>© 2026 La Paz Hotel · Yên Thuỷ, Phú Thọ</p>
-            <!-- <p>From ctm66 with ❤️</p> -->
         </div>
     </footer>
 
