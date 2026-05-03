@@ -486,12 +486,37 @@ nav.menu-open {
     margin-top: .7rem; flex-wrap: wrap;
 }
 .nb-cta {
-    font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--moss); text-decoration: none; font-weight: 500;
-    white-space: nowrap;
-    transition: color .25s, letter-spacing .3s cubic-bezier(.22,1,.36,1);
+    display: inline-flex; align-items: center; gap: .35rem;
+    font-size: .58rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: .35rem .85rem; border-radius: var(--radius-pill);
+    background: rgba(var(--moss-rgb, 134,179,139), .15);
+    color: var(--moss); border: 1px solid var(--moss-pale);
+    font-weight: 500; white-space: nowrap;
+    text-decoration: none;
+    transition: background .3s cubic-bezier(.22,1,.36,1),
+                color .3s,
+                border-color .3s,
+                transform .3s cubic-bezier(.22,1,.36,1),
+                box-shadow .3s cubic-bezier(.22,1,.36,1);
 }
-.nb-cta:hover { color: var(--moss-2); letter-spacing: .18em; }
+@media (hover: hover) {
+    .nb-cta:hover {
+        background: var(--moss);
+        color: #0F2A2A;
+        border-color: var(--moss);
+        font-weight: 600;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0,0,0,.35);
+    }
+}
+.nb-cta:active {
+    background: var(--moss);
+    color: #0F2A2A;
+    border-color: var(--moss);
+    font-weight: 600;
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
 
 /* ── CAFE ── */
 .cafe { padding: 7rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
@@ -721,7 +746,7 @@ footer { padding: 5rem 5rem 2.5rem; border-top: 1px solid var(--line); }
     .nb-desc { display: none; }
     .nb-foot { justify-content: center; gap: .5rem; margin-top: .4rem; }
     .nb-tag { font-size: .52rem; padding: .2rem .55rem; }
-    .nb-cta { font-size: .56rem; }
+    .nb-cta { font-size: .52rem; padding: .2rem .55rem; }
     .nb-loc { font-size: .58rem; }
     .nb-body { gap: .2rem; align-items: center; }
     .nb-name { font-size: 1rem; }
