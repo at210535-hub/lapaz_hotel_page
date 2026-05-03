@@ -566,8 +566,9 @@ nav.menu-open {
     background: rgba(var(--moss-rgb, 134,179,139), .15);
     color: var(--moss); border-color: var(--moss-pale);
     font-weight: 500; white-space: nowrap;
+    transition: background .25s, color .25s, border-color .25s;
 }
-.nb-cta:hover { color: var(--moss-2); letter-spacing: .18em; }
+.nb-cta:hover { background: var(--moss); color: #0F2A2A; border-color: var(--moss); font-weight: 600; }
 
 /* ── CAFE ── */
 .cafe { padding: 7rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
