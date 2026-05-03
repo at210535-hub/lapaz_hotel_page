@@ -61,18 +61,63 @@ document.addEventListener('click', (e) => {
 });
 
 
-// ── SCROLL REVEAL ────────────────────────────────────────────────────────────
-// rootMargin: '600px' — trigger reveal khi phần tử còn cách viewport 600px,
-// đủ thời gian để CSS transition + ảnh hiện ra mượt trên 4G.
+// ── SCROLL REVEAL (2 chiều — giống Apple) ────────────────────────────────────
+// Scroll xuống → visible (fade up vào)
+// Scroll lên   → hiding  (fade xuống ra) → sau đó reset để reveal lại được
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
+        const el = entry.target;
+        if (entry.isIntersecting) {
+            // Vào viewport: bỏ hiding, thêm visible
+            el.classList.remove('hiding');
+            // Dùng rAF để browser kịp apply bỏ hiding trước khi thêm visible
+            requestAnimationFrame(() => el.classList.add('visible'));
+        } else {
+            // Ra khỏi viewport: reset để có thể reveal lại khi scroll xuống
+            if (el.classList.contains('visible')) {
+                el.classList.add('hiding');
+                el.classList.remove('visible');
+            }
+        }
     });
-}, { threshold: 0.05, rootMargin: '600px 0px' });
+}, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'   // Trigger khi vào 40px trong viewport
+});
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+
+// ── BLUR-UP IMAGE LOADING ─────────────────────────────────────────────────────
+// Mọi ảnh bắt đầu ở trạng thái mờ (img-loading).
+// Khi load xong → thêm img-loaded → CSS transition fade in mượt.
+// Hero images (fetchpriority=high) skip blur-up vì đã load rất nhanh.
+function setupBlurUp() {
+    document.querySelectorAll('img').forEach((img) => {
+        // Bỏ qua hero images — đã được preload, không cần blur-up
+        if (img.getAttribute('fetchpriority') === 'high') return;
+        // Bỏ qua ảnh đã load xong (từ cache)
+        if (img.complete && img.naturalWidth > 0) return;
+
+        img.classList.add('img-loading');
+
+        img.addEventListener('load', () => {
+            img.classList.remove('img-loading');
+            img.classList.add('img-loaded');
+        }, { once: true });
+
+        img.addEventListener('error', () => {
+            img.classList.remove('img-loading');
+        }, { once: true });
+    });
+}
+
+// Chạy ngay sau DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupBlurUp);
+} else {
+    setupBlurUp();
+}
 
 
 // ── CAFE MENU TABS ───────────────────────────────────────────────────────────
