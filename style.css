@@ -998,4 +998,5 @@ footer { padding: 5rem 5rem 2.5rem; border-top: 1px solid var(--line); }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .divider    { margin: 0 1.8rem; }
     .cafe-visual { position: static; }
+    .cafe-img-main { display: none;}
 }
