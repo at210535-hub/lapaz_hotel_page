@@ -22,45 +22,35 @@
         imagesrcset + imagesizes giúp browser chọn đúng kích thước:
         mobile (<960px) tải _sm.webp (~50KB), desktop tải full (~150KB).
     -->
-    <link rel="preload" as="image" href="photos/2.webp"
-        imagesrcset="photos/2_sm.webp 480w, photos/2.webp 1280w"
+    <link rel="preload" as="image" href="photos/2.webp" imagesrcset="photos/2_sm.webp 480w, photos/2.webp 1280w"
         imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
-    <link rel="preload" as="image" href="photos/1.webp"
-        imagesrcset="photos/1_sm.webp 480w, photos/1.webp 960w"
+    <link rel="preload" as="image" href="photos/1.webp" imagesrcset="photos/1_sm.webp 480w, photos/1.webp 960w"
         imagesizes="(max-width: 960px) 50vw, 25vw" fetchpriority="high">
-    <link rel="preload" as="image" href="photos/6.webp"
-        imagesrcset="photos/6_sm.webp 480w, photos/6.webp 960w"
+    <link rel="preload" as="image" href="photos/6.webp" imagesrcset="photos/6_sm.webp 480w, photos/6.webp 960w"
         imagesizes="(max-width: 960px) 50vw, 25vw" fetchpriority="high">
 
     <!--
         NHÓM 2 — ABOUT + GALLERY (tải sớm, ưu tiên thấp hơn hero)
         Chỉ preload ảnh full — browser tự chọn _sm nếu cần qua srcset trong <img>.
     -->
-    <link rel="preload" as="image" href="photos/4.webp"
-        imagesrcset="photos/4_sm.webp 480w, photos/4.webp 800w"
+    <link rel="preload" as="image" href="photos/4.webp" imagesrcset="photos/4_sm.webp 480w, photos/4.webp 800w"
         imagesizes="(max-width: 960px) 100vw, 35vw" fetchpriority="low">
-    <link rel="preload" as="image" href="photos/3.webp"
-        imagesrcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+    <link rel="preload" as="image" href="photos/3.webp" imagesrcset="photos/3_sm.webp 480w, photos/3.webp 800w"
         imagesizes="(max-width: 960px) 50vw, 18vw" fetchpriority="low">
-    <link rel="preload" as="image" href="photos/5.webp"
-        imagesrcset="photos/5_sm.webp 480w, photos/5.webp 800w"
+    <link rel="preload" as="image" href="photos/5.webp" imagesrcset="photos/5_sm.webp 480w, photos/5.webp 800w"
         imagesizes="(max-width: 960px) 50vw, 18vw" fetchpriority="low">
-    <link rel="preload" as="image" href="photos/11.webp"
-        imagesrcset="photos/11_sm.webp 480w, photos/11.webp 800w"
+    <link rel="preload" as="image" href="photos/11.webp" imagesrcset="photos/11_sm.webp 480w, photos/11.webp 800w"
         imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
-    <link rel="preload" as="image" href="photos/7.webp"
-        imagesrcset="photos/7_sm.webp 480w, photos/7.webp 800w"
+    <link rel="preload" as="image" href="photos/7.webp" imagesrcset="photos/7_sm.webp 480w, photos/7.webp 800w"
         imagesizes="(max-width: 960px) 50vw, 25vw" fetchpriority="low">
-    <link rel="preload" as="image" href="photos/8.webp"
-        imagesrcset="photos/8_sm.webp 480w, photos/8.webp 800w"
+    <link rel="preload" as="image" href="photos/8.webp" imagesrcset="photos/8_sm.webp 480w, photos/8.webp 800w"
         imagesizes="(max-width: 960px) 50vw, 33vw" fetchpriority="low">
-    <link rel="preload" as="image" href="photos/10.webp"
-        imagesrcset="photos/10_sm.webp 480w, photos/10.webp 800w"
+    <link rel="preload" as="image" href="photos/10.webp" imagesrcset="photos/10_sm.webp 480w, photos/10.webp 800w"
         imagesizes="(max-width: 960px) 50vw, 42vw" fetchpriority="low">
 
     <!-- Font với display=swap để không chặn render -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -89,14 +79,14 @@
     </nav>
 
     <div class="m-nav" id="mNav">
-        <a href="#about"       onclick="closeMenu()">Giới thiệu</a>
-        <a href="#gallery"     onclick="closeMenu()">Không gian</a>
-        <a href="#rooms"       onclick="closeMenu()">Phòng nghỉ</a>
-        <a href="#nearby"      onclick="closeMenu()">Tiện ích</a>
-        <a href="#cafe"        onclick="closeMenu()">Cafe</a>
-        <a href="#directions"  onclick="closeMenu()">Đường đến</a>
+        <a href="#about" onclick="closeMenu()">Giới thiệu</a>
+        <a href="#gallery" onclick="closeMenu()">Không gian</a>
+        <a href="#rooms" onclick="closeMenu()">Phòng nghỉ</a>
+        <a href="#nearby" onclick="closeMenu()">Tiện ích</a>
+        <a href="#cafe" onclick="closeMenu()">Cafe</a>
+        <a href="#directions" onclick="closeMenu()">Đường đến</a>
         <a href="#attractions" onclick="closeMenu()">Tham quan</a>
-        <a href="#contact"     onclick="closeMenu()" style="color:var(--moss)">Liên hệ đặt phòng</a>
+        <a href="#contact" onclick="closeMenu()" style="color:var(--moss)">Liên hệ đặt phòng</a>
     </div>
 
     <!-- HERO — Split layout: text left / slideshow right -->
@@ -152,24 +142,12 @@
     <!-- ABOUT -->
     <section class="about" id="about">
         <div class="about-imgs reveal-left">
-            <img decoding="async" class="a-big"
-                src="photos/4.webp"
-                srcset="photos/4_sm.webp 480w, photos/4.webp 800w"
-                sizes="(max-width: 960px) 100vw, 35vw"
-                alt="La Paz Hotel cây xanh"
-                width="1200" height="800">
-            <img decoding="async"
-                src="photos/3.webp"
-                srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
-                sizes="(max-width: 960px) 50vw, 18vw"
-                alt="La Paz Hotel phòng nghỉ"
-                width="800" height="533">
-            <img decoding="async"
-                src="photos/5.webp"
-                srcset="photos/5_sm.webp 480w, photos/5.webp 800w"
-                sizes="(max-width: 960px) 50vw, 18vw"
-                alt="La Paz Hotel sân vườn"
-                width="800" height="533">
+            <img decoding="async" class="a-big" src="photos/4.webp" srcset="photos/4_sm.webp 480w, photos/4.webp 800w"
+                sizes="(max-width: 960px) 100vw, 35vw" alt="La Paz Hotel cây xanh" width="1200" height="800">
+            <img decoding="async" src="photos/3.webp" srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+                sizes="(max-width: 960px) 50vw, 18vw" alt="La Paz Hotel phòng nghỉ" width="800" height="533">
+            <img decoding="async" src="photos/5.webp" srcset="photos/5_sm.webp 480w, photos/5.webp 800w"
+                sizes="(max-width: 960px) 50vw, 18vw" alt="La Paz Hotel sân vườn" width="800" height="533">
         </div>
         <div class="about-text reveal-right">
             <div class="reveal">
@@ -178,12 +156,8 @@
                 <br>
             </div>
             <div class="about-img-mobile about-img-mobile--1 reveal">
-                <img decoding="async"
-                    src="photos/4_sm.webp"
-                    srcset="photos/4_sm.webp 480w, photos/4.webp 800w"
-                    sizes="100vw"
-                    alt="La Paz Hotel cây xanh"
-                    width="800" height="533">
+                <img decoding="async" src="photos/4_sm.webp" srcset="photos/4_sm.webp 480w, photos/4.webp 800w"
+                    sizes="100vw" alt="La Paz Hotel cây xanh" width="800" height="533">
             </div>
             <div class="reveal reveal-delay-1">
                 <p style="margin-top:1.4rem">
@@ -194,18 +168,10 @@
                 </p>
             </div>
             <div class="about-img-mobile about-img-mobile--2 reveal">
-                <img decoding="async"
-                    src="photos/3_sm.webp"
-                    srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
-                    sizes="50vw"
-                    alt="La Paz Hotel phòng nghỉ"
-                    width="800" height="533">
-                <img decoding="async"
-                    src="photos/5_sm.webp"
-                    srcset="photos/5_sm.webp 480w, photos/5.webp 800w"
-                    sizes="50vw"
-                    alt="La Paz Hotel sân vườn"
-                    width="800" height="533">
+                <img decoding="async" src="photos/3_sm.webp" srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+                    sizes="50vw" alt="La Paz Hotel phòng nghỉ" width="800" height="533">
+                <img decoding="async" src="photos/5_sm.webp" srcset="photos/5_sm.webp 480w, photos/5.webp 800w"
+                    sizes="50vw" alt="La Paz Hotel sân vườn" width="800" height="533">
             </div>
             <div class="reveal reveal-delay-1">
                 <p style="margin-top:1.4rem">Các dịch vụ và tiện ích trong khuôn viên La Paz Hotel:</p>
@@ -226,52 +192,28 @@
         </div>
         <div class="gal-grid">
             <div class="gi reveal-scale">
-                <img decoding="async"
-                    src="photos/11.webp"
-                    srcset="photos/11_sm.webp 480w, photos/11.webp 800w"
-                    sizes="(max-width: 960px) 50vw, 40vw"
-                    alt="La Paz Coffee toàn cảnh"
-                    width="800" height="533">
+                <img decoding="async" src="photos/11.webp" srcset="photos/11_sm.webp 480w, photos/11.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 40vw" alt="La Paz Coffee toàn cảnh" width="800" height="533">
             </div>
             <div class="gi reveal-scale reveal-delay-1">
-                <img decoding="async"
-                    src="photos/6.webp"
-                    srcset="photos/6_sm.webp 480w, photos/6.webp 800w"
-                    sizes="(max-width: 960px) 50vw, 25vw"
-                    alt="La Paz Hotel toàn cảnh"
-                    width="800" height="533">
+                <img decoding="async" src="photos/6.webp" srcset="photos/6_sm.webp 480w, photos/6.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 25vw" alt="La Paz Hotel toàn cảnh" width="800" height="533">
             </div>
             <div class="gi reveal-scale reveal-delay-2">
-                <img decoding="async"
-                    src="photos/3.webp"
-                    srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
-                    sizes="(max-width: 960px) 50vw, 33vw"
-                    alt="La Paz Hotel phòng nghỉ"
-                    width="800" height="533">
+                <img decoding="async" src="photos/3.webp" srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 33vw" alt="La Paz Hotel phòng nghỉ" width="800" height="533">
             </div>
             <div class="gi reveal-scale">
-                <img decoding="async"
-                    src="photos/7.webp"
-                    srcset="photos/7_sm.webp 480w, photos/7.webp 800w"
-                    sizes="(max-width: 960px) 50vw, 25vw"
-                    alt="La Paz Hotel đèn lồng"
-                    width="800" height="533">
+                <img decoding="async" src="photos/7.webp" srcset="photos/7_sm.webp 480w, photos/7.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 25vw" alt="La Paz Hotel đèn lồng" width="800" height="533">
             </div>
             <div class="gi reveal-scale reveal-delay-1">
-                <img decoding="async"
-                    src="photos/8.webp"
-                    srcset="photos/8_sm.webp 480w, photos/8.webp 800w"
-                    sizes="(max-width: 960px) 50vw, 33vw"
-                    alt="La Paz Hotel Cafe"
-                    width="800" height="533">
+                <img decoding="async" src="photos/8.webp" srcset="photos/8_sm.webp 480w, photos/8.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 33vw" alt="La Paz Hotel Cafe" width="800" height="533">
             </div>
             <div class="gi reveal-scale reveal-delay-2">
-                <img decoding="async"
-                    src="photos/10.webp"
-                    srcset="photos/10_sm.webp 480w, photos/10.webp 800w"
-                    sizes="(max-width: 960px) 50vw, 42vw"
-                    alt="La Paz Coffee toàn cảnh"
-                    width="800" height="533">
+                <img decoding="async" src="photos/10.webp" srcset="photos/10_sm.webp 480w, photos/10.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 42vw" alt="La Paz Coffee toàn cảnh" width="800" height="533">
             </div>
         </div>
     </section>
@@ -287,12 +229,9 @@
         <div class="rooms-grid rooms-grid--2">
             <div class="room-card reveal-scale">
                 <div class="room-img-wrap">
-                    <img loading="lazy" decoding="async"
-                        src="photos/phong_2_giuong.webp"
+                    <img loading="lazy" decoding="async" src="photos/phong_2_giuong.webp"
                         srcset="photos/phong_2_giuong_sm.webp 480w, photos/phong_2_giuong.webp 800w"
-                        sizes="(max-width: 960px) 100vw, 45vw"
-                        alt="Phòng Standard"
-                        width="800" height="533">
+                        sizes="(max-width: 960px) 100vw, 45vw" alt="Phòng Standard" width="800" height="533">
                 </div>
                 <div class="room-body">
                     <p class="room-type">Phòng đơn</p>
@@ -315,12 +254,9 @@
             </div>
             <div class="room-card reveal-scale reveal-delay-1">
                 <div class="room-img-wrap">
-                    <img loading="lazy" decoding="async"
-                        src="photos/phong_1_giuong.webp"
+                    <img loading="lazy" decoding="async" src="photos/phong_1_giuong.webp"
                         srcset="photos/phong_1_giuong_sm.webp 480w, photos/phong_1_giuong.webp 800w"
-                        sizes="(max-width: 960px) 100vw, 45vw"
-                        alt="Phòng Deluxe"
-                        width="800" height="533">
+                        sizes="(max-width: 960px) 100vw, 45vw" alt="Phòng Deluxe" width="800" height="533">
                 </div>
                 <div class="room-body">
                     <p class="room-type">Phòng đôi</p>
@@ -360,17 +296,18 @@
             <div class="nb-card reveal-scale">
                 <div class="nb-icon-wrap">
                     <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
-                        <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/>
-                        <line x1="6" y1="2" x2="6" y2="4"/>
-                        <line x1="10" y1="2" x2="10" y2="4"/>
-                        <line x1="14" y1="2" x2="14" y2="4"/>
+                        <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+                        <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z" />
+                        <line x1="6" y1="2" x2="6" y2="4" />
+                        <line x1="10" y1="2" x2="10" y2="4" />
+                        <line x1="14" y1="2" x2="14" y2="4" />
                     </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Cafe sân vườn</h3>
                     <p class="nb-loc">Trong khuôn viên</p>
-                    <p class="nb-desc">Không gian xanh mát ngay trong khuôn viên La Paz, phục vụ các loại đồ uống và ăn nhẹ hàng ngày.</p>
+                    <p class="nb-desc">Không gian xanh mát ngay trong khuôn viên La Paz, phục vụ các loại đồ uống và ăn
+                        nhẹ hàng ngày.</p>
                     <div class="nb-foot">
                         <a href="#cafe" class="nb-cta">Xem menu đồ uống →</a>
                     </div>
@@ -379,17 +316,18 @@
             <div class="nb-card reveal-scale reveal-delay-1">
                 <div class="nb-icon-wrap">
                     <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                        <line x1="6" y1="1" x2="6" y2="4"/>
-                        <line x1="10" y1="1" x2="10" y2="4"/>
-                        <line x1="14" y1="1" x2="14" y2="4"/>
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                        <line x1="6" y1="1" x2="6" y2="4" />
+                        <line x1="10" y1="1" x2="10" y2="4" />
+                        <line x1="14" y1="1" x2="14" y2="4" />
                     </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Nhà hàng & ăn uống</h3>
                     <p class="nb-loc">~900m</p>
-                    <p class="nb-desc">Nhiều nhà hàng, quán ăn địa phương phục vụ đặc sản Hoà Bình và các món Việt đa dạng ngay gần khách sạn.</p>
+                    <p class="nb-desc">Nhiều nhà hàng, quán ăn địa phương phục vụ đặc sản Hoà Bình và các món Việt đa
+                        dạng ngay gần khách sạn.</p>
                     <div class="nb-foot">
                         <span class="nb-tag nb-tag--near">Gần khách sạn</span>
                     </div>
@@ -398,15 +336,16 @@
             <div class="nb-card reveal-scale reveal-delay-2">
                 <div class="nb-icon-wrap">
                     <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <path d="M9 18V5l12-2v13"/>
-                        <circle cx="6" cy="18" r="3"/>
-                        <circle cx="18" cy="16" r="3"/>
+                        <path d="M9 18V5l12-2v13" />
+                        <circle cx="6" cy="18" r="3" />
+                        <circle cx="18" cy="16" r="3" />
                     </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Dịch vụ Karaoke</h3>
                     <p class="nb-loc">~50m</p>
-                    <p class="nb-desc">Phòng karaoke hiện đại với hệ thống âm thanh chuyên nghiệp, lý tưởng cho buổi tối vui vẻ cùng bạn bè và gia đình.</p>
+                    <p class="nb-desc">Phòng karaoke hiện đại với hệ thống âm thanh chuyên nghiệp, lý tưởng cho buổi tối
+                        vui vẻ cùng bạn bè và gia đình.</p>
                     <div class="nb-foot">
                         <span class="nb-tag nb-tag--near">Gần khách sạn</span>
                     </div>
@@ -415,15 +354,16 @@
             <div class="nb-card reveal-scale reveal-delay-3">
                 <div class="nb-icon-wrap">
                     <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <rect x="2" y="5" width="20" height="14" rx="2"/>
-                        <path d="M8 15l4-4 4 4"/>
-                        <circle cx="12" cy="9" r="1"/>
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <path d="M8 15l4-4 4 4" />
+                        <circle cx="12" cy="9" r="1" />
                     </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Sân Pickleball</h3>
                     <p class="nb-loc">~200m</p>
-                    <p class="nb-desc">Sân pickleball tiêu chuẩn với đầy đủ tiện nghi. Môn thể thao thú vị phù hợp mọi lứa tuổi.</p>
+                    <p class="nb-desc">Sân pickleball tiêu chuẩn với đầy đủ tiện nghi. Môn thể thao thú vị phù hợp mọi
+                        lứa tuổi.</p>
                     <div class="nb-foot">
                         <span class="nb-tag nb-tag--near">Gần khách sạn</span>
                     </div>
@@ -432,15 +372,16 @@
             <div class="nb-card reveal-scale reveal-delay-4">
                 <div class="nb-icon-wrap">
                     <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
                     </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Chợ quê thị trấn</h3>
                     <p class="nb-loc">~50m</p>
-                    <p class="nb-desc">Chợ truyền thống nhộn nhịp với đặc sản địa phương, nông sản tươi và hàng thủ công — trải nghiệm văn hoá đặc sắc.</p>
+                    <p class="nb-desc">Chợ truyền thống nhộn nhịp với đặc sản địa phương, nông sản tươi và hàng thủ công
+                        — trải nghiệm văn hoá đặc sắc.</p>
                     <div class="nb-foot">
                         <span class="nb-tag nb-tag--near">Gần khách sạn</span>
                     </div>
@@ -449,14 +390,15 @@
             <div class="nb-card reveal-scale reveal-delay-4">
                 <div class="nb-icon-wrap">
                     <svg class="nb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                        <circle cx="12" cy="12" r="10" />
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
                     </svg>
                 </div>
                 <div class="nb-body">
                     <h3 class="nb-name">Tham quan</h3>
                     <p class="nb-loc">Quanh khu vực</p>
-                    <p class="nb-desc">Suối khoáng Kim Bôi, rừng Cúc Phương, thác Mây, chùa Hang và nhiều địa danh hấp dẫn quanh vùng.</p>
+                    <p class="nb-desc">Suối khoáng Kim Bôi, rừng Cúc Phương, thác Mây, chùa Hang và nhiều địa danh hấp
+                        dẫn quanh vùng.</p>
                     <div class="nb-foot">
                         <a href="#attractions" class="nb-cta">Xem các địa điểm →</a>
                     </div>
@@ -465,17 +407,13 @@
         </div>
     </section>
 
-    <!-- CAFE MENU -->
-    <section class="cafe" id="cafe">
-        
+    <!-- CAFE -->
+    <!-- <section class="cafe" id="cafe">
+
         <div class="cafe-visual reveal">
             <img loading="lazy" decoding="async" class="cafe-img-main"
                 src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop"
-                alt="Quán Cafe La Paz"
-                width="800" height="500">
-            <!-- <p class="cafe-note">
-                <span class="cafe-note-dot"></span>Phục vụ từ 6:00 sáng — 10:00 tối mỗi ngày
-            </p> -->
+                alt="Quán Cafe La Paz" width="800" height="500">
         </div>
         <div class="cafe-menu">
             <div class="reveal">
@@ -484,8 +422,8 @@
             </div>
             <div class="menu-tabs reveal reveal-delay-1">
                 <button class="mtab on" onclick="switchTab(this,'t1')">Cafe</button>
-                <button class="mtab"    onclick="switchTab(this,'t2')">Trà & nước</button>
-                <button class="mtab"    onclick="switchTab(this,'t3')">Sinh tố</button>
+                <button class="mtab" onclick="switchTab(this,'t2')">Trà & nước</button>
+                <button class="mtab" onclick="switchTab(this,'t3')">Sinh tố</button>
             </div>
             <div class="mpanel on" id="t1">
                 <div class="menu-list">
@@ -619,7 +557,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- DIRECTIONS -->
     <section class="directions" id="directions">
@@ -665,10 +603,7 @@
             <!-- iframe dùng loading="lazy" (không lặp thuộc tính) -->
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3739.6997725545534!2d105.61598367585296!3d20.39526500923396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313429e40c3b8ccf%3A0x3e2eb79912934e4f!2zTGEgUGF6IEhvdGVsIFnDqm4gVGjhu6d5!5e0!3m2!1sen!2s!4v1776886055288!5m2!1sen!2s"
-                class="map-iframe"
-                loading="lazy"
-                allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
+                class="map-iframe" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
                 title="Bản đồ La Paz Hotel">
             </iframe>
             <div class="map-detail">
@@ -700,19 +635,17 @@
         <div class="attr-grid">
 
             <div class="ac reveal-left">
-                <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/kim_boi.webp"
+                <img loading="lazy" decoding="async" class="ac-img" src="photos/kim_boi.webp"
                     srcset="photos/kim_boi_sm.webp 480w, photos/kim_boi.webp 800w"
-                    sizes="(max-width: 960px) 100vw, 33vw"
-                    alt="Suối khoáng Kim Bôi"
-                    width="800" height="533">
+                    sizes="(max-width: 960px) 100vw, 33vw" alt="Suối khoáng Kim Bôi" width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~55 km · 1 giờ 10 phút</p>
                     <h3 class="ac-name">Suối khoáng Kim Bôi</h3>
-                    <p class="ac-desc">Khu nghỉ dưỡng nổi tiếng với nguồn khoáng nóng tự nhiên, mang lại trải nghiệm thư giãn và trị liệu sức khỏe tuyệt vời.</p>
+                    <p class="ac-desc">Khu nghỉ dưỡng nổi tiếng với nguồn khoáng nóng tự nhiên, mang lại trải nghiệm thư
+                        giãn và trị liệu sức khỏe tuyệt vời.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Suối+khoáng+Kim+Bôi"
-                            target="_blank" class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Suối+khoáng+Kim+Bôi" target="_blank"
+                            class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Khu+Du+L%E1%BB%8Bch+Su%E1%BB%91i+Kho%C3%A1ng+Kim+B%C3%B4i,+MGV4%2BQ57,+Khu,+M%E1%BB%9F+%C4%90%C3%A1,+Kim+B%C3%B4i,+Ph%C3%BA+Th%E1%BB%8D,+Vietnam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJ6-3RzTY5NDERUm5IRMcG8e0!2m2!1d105.5089426!2d20.6947075!3e0"
@@ -724,19 +657,17 @@
             </div>
 
             <div class="ac reveal-scale reveal-delay-1">
-                <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/thac_may.webp"
+                <img loading="lazy" decoding="async" class="ac-img" src="photos/thac_may.webp"
                     srcset="photos/thac_may_sm.webp 480w, photos/thac_may.webp 800w"
-                    sizes="(max-width: 960px) 100vw, 33vw"
-                    alt="Thác Mây"
-                    width="800" height="533">
+                    sizes="(max-width: 960px) 100vw, 33vw" alt="Thác Mây" width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~29 km · 41 phút</p>
                     <h3 class="ac-name">Thác Mây (Thạch Lâm)</h3>
-                    <p class="ac-desc">Danh thắng "Chín bậc tình yêu" với dòng nước trong vắt đổ xuống các tầng đá vôi kỳ ảo giữa đại ngàn xanh mát.</p>
+                    <p class="ac-desc">Danh thắng "Chín bậc tình yêu" với dòng nước trong vắt đổ xuống các tầng đá vôi
+                        kỳ ảo giữa đại ngàn xanh mát.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Thác+Mây+Thanh+Hoá"
-                            target="_blank" class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Thác+Mây+Thanh+Hoá" target="_blank"
+                            class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Th%C3%A1c+M%C3%A2y+Thanh+Ho%C3%A1,+9C7X%2BV3C,+Th%E1%BA%A1ch+L%C3%A2m,+Th%E1%BA%A1ch+Qu%E1%BA%A3ng,+Thanh+H%C3%B3a,+Vi%E1%BB%87t+Nam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJEen2MwCfNjERS6ZhqDZAKOE!2m2!1d105.4477232!2d20.3648918!3e0"
@@ -748,16 +679,14 @@
             </div>
 
             <div class="ac reveal-right reveal-delay-2">
-                <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/cuc_phuong.webp"
+                <img loading="lazy" decoding="async" class="ac-img" src="photos/cuc_phuong.webp"
                     srcset="photos/cuc_phuong_sm.webp 480w, photos/cuc_phuong.webp 800w"
-                    sizes="(max-width: 960px) 100vw, 33vw"
-                    alt="Vườn Quốc gia Cúc Phương"
-                    width="800" height="533">
+                    sizes="(max-width: 960px) 100vw, 33vw" alt="Vườn Quốc gia Cúc Phương" width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~42 km · 1 giờ 3 phút</p>
                     <h3 class="ac-name">Vườn Quốc gia Cúc Phương</h3>
-                    <p class="ac-desc">Vườn quốc gia đầu tiên của Việt Nam, nơi bảo tồn hệ sinh thái rừng nguyên sinh đa dạng và cây chò ngàn năm tuổi.</p>
+                    <p class="ac-desc">Vườn quốc gia đầu tiên của Việt Nam, nơi bảo tồn hệ sinh thái rừng nguyên sinh đa
+                        dạng và cây chò ngàn năm tuổi.</p>
                     <div class="ac-btns">
                         <a href="https://www.google.com/maps/search/?api=1&query=Vườn+Quốc+gia+Cúc+Phương"
                             target="_blank" class="ac-mapbtn secondary">
@@ -772,19 +701,17 @@
             </div>
 
             <div class="ac reveal-left">
-                <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/trang_an.webp"
+                <img loading="lazy" decoding="async" class="ac-img" src="photos/trang_an.webp"
                     srcset="photos/trang_an_sm.webp 480w, photos/trang_an.webp 800w"
-                    sizes="(max-width: 960px) 100vw, 33vw"
-                    alt="Quần thể danh thắng Tràng An"
-                    width="800" height="533">
+                    sizes="(max-width: 960px) 100vw, 33vw" alt="Quần thể danh thắng Tràng An" width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~44 km · 1 giờ</p>
                     <h3 class="ac-name">Di sản Thế giới Tràng An</h3>
-                    <p class="ac-desc">Quần thể danh thắng được UNESCO công nhận với cảnh quan núi đá vôi tráng lệ và hệ thống hang động xuyên thuỷ độc đáo.</p>
+                    <p class="ac-desc">Quần thể danh thắng được UNESCO công nhận với cảnh quan núi đá vôi tráng lệ và hệ
+                        thống hang động xuyên thuỷ độc đáo.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Tràng+An+Ninh+Bình"
-                            target="_blank" class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Tràng+An+Ninh+Bình" target="_blank"
+                            class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Trang+An,+Tr%C3%A0ng+An,+Hoa+L%C6%B0,+Ninh+B%C3%ACnh,+Vietnam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJL9TQ1GJ5NjERctWf-ezAU2Q!2m2!1d105.9182585!2d20.2526659!3e0"
@@ -796,19 +723,17 @@
             </div>
 
             <div class="ac reveal-scale reveal-delay-1">
-                <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/chua_hang.webp"
+                <img loading="lazy" decoding="async" class="ac-img" src="photos/chua_hang.webp"
                     srcset="photos/chua_hang_sm.webp 480w, photos/chua_hang.webp 800w"
-                    sizes="(max-width: 960px) 100vw, 33vw"
-                    alt="Chùa Hang Yên Thủy"
-                    width="800" height="533">
+                    sizes="(max-width: 960px) 100vw, 33vw" alt="Chùa Hang Yên Thủy" width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~6 km · 8 phút</p>
                     <h3 class="ac-name">Chùa Hang (Văn Quang Động)</h3>
-                    <p class="ac-desc">Ngôi chùa cổ linh thiêng nằm sâu trong lòng động đá tự nhiên, điểm đến tâm linh đặc sắc nhất của vùng đất Yên Thủy.</p>
+                    <p class="ac-desc">Ngôi chùa cổ linh thiêng nằm sâu trong lòng động đá tự nhiên, điểm đến tâm linh
+                        đặc sắc nhất của vùng đất Yên Thủy.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Hang+Yên+Thủy"
-                            target="_blank" class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Hang+Yên+Thủy" target="_blank"
+                            class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Ch%C3%B9a+Hang,+9M62%2B4WH,+Qu%E1%BB%91c+l%E1%BB%99+12B,+Y%C3%AAn+Tr%E1%BB%8B,+Ph%C3%BA+Th%E1%BB%8D,+Vietnam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJ23tq8GWCNjER4bvw-VIV4Z4!2m2!1d105.65235489999999!2d20.3603131!3e0"
@@ -820,19 +745,17 @@
             </div>
 
             <div class="ac reveal-right reveal-delay-2">
-                <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/chua_tac_duc.webp"
+                <img loading="lazy" decoding="async" class="ac-img" src="photos/chua_tac_duc.webp"
                     srcset="photos/chua_tac_duc_sm.webp 480w, photos/chua_tac_duc.webp 800w"
-                    sizes="(max-width: 960px) 100vw, 33vw"
-                    alt="Chùa Tác Đức"
-                    width="800" height="533">
+                    sizes="(max-width: 960px) 100vw, 33vw" alt="Chùa Tác Đức" width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~9 km · 15 phút</p>
                     <h3 class="ac-name">Chùa Tác Đức</h3>
-                    <p class="ac-desc">Điểm đến thanh tịnh dưới chân núi Khụ Khôi, nổi tiếng với không gian yên bình và cây gạo cổ thụ hàng trăm năm tuổi.</p>
+                    <p class="ac-desc">Điểm đến thanh tịnh dưới chân núi Khụ Khôi, nổi tiếng với không gian yên bình và
+                        cây gạo cổ thụ hàng trăm năm tuổi.</p>
                     <div class="ac-btns">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Tác+Đức+Yên+Thủy"
-                            target="_blank" class="ac-mapbtn secondary">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Tác+Đức+Yên+Thủy" target="_blank"
+                            class="ac-mapbtn secondary">
                             <span>📍</span> Vị trí
                         </a>
                         <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Ch%C3%B9a+T%C3%A1c+%C4%90%E1%BB%A9c,+CHJ7%2B45J,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJgdNwO7MnNDERfsgG1xkM-fo!2m2!1d105.5624862!2d20.429886399999997!3e0"
@@ -844,16 +767,14 @@
             </div>
 
             <div class="ac reveal-right reveal-delay-2">
-                <img loading="lazy" decoding="async" class="ac-img"
-                    src="photos/suoi_ca_cam_thuy.webp"
+                <img loading="lazy" decoding="async" class="ac-img" src="photos/suoi_ca_cam_thuy.webp"
                     srcset="photos/suoi_ca_cam_thuy_sm.webp 480w, photos/suoi_ca_cam_thuy.webp 800w"
-                    sizes="(max-width: 960px) 100vw, 33vw"
-                    alt="Suối cá Cẩm Thủy"
-                    width="800" height="533">
+                    sizes="(max-width: 960px) 100vw, 33vw" alt="Suối cá Cẩm Thủy" width="800" height="533">
                 <div class="ac-body">
                     <p class="ac-dist">~45 km · 58 phút</p>
                     <h3 class="ac-name">Suối cá Thần Cẩm Lương</h3>
-                    <p class="ac-desc">Điểm đến nổi tiếng tại Thanh Hóa với hàng nghìn con cá lạ bơi lội dày đặc, gắn liền với những câu chuyện tâm linh huyền bí.</p>
+                    <p class="ac-desc">Điểm đến nổi tiếng tại Thanh Hóa với hàng nghìn con cá lạ bơi lội dày đặc, gắn
+                        liền với những câu chuyện tâm linh huyền bí.</p>
                     <div class="ac-btns">
                         <a href="https://maps.google.com/?cid=11314954403387051081&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ"
                             target="_blank" class="ac-mapbtn secondary">
@@ -931,11 +852,12 @@
         <div class="footer-top">
             <div class="footer-brand">
                 <a href="#" class="footer-logo">
-                    <img src="logo_lapaz.png" alt="La Paz Hotel" class="footer-logo-img"
-                        loading="lazy" width="44" height="28">
+                    <img src="logo_lapaz.png" alt="La Paz Hotel" class="footer-logo-img" loading="lazy" width="44"
+                        height="28">
                     <span>La Paz <span>Hotel</span></span>
                 </a>
-                <p>La Paz Hotel — Khách sạn & Cafe sân vườn tại Yên Thuỷ, Phú Thọ. Không gian xanh, yên tĩnh, thư giãn.</p>
+                <p>La Paz Hotel — Khách sạn & Cafe sân vườn tại Yên Thuỷ, Phú Thọ. Không gian xanh, yên tĩnh, thư giãn.
+                </p>
             </div>
             <div class="fcol">
                 <h4>Khách sạn</h4>
@@ -1022,9 +944,9 @@
         }
 
         // ── HERO SLIDESHOW ──
-        const slides  = document.querySelectorAll('.hero-slide');
-        const dots    = document.querySelectorAll('.hero-dot');
-        const heroBg  = document.querySelector('.hero-r-bg');
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+        const heroBg = document.querySelector('.hero-r-bg');
         const counterCur = document.querySelector('.hero-counter-cur');
 
         // Màu nền cột phải — xoay vòng theo bảng màu trang

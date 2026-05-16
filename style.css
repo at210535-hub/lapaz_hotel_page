@@ -40,10 +40,11 @@ img { display: block; max-width: 100%; height: auto; }
 
 html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 body {
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'Be Vietnam Pro', sans-serif;
     background: var(--bg);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── KEYFRAMES ── */
@@ -161,9 +162,9 @@ img.img-loaded {
 }
 .sh-eye::before { content: ''; width: 20px; height: 1px; background: var(--moss); flex-shrink: 0; }
 .sh-h {
-    font-family: 'Cormorant', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 300;
+    font-weight: 400;
     color: var(--ink);
     line-height: 1.15;
 }
@@ -194,7 +195,7 @@ nav.menu-open {
 }
 
 .logo {
-    font-family: 'Cormorant', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.15rem; font-weight: 400; letter-spacing: .06em;
     color: var(--ink); text-decoration: none;
     display: flex; align-items: center; gap: .65rem;
@@ -277,7 +278,7 @@ nav.menu-open {
 }
 .m-nav.open { clip-path: inset(0 0 0% 0); pointer-events: all; }
 .m-nav a {
-    font-family: 'Cormorant', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.7rem; font-weight: 300;
     text-decoration: none; color: var(--moss);
     letter-spacing: .02em;
@@ -401,7 +402,7 @@ nav.menu-open {
     font-weight: 300;
 }
 .hero-counter-cur {
-    font-family: 'Cormorant', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.35rem;
     color: rgba(240, 232, 200, .8);
     font-weight: 300;
@@ -621,14 +622,14 @@ nav.menu-open {
 .room-body                { padding: 1.6rem; flex: 1; display: flex; flex-direction: column; }
 .room-type { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--moss); margin-bottom: .5rem; font-weight: 500; }
 .rooms-grid--2 .room-name { font-size: 1.7rem; margin-bottom: .8rem; }
-.room-name { font-family: 'Cormorant', serif; font-size: 1.3rem; font-weight: 300; color: var(--ink); margin-bottom: .6rem; }
+.room-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; color: var(--ink); margin-bottom: .6rem; }
 .rooms-grid--2 .room-desc { font-size: .88rem; line-height: 1.85; margin-bottom: 1.6rem; }
 .room-desc { font-size: .82rem; line-height: 1.7; color: var(--ink-3); flex: 1; margin-bottom: 1.2rem; font-weight: 300; }
 .room-feats { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1.3rem; }
 .rf { font-size: .62rem; background: var(--moss-mist); color: var(--moss-2); padding: .22rem .55rem; border-radius: var(--radius-pill); letter-spacing: .04em; }
 .room-foot  { display: flex; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid var(--line); }
-.room-price { font-family: 'Cormorant', serif; font-size: 1.4rem; font-weight: 300; color: var(--ink); }
-.room-price small { font-family: 'Instrument Sans', sans-serif; font-size: .7rem; color: var(--ink-4); font-weight: 300; }
+.room-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 300; color: var(--ink); }
+.room-price small { font-family: 'Be Vietnam Pro', sans-serif; font-size: .7rem; color: var(--ink-4); font-weight: 300; }
 .room-cta {
     font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
     color: var(--moss); text-decoration: none; font-weight: 500;
@@ -674,7 +675,7 @@ nav.menu-open {
 .nb-icon { width: 20px; height: 20px; color: var(--moss); }
 .nb-body { display: flex; flex-direction: column; gap: .4rem; }
 .nb-name {
-    font-family: 'Cormorant', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.15rem; font-weight: 400;
     color: var(--ink); letter-spacing: .01em;
 }
@@ -741,7 +742,7 @@ nav.menu-open {
     padding: .6rem 1.4rem .6rem 0;
     font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
     background: none; border: none; cursor: pointer; color: var(--ink-4);
-    font-family: 'Instrument Sans', sans-serif; font-weight: 400;
+    font-family: 'Be Vietnam Pro', sans-serif; font-weight: 400;
     transition: color .25s; position: relative;
 }
 .mtab::after {
@@ -763,9 +764,9 @@ nav.menu-open {
 .mi:hover       { padding-left: .4rem; }
 .mi:last-child  { border-bottom: none; }
 .mi-l    { display: flex; flex-direction: column; gap: .18rem; }
-.mi-name { font-family: 'Cormorant', serif; font-size: 1.05rem; font-weight: 300; color: var(--ink); }
+.mi-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); }
 .mi-note { font-size: .68rem; color: var(--ink-3); letter-spacing: .03em; }
-.mi-price { font-family: 'Cormorant', serif; font-size: 1rem; color: var(--moss); font-weight: 400; white-space: nowrap; padding-left: 1.5rem; }
+.mi-price { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--moss); font-weight: 400; white-space: nowrap; padding-left: 1.5rem; }
 
 .cafe-badge-bar {
     margin-top: 2rem; padding: 1rem 1.2rem;
@@ -787,7 +788,7 @@ nav.menu-open {
     width: 36px; height: 36px; border-radius: 50%;
     border: 1px solid var(--line);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant', serif; font-size: 1rem; color: var(--moss); flex-shrink: 0;
+    font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--moss); flex-shrink: 0;
 }
 .dw-label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--moss); font-weight: 500; margin-bottom: .3rem; }
 .dw-desc  { font-size: .84rem; line-height: 1.75; color: var(--ink-3); font-weight: 300; }
@@ -799,7 +800,7 @@ nav.menu-open {
 }
 .map-iframe  { width: 100%; height: 320px; display: block; border: none; filter: saturate(.9) contrast(1.05); }
 .map-detail  { padding: 1.5rem; }
-.map-addr    { font-family: 'Cormorant', serif; font-size: 1.1rem; font-weight: 300; color: var(--ink); line-height: 1.7; margin-bottom: 1rem; }
+.map-addr    { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink); line-height: 1.7; margin-bottom: 1rem; }
 .map-meta    { display: flex; flex-direction: column; gap: .45rem; }
 .map-meta-row { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: var(--ink-3); }
 .map-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--moss-pale); flex-shrink: 0; }
@@ -827,7 +828,7 @@ nav.menu-open {
 .ac:hover .ac-img { transform: scale(1.05); }
 .ac-body  { padding: 1.3rem; display: flex; flex-direction: column; gap: .35rem; }
 .ac-dist  { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--moss); font-weight: 500; }
-.ac-name  { font-family: 'Cormorant', serif; font-size: 1.1rem; font-weight: 300; color: var(--ink); }
+.ac-name  { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink); }
 .ac-desc  { font-size: .78rem; line-height: 1.65; color: var(--ink-3); font-weight: 300; flex: 1; }
 .ac-mapbtn {
     display: inline-flex; align-items: center; gap: .4rem;
@@ -890,7 +891,7 @@ nav.menu-open {
 .cbtn-icon   { width: 36px; height: 36px; border-radius: 50%; background: var(--moss-mist); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: background .25s; }
 .cbtn-text   { display: flex; flex-direction: column; gap: .1rem; flex: 1; }
 .cbtn-label  { font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); font-weight: 400; transition: color .25s; }
-.cbtn-val    { font-family: 'Cormorant', serif; font-size: 1.05rem; color: var(--ink); font-weight: 400; transition: color .25s; }
+.cbtn-val    { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--ink); font-weight: 400; transition: color .25s; }
 .cbtn-arrow  { font-size: .8rem; color: var(--ink-4); transition: color .25s, transform .25s; flex-shrink: 0; }
 
 /* ── REVIEWS ── */
@@ -904,7 +905,7 @@ nav.menu-open {
 }
 .rv:hover     { border-color: var(--moss); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.38); }
 .rv-stars     { color: var(--gold); font-size: .8rem; letter-spacing: .08em; margin-bottom: 1rem; }
-.rv-text      { font-family: 'Cormorant', serif; font-style: italic; font-size: 1rem; line-height: 1.9; color: var(--ink-2); margin-bottom: 1.4rem; font-weight: 300; }
+.rv-text      { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; line-height: 1.9; color: var(--ink-2); margin-bottom: 1.4rem; font-weight: 400; }
 .rv-author    { font-size: .78rem; font-weight: 500; color: var(--ink); }
 .rv-from      { font-size: .68rem; color: var(--ink-4); }
 
@@ -917,7 +918,7 @@ footer { padding: 5rem 5rem 2.5rem; border-top: 1px solid var(--line); }
 }
 .footer-logo       { display: flex; align-items: center; gap: .6rem; text-decoration: none; margin-bottom: .8rem; }
 .footer-logo-img   { width: 44px; height: 28px; border-radius: 0; object-fit: contain; }
-.footer-logo span  { font-family: 'Cormorant', serif; font-size: 1.2rem; font-weight: 300; color: var(--ink); letter-spacing: .06em; }
+.footer-logo span  { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; color: var(--ink); letter-spacing: .06em; }
 .footer-logo span span { color: var(--moss); font-style: italic; }
 .footer-brand p    { font-size: .8rem; line-height: 1.8; color: var(--ink-3); font-weight: 300; max-width: 220px; }
 .fcol h4   { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--moss); margin-bottom: 1rem; font-weight: 500; }
