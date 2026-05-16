@@ -93,6 +93,9 @@ function setupBlurUp() {
     document.querySelectorAll('img').forEach((img) => {
         // Bỏ qua hero images — đã được preload, không cần blur-up
         if (img.getAttribute('fetchpriority') === 'high') return;
+        // Bỏ qua ảnh cafe-menu — opacity/visibility do CSS .cmv-active quản lý riêng,
+        // thêm img-loading sẽ giữ filter:blur ngay cả khi hover đúng món
+        if (img.classList.contains('cafe-menu-img-main')) return;
         // Bỏ qua ảnh đã load xong (từ cache)
         if (img.complete && img.naturalWidth > 0) return;
 
@@ -123,4 +126,65 @@ function switchTab(btn, panelId) {
     document.querySelectorAll('.mpanel').forEach((p) => p.classList.remove('on'));
     btn.classList.add('on');
     document.getElementById(panelId).classList.add('on');
+    // Reset ảnh về mặc định khi chuyển tab
+    document.querySelectorAll('.cafe-menu-img-main').forEach((img) => img.classList.remove('cmv-active'));
+    const def = document.querySelector('.cmv-default');
+    if (def) def.classList.add('cmv-active');
 }
+
+
+// ── CAFE MENU — HOVER ĐỔI ẢNH (chỉ desktop ≥960px) ─────────────────────────
+(function setupDrinkHover() {
+    const MQ = window.matchMedia('(min-width: 960px)');
+    let leaveTimer = null;
+
+    // Fetch trước tất cả ảnh cafe-menu ngay khi section vào gần viewport.
+    // Ảnh loading="lazy" chỉ được fetch khi đúng viewport — nếu không preload,
+    // hover lần đầu sẽ không thấy gì vì ảnh chưa tải xong.
+    (function preload() {
+        const section = document.querySelector('.cafe-menu-section');
+        if (!section) return;
+        const io = new IntersectionObserver((entries) => {
+            if (!entries[0].isIntersecting) return;
+            io.disconnect();
+            document.querySelectorAll('.cafe-menu-img-main').forEach((img) => {
+                img.removeAttribute('loading');
+                if (!img.complete || img.naturalWidth === 0) {
+                    const s = img.src; img.src = ''; img.src = s;
+                }
+            });
+        }, { rootMargin: '300px' });
+        io.observe(section);
+    })();
+
+    function activate(drinkKey) {
+        document.querySelectorAll('.cafe-menu-img-main').forEach((img) => img.classList.remove('cmv-active'));
+        if (drinkKey) {
+            const target = document.querySelector(`.cmv-item[data-drink="${drinkKey}"]`);
+            if (target) { target.classList.add('cmv-active'); return; }
+        }
+        const def = document.querySelector('.cmv-default');
+        if (def) def.classList.add('cmv-active');
+    }
+
+    function bind() {
+        document.querySelectorAll('.mi[data-drink]').forEach((mi) => {
+            mi.addEventListener('mouseenter', () => {
+                if (!MQ.matches) return;
+                clearTimeout(leaveTimer);
+                activate(mi.dataset.drink);
+            });
+            mi.addEventListener('mouseleave', () => {
+                if (!MQ.matches) return;
+                clearTimeout(leaveTimer);
+                leaveTimer = setTimeout(() => activate(null), 80);
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bind);
+    } else {
+        bind();
+    }
+})();
