@@ -263,7 +263,7 @@
                     <h3 class="room-name">Deluxe</h3>
                     <p class="room-desc">
                         Phòng rộng với giường đôi, cửa sổ riêng nhìn ra khuôn viên xanh.
-                        Lý tưởng cho cặp đôi hoặc hai bạn.
+                        Lý tưởng cho cặp đôi hoặc hai người.
                     </p>
                     <div class="room-feats">
                         <span class="rf">Điều hoà</span>
@@ -408,156 +408,38 @@
     </section>
 
     <!-- CAFE -->
-    <!-- <section class="cafe" id="cafe">
-
-        <div class="cafe-visual reveal">
-            <img loading="lazy" decoding="async" class="cafe-img-main"
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop"
-                alt="Quán Cafe La Paz" width="800" height="500">
+     <section class="cafe" id="cafe">
+        <div class="sh reveal">
+            <p class="sh-eye">Quán Cafe</p>
+            <h2 class="sh-h">Hương vị của <em>sự thư thái</em></h2>
         </div>
-        <div class="cafe-menu">
-            <div class="reveal">
-                <p class="sh-eye">Quán Cafe</p>
-                <h2 class="sh-h">Menu <em>đồ uống</em></h2>
+        <div class="cafe-grid">
+            <div class="gi reveal-scale">
+                <img decoding="async" src="photos/11.webp" srcset="photos/11_sm.webp 480w, photos/11.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 40vw" alt="La Paz Coffee toàn cảnh" width="800" height="533">
             </div>
-            <div class="menu-tabs reveal reveal-delay-1">
-                <button class="mtab on" onclick="switchTab(this,'t1')">Cafe</button>
-                <button class="mtab" onclick="switchTab(this,'t2')">Trà & nước</button>
-                <button class="mtab" onclick="switchTab(this,'t3')">Sinh tố</button>
+            <div class="gi reveal-scale reveal-delay-1">
+                <img decoding="async" src="photos/6.webp" srcset="photos/6_sm.webp 480w, photos/6.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 25vw" alt="La Paz Hotel toàn cảnh" width="800" height="533">
             </div>
-            <div class="mpanel on" id="t1">
-                <div class="menu-list">
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Cafe đen</span>
-                            <span class="mi-note">Robusta Đắk Lắk · nóng hoặc đá</span>
-                        </div>
-                        <span class="mi-price">20k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Cafe sữa</span>
-                            <span class="mi-note">Phin truyền thống, sữa đặc</span>
-                        </div>
-                        <span class="mi-price">25k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Bạc xỉu</span>
-                            <span class="mi-note">Nhiều sữa, ít cafe</span>
-                        </div>
-                        <span class="mi-price">25k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Cappuccino</span>
-                            <span class="mi-note">Espresso, sữa đánh bông</span>
-                        </div>
-                        <span class="mi-price">40k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Cold brew</span>
-                            <span class="mi-note">Ủ lạnh 18 tiếng — êm, không đắng</span>
-                        </div>
-                        <span class="mi-price">45k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Cafe trứng</span>
-                            <span class="mi-note">Đặc sản Hà Nội — béo, ngậy</span>
-                        </div>
-                        <span class="mi-price">35k</span>
-                    </div>
-                </div>
+            <div class="gi reveal-scale reveal-delay-2">
+                <img decoding="async" src="photos/3.webp" srcset="photos/3_sm.webp 480w, photos/3.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 33vw" alt="La Paz Hotel phòng nghỉ" width="800" height="533">
             </div>
-            <div class="mpanel" id="t2">
-                <div class="menu-list">
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Trà đào</span>
-                            <span class="mi-note">Đào tươi, trà xanh · đá</span>
-                        </div>
-                        <span class="mi-price">30k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Trà sữa trân châu</span>
-                            <span class="mi-note">Trân châu nấu tươi hàng ngày</span>
-                        </div>
-                        <span class="mi-price">35k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Trà gừng mật ong</span>
-                            <span class="mi-note">Nóng hoặc ấm · tốt cho sức khoẻ</span>
-                        </div>
-                        <span class="mi-price">25k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Nước ép cam</span>
-                            <span class="mi-note">Cam tươi vắt tại chỗ</span>
-                        </div>
-                        <span class="mi-price">30k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Soda chanh</span>
-                            <span class="mi-note">Chanh tươi, soda · mát lạnh</span>
-                        </div>
-                        <span class="mi-price">20k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Nước dừa tươi</span>
-                            <span class="mi-note">Nguyên trái hoặc ly</span>
-                        </div>
-                        <span class="mi-price">25k</span>
-                    </div>
-                </div>
+            <div class="gi reveal-scale">
+                <img decoding="async" src="photos/7.webp" srcset="photos/7_sm.webp 480w, photos/7.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 25vw" alt="La Paz Hotel đèn lồng" width="800" height="533">
             </div>
-            <div class="mpanel" id="t3">
-                <div class="menu-list">
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Sinh tố xoài</span>
-                            <span class="mi-note">Xoài cát Hoà Lộc · ngọt tự nhiên</span>
-                        </div>
-                        <span class="mi-price">35k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Sinh tố bơ</span>
-                            <span class="mi-note">Bơ tươi, sữa đặc, đá bào</span>
-                        </div>
-                        <span class="mi-price">40k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Sinh tố dâu</span>
-                            <span class="mi-note">Dâu tây Đà Lạt tươi</span>
-                        </div>
-                        <span class="mi-price">38k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Sinh tố chuối</span>
-                            <span class="mi-note">Chuối chín · sữa tươi</span>
-                        </div>
-                        <span class="mi-price">30k</span>
-                    </div>
-                    <div class="mi">
-                        <div class="mi-l">
-                            <span class="mi-name">Sinh tố mix</span>
-                            <span class="mi-note">Theo trái cây mùa — hỏi nhân viên</span>
-                        </div>
-                        <span class="mi-price">40k</span>
-                    </div>
-                </div>
+            <div class="gi reveal-scale reveal-delay-1">
+                <img decoding="async" src="photos/8.webp" srcset="photos/8_sm.webp 480w, photos/8.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 33vw" alt="La Paz Hotel Cafe" width="800" height="533">
+            </div>
+            <div class="gi reveal-scale reveal-delay-2">
+                <img decoding="async" src="photos/10.webp" srcset="photos/10_sm.webp 480w, photos/10.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 42vw" alt="La Paz Coffee toàn cảnh" width="800" height="533">
             </div>
         </div>
-    </section> -->
+     </section>
 
     <!-- DIRECTIONS -->
     <section class="directions" id="directions">
@@ -619,7 +501,7 @@
                         <span class="map-meta-dot"></span>Không gian nhiều cây xanh
                     </div>
                 </div>
-                <a href="https://maps.app.goo.gl/wGjYZHfP18MF8A" target="_blank" class="btn-maps">
+                <a href="https://www.google.com/maps/place/?q=place_id:ChIJz4w7DOQpNDERT06TEpm3Lj4" target="_blank" class="btn-maps">
                     📍 Mở Google Maps
                 </a>
             </div>
