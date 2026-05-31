@@ -61,6 +61,32 @@ document.addEventListener('click', (e) => {
 });
 
 
+// ── SMOOTH SCROLL — bù offset nav fixed ─────────────────────────────────────
+// Xử lý tất cả <a href="#..."> scroll đúng vị trí kể cả khi ảnh chưa load xong
+document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+
+    const targetId = a.getAttribute('href').slice(1);
+    if (!targetId) return;
+
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    e.preventDefault();
+
+    // Đóng mobile menu trước, rồi mới scroll
+    const wasOpen = mNav.classList.contains('open');
+    if (wasOpen) closeMenu();
+
+    setTimeout(() => {
+        const navH = nav.getBoundingClientRect().height;
+        const top  = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+        window.scrollTo({ top, behavior: 'smooth' });
+    }, wasOpen ? 350 : 0); // chờ menu đóng animation xong
+});
+
+
 // ── SCROLL REVEAL (2 chiều, đa hướng) ───────────────────────────────────────
 const REVEAL_SEL = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
 
