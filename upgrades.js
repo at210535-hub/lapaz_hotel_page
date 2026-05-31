@@ -1,7 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
    LA PAZ HOTEL — UPGRADES.JS
-   Thêm vào cuối <body>, SAU script.js:
-   <script src="upgrades.js"></script>
    ═══════════════════════════════════════════════════════════════════ */
 
 (function () {
@@ -52,7 +50,7 @@
        2. ACTIVE NAV LINK (highlight section đang xem)
        ══════════════════════════════════════════════════════════════ */
     (function initActiveNav() {
-        const navLinks = qsa('.nav-links a[href^="#"]');
+        const navLinks = qsa('.nav-links a[href^="#"]').filter(a => !a.classList.contains('nav-cta'));
         const sections = navLinks
             .map(a => {
                 const id = a.getAttribute('href').slice(1);
