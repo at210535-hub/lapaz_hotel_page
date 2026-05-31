@@ -1,3 +1,10 @@
 compress_images.py
 /raw/
 menu.txt
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
