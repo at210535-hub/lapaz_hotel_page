@@ -230,6 +230,7 @@
     }
 
     .cafe-text,
+    .cafe-menu-contact,
     .cafe-product-visual {
         display: none !important;
     }

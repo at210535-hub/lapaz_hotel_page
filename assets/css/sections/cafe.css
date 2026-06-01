@@ -614,3 +614,10 @@
         font-size: .76rem;
     }
 }
+
+@media (max-width: 960px) {
+    .cafe-title em {
+        display: block;
+        margin-top: .15rem;
+    }
+}
