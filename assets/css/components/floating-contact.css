@@ -1,0 +1,157 @@
+/* ──────────────────────────────────────────────────────────────────
+   4. FLOATING "ĐẶT PHÒNG" BUTTON — góc phải, cố định
+   ────────────────────────────────────────────────────────────────── */
+#fab-booking {
+    position: fixed;
+    right: 1.6rem;
+    bottom: 5.5rem;    /* tránh mobile bottom bar */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    background: var(--moss);
+    color: #1A3200 !important;
+    text-decoration: none;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .72rem 1.4rem .72rem 1.05rem;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 6px 24px rgba(232, 184, 0, 0.38), 0 2px 8px rgba(0,0,0,.35);
+    transition:
+        transform .4s cubic-bezier(.16, 1, .3, 1),
+        box-shadow .4s cubic-bezier(.16, 1, .3, 1),
+        background .25s,
+        opacity .5s cubic-bezier(.16, 1, .3, 1);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+    pointer-events: none;
+}
+
+#fab-booking.fab-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+#fab-booking:hover {
+    background: var(--moss-2);
+    box-shadow: 0 10px 32px rgba(232, 184, 0, 0.52), 0 3px 12px rgba(0,0,0,.4);
+    transform: translateY(-3px) scale(1.03);
+}
+
+#fab-booking:active {
+    transform: translateY(0) scale(.98);
+    box-shadow: 0 4px 16px rgba(232, 184, 0, 0.3);
+}
+
+#fab-booking svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    stroke: #1A3200;
+}
+
+/* Desktop: hiển thị fab ở right:1.6rem, bottom:2rem (không có mobile bar) */
+@media (min-width: 961px) {
+    #fab-booking {
+        bottom: 2rem;
+    }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   5. MOBILE STICKY BOTTOM BAR — "Gọi ngay" 3 nút
+   ────────────────────────────────────────────────────────────────── */
+#mobile-bottombar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 800;
+    background: rgba(13, 34, 34, 0.97);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border-top: 1px solid var(--line);
+    padding: .55rem 1rem calc(.55rem + env(safe-area-inset-bottom));
+    display: none;                    /* controlled below in @media */
+    align-items: stretch;
+    gap: .55rem;
+}
+
+#mobile-bottombar a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: .5rem .3rem .45rem;
+    transition: background .2s, transform .18s cubic-bezier(.22,1,.36,1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+#mobile-bottombar a:active {
+    transform: scale(.93);
+}
+
+#mobile-bottombar .mbb-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+#mobile-bottombar .mbb-label {
+    font-size: .56rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Lễ tân — gold */
+#mbb-letan {
+    background: rgba(232, 184, 0, .1);
+    color: var(--moss);
+    border: 1px solid rgba(232, 184, 0, .2);
+}
+#mbb-letan:active { background: rgba(232, 184, 0, .2); }
+
+/* Hotline — xanh nhạt */
+#mbb-hotline {
+    background: rgba(100, 180, 170, .1);
+    color: #7ECFC8;
+    border: 1px solid rgba(100, 180, 170, .2);
+}
+#mbb-hotline:active { background: rgba(100, 180, 170, .2); }
+
+/* Zalo — xanh Zalo */
+#mbb-zalo {
+    background: rgba(0, 104, 255, .12);
+    color: #66AAFF;
+    border: 1px solid rgba(0, 104, 255, .22);
+}
+#mbb-zalo:active { background: rgba(0, 104, 255, .22); }
+
+@media (max-width: 960px) {
+    #mobile-bottombar {
+        display: flex;
+    }
+
+    /* FAB trên mobile đẩy lên trên bottom bar */
+    #fab-booking {
+        bottom: 5.6rem;
+    }
+
+    /* Tránh footer bị che khuất bởi bottom bar */
+    body {
+        padding-bottom: calc(68px + env(safe-area-inset-bottom));
+    }
+}
+
+

@@ -1,0 +1,135 @@
+/* ── DIRECTIONS ── */
+.directions {
+    padding: 3rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+}
+
+.dir-ways {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 5rem;
+}
+
+.dw {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.dw:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.dw-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--moss);
+    flex-shrink: 0;
+}
+
+.dw-label {
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 500;
+    margin-bottom: .3rem;
+}
+
+.dw-desc {
+    font-size: .84rem;
+    line-height: 1.75;
+    color: var(--ink-3);
+    font-weight: 300;
+}
+
+.map-box {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.30);
+}
+
+.map-iframe {
+    width: 100%;
+    height: 400px;
+    display: block;
+    border: none;
+    filter: saturate(.9) contrast(1.05);
+}
+
+.map-detail {
+    padding: 2.5rem;
+}
+
+.map-addr {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.map-meta {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+}
+
+.map-meta-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .78rem;
+    color: var(--ink-3);
+}
+
+.map-meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--moss-pale);
+    flex-shrink: 0;
+}
+
+.btn-maps {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1.2rem;
+    background: var(--bg-3);
+    color: var(--ink-2);
+    padding: .65rem 1.2rem;
+    border-radius: var(--radius-pill);
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    transition: background .3s cubic-bezier(.22, 1, .36, 1), color .3s, border-color .3s;
+    font-weight: 500;
+}
+
+.btn-maps:hover {
+    background: var(--moss);
+    color: #0F2A2A;
+    border-color: var(--moss);
+    font-weight: 600;
+}
+

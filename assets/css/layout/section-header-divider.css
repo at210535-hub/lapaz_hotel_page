@@ -1,0 +1,102 @@
+/* ── SECTION HEADER ── */
+.sh {
+    margin-bottom: 3.5rem;
+}
+
+.sh-eye {
+    font-size: .65rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--moss);
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: .8rem;
+    font-weight: 500;
+}
+
+.sh-eye::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--moss);
+    flex-shrink: 0;
+}
+
+.sh-h {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.15;
+}
+
+.sh-h em {
+    color: var(--moss);
+    font-style: italic;
+}
+
+/* ── DIVIDER ── */
+.divider {
+    height: 1px;
+    background: var(--line);
+    margin: 0 5rem;
+}
+
+
+
+/* Divider ornament merged from former upgrades.css. */
+/* ──────────────────────────────────────────────────────────────────
+   3. DIVIDER ORNAMENT — thay đường thẳng trơn
+   ────────────────────────────────────────────────────────────────── */
+.divider {
+    /* Override style cũ */
+    height: auto !important;
+    background: none !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5rem !important;
+    padding: 0;
+    overflow: visible;
+    gap: 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--line) 30%, var(--line) 70%, transparent);
+}
+
+.divider::after {
+    background: linear-gradient(to left, transparent, var(--line) 30%, var(--line) 70%, transparent);
+}
+
+/* SVG ornament chèn qua JS, class .divider-ornament */
+.divider-ornament {
+    flex-shrink: 0;
+    width: 44px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+    color: var(--moss-pale);
+}
+
+.divider-ornament svg {
+    width: 44px;
+    height: 16px;
+    overflow: visible;
+}
+
+@media (max-width: 960px) {
+    .divider {
+        margin: 0 1.8rem !important;
+    }
+}
+
+

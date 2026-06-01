@@ -1,0 +1,30 @@
+/* La Paz Hotel — Main CSS entrypoint
+   Chỉ cần link file này trong HTML. Các phần bên dưới được tách nhỏ theo chức năng để dễ bảo trì. */
+
+/* Base */
+@import url('./base/reset.css');
+@import url('./base/motion.css');
+
+/* Layout */
+@import url('./layout/section-header-divider.css');
+@import url('./layout/navigation.css');
+
+/* Components */
+@import url('./components/scroll-progress.css');
+@import url('./components/floating-contact.css');
+@import url('./components/button-and-image-polish.css');
+
+/* Sections */
+@import url('./sections/hero.css');
+@import url('./sections/about.css');
+@import url('./sections/gallery.css');
+@import url('./sections/rooms.css');
+@import url('./sections/nearby.css');
+@import url('./sections/cafe.css');
+@import url('./sections/directions.css');
+@import url('./sections/attractions.css');
+@import url('./sections/contact.css');
+@import url('./sections/footer.css');
+
+/* Responsive overrides last */
+@import url('./responsive.css');

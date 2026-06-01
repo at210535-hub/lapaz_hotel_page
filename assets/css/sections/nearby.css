@@ -1,0 +1,160 @@
+/* ── NEARBY ── */
+.nearby {
+    padding: 3rem 5rem;
+    background: var(--bg);
+}
+
+.nearby-header {
+    max-width: 640px;
+    margin-bottom: 3.5rem;
+}
+
+.nearby-text {
+    font-size: .9rem;
+    line-height: 1.9;
+    color: var(--ink-3);
+    margin-top: 1rem;
+    font-weight: 300;
+}
+
+.nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.nb-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background .35s cubic-bezier(.22, 1, .36, 1), border-color .35s, transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nb-card:hover {
+    background: var(--bg-3);
+    border-color: var(--moss-pale);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
+}
+
+.nb-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(var(--moss-rgb, 134, 179, 139), .12);
+    border: 1px solid var(--moss-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.nb-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--moss);
+}
+
+.nb-body {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+.nb-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: .01em;
+}
+
+.nb-loc {
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 500;
+}
+
+.nb-desc {
+    font-size: .8rem;
+    line-height: 1.75;
+    color: var(--ink-3);
+    font-weight: 300;
+    margin-top: .2rem;
+}
+
+.nb-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: .58rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .25rem .7rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg-3);
+    color: var(--ink-4);
+    border: 1px solid var(--line);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.nb-tag--in {
+    background: rgba(var(--moss-rgb, 134, 179, 139), .15);
+    color: var(--moss);
+    border-color: var(--moss-pale);
+}
+
+.nb-tag--near {
+    background: rgba(var(--moss-rgb, 134, 179, 139), .08);
+    color: var(--moss-2);
+    border-color: var(--line);
+}
+
+.nb-foot {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .7rem;
+    flex-wrap: wrap;
+}
+
+.nb-cta {
+    display: inline-flex;
+    align-items: center;
+    font-size: .58rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .25rem .7rem;
+    border-radius: var(--radius-pill);
+    background: rgba(var(--moss-rgb, 134, 179, 139), .15);
+    color: var(--moss);
+    border-color: var(--moss-pale);
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background .25s, color .25s, border-color .25s;
+}
+
+.nb-cta:hover {
+    background: var(--moss);
+    color: #0F2A2A;
+    border-color: var(--moss);
+    font-weight: 600;
+}
+
+
+
+/* Nearby card motion merged from former upgrades.css. */
+/* nb-card hover nâng nhẹ */
+.nb-card {
+    transition: transform .4s cubic-bezier(.16,1,.3,1), background .25s, border-color .25s;
+}
+
+.nb-card:hover {
+    transform: translateY(-3px);
+}

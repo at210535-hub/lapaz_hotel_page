@@ -1,0 +1,24 @@
+/* ──────────────────────────────────────────────────────────────────
+   1. SCROLL PROGRESS BAR — dải vàng mỏng trên cùng nav
+   ────────────────────────────────────────────────────────────────── */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 9999;
+    background: transparent;
+    pointer-events: none;
+}
+
+#scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--moss-2) 0%, var(--moss) 60%, #FFD700 100%);
+    box-shadow: 0 0 8px rgba(232, 184, 0, 0.55);
+    transition: width 0.08s linear;
+    border-radius: 0 2px 2px 0;
+}
+
+

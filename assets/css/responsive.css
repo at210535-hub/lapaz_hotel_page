@@ -1,0 +1,236 @@
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+    nav {
+        padding: 1.2rem 1.5rem;
+    }
+
+    nav.scrolled {
+        padding: 1rem 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    /*
+       Mobile: hero stack lại — slide full-screen phía sau,
+       hero-l overlay chữ phủ từ dưới lên.
+    */
+    .hero {
+        display: block;
+        position: relative;
+        height: 100svh;
+        min-height: 560px;
+    }
+
+    .hero-r {
+        position: absolute;
+        inset: 0;
+        flex: none;
+        width: 100%;
+    }
+
+    .hero-l {
+        position: absolute;
+        inset: 0;
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 7rem 1.8rem 9rem;
+        justify-content: flex-end;
+        z-index: 2;
+        background: linear-gradient(to top right,
+                rgba(10, 26, 26, .92) 0%,
+                rgba(10, 26, 26, .70) 40%,
+                rgba(10, 26, 26, .20) 100%,
+                rgba(10, 26, 26, .0) 100%);
+    }
+
+    .hero-r::after {
+        display: none;
+    }
+
+    .hero-dots {
+        left: 1.8rem;
+        bottom: 2rem;
+    }
+
+    .hero-h1 {
+        color: var(--ink);
+        text-shadow: 0 2px 16px rgba(0, 0, 0, .9), 0 1px 4px rgba(0, 0, 0, 1);
+    }
+
+    .hero-location {
+        color: #FFD700;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, .9);
+        font-weight: 600;
+    }
+
+    .hero-desc {
+        color: #FFFFFF;
+        text-shadow: 0 1px 10px rgba(0, 0, 0, .9), 0 1px 3px rgba(0, 0, 0, 1);
+        font-weight: 400;
+    }
+
+    .about,
+    .rooms,
+    .cafe,
+    .contact,
+    .directions,
+    .attractions,
+    .gallery,
+    .reviews,
+    .nearby,
+    footer {
+        padding: 2rem 1.8rem;
+    }
+
+    .cafe-menu-section {
+        padding: 4rem 1.8rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about,
+    .cafe,
+    .contact,
+    .directions {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .nearby-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: .75rem;
+    }
+
+    .nb-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: .5rem;
+        padding: 1.1rem .9rem;
+    }
+
+    .nb-desc {
+        display: none;
+    }
+
+    .nb-foot {
+        justify-content: center;
+        gap: .5rem;
+        margin-top: .4rem;
+    }
+
+    .nb-tag {
+        font-size: .52rem;
+        padding: .2rem .55rem;
+    }
+
+    .nb-cta {
+        font-size: .52rem;
+        padding: .2rem .55rem;
+    }
+
+    .nb-loc {
+        font-size: .58rem;
+    }
+
+    .nb-body {
+        gap: .2rem;
+        align-items: center;
+    }
+
+    .nb-name {
+        font-size: 1rem;
+    }
+
+    .about {
+        display: block;
+    }
+
+    .about-imgs {
+        display: none;
+    }
+
+    .about-img-mobile {
+        display: block;
+    }
+
+    .about-img-mobile--2 {
+        display: grid;
+    }
+
+    .rooms-grid,
+    .attr-grid,
+    .rv-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rooms-grid--2 {
+        max-width: 100%;
+        gap: 1.5rem;
+    }
+
+    .rooms-grid--2 .room-img-wrap {
+        height: 220px;
+    }
+
+    .rooms-grid--2 .room-body {
+        padding: 1.6rem;
+    }
+
+    .rooms-grid--2 .room-name {
+        font-size: 1.3rem;
+    }
+
+    .rooms-grid--2 .room-desc {
+        font-size: .82rem;
+    }
+
+    .gal-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .gi {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        height: 200px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .divider {
+        margin: 0 1.8rem;
+    }
+
+    .cafe-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .cafe-header {
+        gap: 1rem;
+    }
+
+    .cafe-menu-img-main {
+        display: none;
+    }
+
+    .cmv-img-stack {
+        display: none;
+    }
+
+    .cafe-text,
+    .cafe-product-visual {
+        display: none !important;
+    }
+}
