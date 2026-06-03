@@ -39,8 +39,13 @@
 }
 
 @keyframes lapazSliderProgress {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
 }
 
 .lapaz-slider-controls {
@@ -559,14 +564,14 @@
 
 @media (max-width: 960px) {
     .attr-grid[data-lapaz-revolver="active"] {
-        height: 430px !important;
+        height: 360px !important;
     }
 
     .attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus,
     .attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-edge {
-        height: 408px !important;
-        min-height: 408px !important;
-        max-height: 408px !important;
+        height: 340px !important;
+        min-height: 340px !important;
+        max-height: 340px !important;
     }
 
     .attr-grid[data-lapaz-revolver="active"] .ac-img {
@@ -578,19 +583,19 @@
 
 @media (max-width: 520px) {
     .attr-grid[data-lapaz-revolver="active"] {
-        height: 420px !important;
+        height: 360px !important;
     }
 
     .attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus,
     .attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-edge {
-        height: 398px !important;
-        min-height: 398px !important;
-        max-height: 398px !important;
+        height: 340px !important;
+        min-height: 340px !important;
+        max-height: 340px !important;
     }
 
     .attr-grid[data-lapaz-revolver="active"] .ac-img {
-        height: 200px !important;
-        flex: 0 0 200px !important;
-        flex-basis: 200px !important;
+        height: 180px !important;
+        flex: 0 0 180px !important;
+        flex-basis: 180px !important;
     }
 }
