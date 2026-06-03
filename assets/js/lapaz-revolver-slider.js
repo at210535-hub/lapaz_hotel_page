@@ -25,10 +25,18 @@
     }
 
     function restartProgress(state) {
-        if (!state.status) return;
-        state.status.classList.remove('is-running');
-        void state.status.offsetWidth;
-        state.status.classList.add('is-running');
+        if (!state.dots?.length) return;
+
+        state.dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle('is-active', dotIndex === state.index);
+            dot.classList.remove('is-running');
+        });
+
+        const activeDot = state.dots[state.index];
+        if (!activeDot) return;
+
+        void activeDot.offsetWidth;
+        activeDot.classList.add('is-running');
     }
 
     function markDirection(state, direction) {
@@ -95,12 +103,27 @@
         ui.className = 'lapaz-slider-ui';
         ui.setAttribute('aria-label', `Điều hướng ${state.label}`);
 
-        const status = document.createElement('div');
-        status.className = 'lapaz-slider-status';
-        status.setAttribute('aria-hidden', 'true');
+        const dotsWrap = document.createElement('div');
+        dotsWrap.className = 'lapaz-slider-dots';
+        dotsWrap.setAttribute('aria-label', `Trạng thái ${state.label}`);
 
-        const controls = document.createElement('div');
-        controls.className = 'lapaz-slider-controls';
+        state.dots = state.items.map((_, dotIndex) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'lapaz-slider-dot';
+            dot.setAttribute('aria-label', `${state.label} ${dotIndex + 1}`);
+            dot.addEventListener('click', () => {
+                if (dotIndex === state.index) return;
+
+                const direction = dotIndex > state.index ? 1 : -1;
+                state.index = dotIndex;
+                render(state, direction);
+                schedule(state);
+            });
+
+            dotsWrap.appendChild(dot);
+            return dot;
+        });
 
         const prev = document.createElement('button');
         prev.type = 'button';
@@ -114,11 +137,10 @@
         next.textContent = '›';
         next.setAttribute('aria-label', `${state.label} tiếp theo`);
 
-        controls.append(prev, next);
-        ui.append(status, controls);
-        state.track.insertAdjacentElement('beforebegin', ui);
+        ui.append(prev, dotsWrap, next);
+        state.track.insertAdjacentElement('afterend', ui);
         state.ui = ui;
-        state.status = status;
+        state.dotsWrap = dotsWrap;
 
         prev.addEventListener('click', () => move(state, -1));
         next.addEventListener('click', () => move(state, 1));
@@ -161,7 +183,7 @@
         state.track.removeAttribute('data-lapaz-revolver');
         state.track.classList.remove('is-revolver-next', 'is-revolver-prev');
         state.items.forEach(clearItem);
-        state.status?.classList.remove('is-running');
+        state.dots?.forEach((dot) => dot.classList.remove('is-active', 'is-running'));
     }
 
     ready(() => {
@@ -170,7 +192,7 @@
             const track = section?.querySelector(config.trackSelector);
             const items = track ? [...track.querySelectorAll(config.itemSelector)] : [];
             if (!section || !track || !items.length) return null;
-            return { ...config, section, track, items, enabled: false, index: 0, autoTimer: null, directionTimer: null, ui: null, status: null, forceEnter: true };
+            return { ...config, section, track, items, enabled: false, index: 0, autoTimer: null, directionTimer: null, ui: null, dotsWrap: null, dots: [], forceEnter: true };
         }).filter(Boolean);
 
         function refresh() {

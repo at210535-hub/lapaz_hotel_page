@@ -1,5 +1,5 @@
-/* Rooms mobile slider — smooth fade/slide version.
-   Đặt sau rooms.css và responsive.css. Desktop giữ nguyên. */
+/* Rooms mobile slider — polished stable version.
+   Mobile only. Desktop rooms grid stays unchanged. */
 
 @media (max-width: 960px) {
     .rooms {
@@ -31,10 +31,10 @@
         transform: translate3d(18px, 10px, 0) scale(.985);
         filter: blur(2px);
         transition:
-            opacity .58s cubic-bezier(.22, 1, .36, 1),
-            visibility .58s,
-            transform .68s cubic-bezier(.16, 1, .3, 1),
-            filter .58s cubic-bezier(.22, 1, .36, 1);
+            opacity .62s var(--lapaz-ease-smooth, cubic-bezier(.22, 1, .36, 1)),
+            visibility .62s,
+            transform .72s var(--lapaz-ease-soft, cubic-bezier(.16, 1, .3, 1)),
+            filter .62s var(--lapaz-ease-smooth, cubic-bezier(.22, 1, .36, 1));
         will-change: transform, opacity, filter;
     }
 
@@ -51,14 +51,6 @@
         transform: translate3d(-18px, 10px, 0) scale(.985);
     }
 
-    .rooms-grid--2.rooms-mobile-slider.is-room-prev .room-card.is-room-active {
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-
-    .rooms-grid--2.rooms-mobile-slider .room-card:hover {
-        transform: translate3d(0, 0, 0) scale(1) !important;
-    }
-
     .rooms-grid--2.rooms-mobile-slider .room-card.is-room-leaving {
         opacity: 0;
         visibility: visible;
@@ -69,6 +61,10 @@
 
     .rooms-grid--2.rooms-mobile-slider.is-room-prev .room-card.is-room-leaving {
         transform: translate3d(18px, -4px, 0) scale(.985);
+    }
+
+    .rooms-grid--2.rooms-mobile-slider .room-card:hover {
+        transform: translate3d(0, 0, 0) scale(1) !important;
     }
 
     .rooms-grid--2.rooms-mobile-slider .room-img-wrap {
@@ -142,7 +138,7 @@
         overflow: hidden;
         cursor: pointer;
         transition:
-            width .28s cubic-bezier(.22, 1, .36, 1),
+            width .28s var(--lapaz-ease-smooth, cubic-bezier(.22, 1, .36, 1)),
             background .28s ease,
             transform .28s ease;
     }
@@ -164,12 +160,7 @@
     }
 
     .rooms-slider-dot.is-active::before {
-        animation: roomsDotProgress 5s linear forwards;
-    }
-
-    @keyframes roomsDotProgress {
-        from { transform: scaleX(0); }
-        to { transform: scaleX(1); }
+        animation: lapazProgressFill var(--lapaz-slide-duration, 5s) linear forwards;
     }
 }
 
@@ -201,7 +192,7 @@
     }
 
     .rooms-slider-dot.is-active::before {
-        animation: none;
+        animation: none !important;
         transform: scaleX(1);
     }
 }

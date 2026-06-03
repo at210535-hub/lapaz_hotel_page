@@ -1,16 +1,12 @@
-// Rooms mobile slider — smooth fade/slide version.
-// Đặt sau main.js. Desktop không bị ảnh hưởng.
+// Rooms mobile slider: smooth, stable, no forced height.
 (function initRoomsMobileSlider() {
     const BREAKPOINT = 960;
     const INTERVAL = 5000;
-    const LEAVE_MS = 680;
+    const LEAVE_MS = 720;
 
     function ready(fn) {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', fn);
-        } else {
-            fn();
-        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+        else fn();
     }
 
     ready(() => {
@@ -28,9 +24,7 @@
         let dots = [];
         let direction = 1;
 
-        function isMobile() {
-            return window.innerWidth <= BREAKPOINT;
-        }
+        const isMobile = () => window.innerWidth <= BREAKPOINT;
 
         function buildUI() {
             if (ui) return;
@@ -56,28 +50,17 @@
             track.insertAdjacentElement('afterend', ui);
         }
 
-        function restartDot(dot) {
+        function restartProgress(dot) {
+            if (!dot) return;
             dot.classList.remove('is-active');
             void dot.offsetWidth;
             dot.classList.add('is-active');
-        }
-
-        function setTrackHeight() {
-            const active = cards[index];
-            if (!active || !enabled) return;
-
-            const height = active.offsetHeight;
-            if (height > 0) {
-                track.style.height = `${height}px`;
-            }
         }
 
         function render() {
             track.classList.toggle('is-room-prev', direction < 0);
 
             cards.forEach((card, cardIndex) => {
-                card.classList.remove('is-room-leaving');
-
                 const isActive = cardIndex === index;
                 const wasPrevious = cardIndex === previousIndex && previousIndex !== index;
 
@@ -85,10 +68,12 @@
 
                 if (wasPrevious) {
                     card.classList.add('is-room-leaving');
-                    window.clearTimeout(card.__roomLeaveTimer);
-                    card.__roomLeaveTimer = window.setTimeout(() => {
+                    clearTimeout(card.__roomLeaveTimer);
+                    card.__roomLeaveTimer = setTimeout(() => {
                         card.classList.remove('is-room-leaving');
                     }, LEAVE_MS);
+                } else if (!isActive) {
+                    card.classList.remove('is-room-leaving');
                 }
             });
 
@@ -96,16 +81,14 @@
                 dot.classList.toggle('is-active', dotIndex === index);
             });
 
-            if (dots[index]) restartDot(dots[index]);
-
-            requestAnimationFrame(setTrackHeight);
+            restartProgress(dots[index]);
         }
 
         function schedule() {
-            window.clearTimeout(timer);
-            if (!enabled) return;
+            clearTimeout(timer);
+            if (!enabled || document.hidden) return;
 
-            timer = window.setTimeout(() => {
+            timer = setTimeout(() => {
                 direction = 1;
                 goTo((index + 1) % cards.length);
             }, INTERVAL);
@@ -138,9 +121,8 @@
             if (!enabled) return;
 
             enabled = false;
-            window.clearTimeout(timer);
+            clearTimeout(timer);
             track.classList.remove('rooms-mobile-slider', 'is-room-prev');
-            track.style.height = '';
 
             cards.forEach((card) => {
                 card.classList.remove('is-room-active', 'is-room-leaving');
@@ -181,12 +163,14 @@
             }
         }, { passive: true });
 
-        refresh();
+        document.addEventListener('visibilitychange', schedule);
 
         let resizeTimer = null;
         window.addEventListener('resize', () => {
-            window.clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(refresh, 120);
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(refresh, 120);
         });
+
+        refresh();
     });
 })();

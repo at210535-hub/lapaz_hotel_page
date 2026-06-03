@@ -1,0 +1,344 @@
+/* La Paz unified progress — Style 1: minimal pill
+   Dùng để đồng bộ progress cho:
+   - Hero slideshow
+   - Rooms mobile slider
+   - Attractions / Nearby revolver slider
+
+   Đặt SAU các file:
+   main.css
+   lapaz-revolver-slider.css
+   rooms-mobile-slider.css
+   lapaz-runtime-polish.css
+*/
+
+:root {
+    --lapaz-slide-duration: 5s;
+    --lapaz-progress-height: 3px;
+    --lapaz-progress-idle-width: 18px;
+    --lapaz-progress-active-width: 54px;
+    --lapaz-progress-gap: .5rem;
+    --lapaz-progress-bg: rgba(240, 232, 200, .18);
+    --lapaz-progress-active-bg: rgba(240, 232, 200, .12);
+    --lapaz-progress-fill: linear-gradient(90deg, rgba(232, 184, 0, .45), var(--moss));
+    --lapaz-progress-glow: 0 0 8px rgba(232, 184, 0, .38);
+    --lapaz-progress-radius: 999px;
+}
+
+@keyframes lapazUnifiedProgress {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* HERO + ROOMS: pill dots */
+.hero-dots,
+.rooms-slider-ui {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+    gap: var(--lapaz-progress-gap) !important;
+}
+
+.hero-dot,
+.rooms-slider-dot {
+    position: relative !important;
+    appearance: none;
+    border: 0 !important;
+    width: var(--lapaz-progress-idle-width) !important;
+    min-width: var(--lapaz-progress-idle-width) !important;
+    height: var(--lapaz-progress-height) !important;
+    padding: 0 !important;
+    border-radius: var(--lapaz-progress-radius) !important;
+    background: var(--lapaz-progress-bg) !important;
+    overflow: hidden !important;
+    cursor: pointer;
+    transform: translateY(0);
+    transition:
+        width .34s cubic-bezier(.22, 1, .36, 1),
+        background .34s ease,
+        transform .34s ease,
+        opacity .34s ease !important;
+}
+
+.hero-dot::after,
+.rooms-slider-dot::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--lapaz-progress-fill);
+    box-shadow: var(--lapaz-progress-glow);
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.hero-dot.active,
+.rooms-slider-dot.is-active {
+    width: var(--lapaz-progress-active-width) !important;
+    min-width: var(--lapaz-progress-active-width) !important;
+    background: var(--lapaz-progress-active-bg) !important;
+    transform: translateY(-1px);
+}
+
+/* Hero progress chỉ chạy khi JS thêm .running */
+.hero-dot.active.running::after {
+    animation: lapazUnifiedProgress var(--lapaz-slide-duration) linear forwards !important;
+}
+
+/* Tránh hero active bị fill nếu .running chưa được bật */
+.hero-dot.active:not(.running)::after {
+    animation: none !important;
+    transform: scaleX(0);
+}
+
+/* Rooms active dot luôn chạy progress */
+.rooms-slider-dot.is-active::before {
+    animation: lapazUnifiedProgress var(--lapaz-slide-duration) linear forwards !important;
+}
+
+/* ATTRACTIONS / NEARBY: đổi thanh status thành cùng ngôn ngữ pill */
+.lapaz-slider-ui {
+    align-items: center;
+    gap: .75rem;
+}
+
+.lapaz-slider-status {
+    flex: 0 0 clamp(112px, 18vw, 170px) !important;
+    width: clamp(112px, 18vw, 170px) !important;
+    height: var(--lapaz-progress-height) !important;
+    border-radius: var(--lapaz-progress-radius) !important;
+    background: var(--lapaz-progress-active-bg) !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.lapaz-slider-status::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--lapaz-progress-fill) !important;
+    box-shadow: var(--lapaz-progress-glow);
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.lapaz-slider-status.is-running::before {
+    animation: lapazUnifiedProgress var(--lapaz-slide-duration) linear forwards !important;
+}
+
+/* Controls đi kèm attraction/nearby */
+.lapaz-slider-controls {
+    gap: .42rem;
+}
+
+.lapaz-slider-btn {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(232, 184, 0, .28) !important;
+    background: rgba(240, 232, 200, .045) !important;
+    color: var(--moss) !important;
+    transition:
+        background .24s cubic-bezier(.22, 1, .36, 1),
+        color .24s ease,
+        transform .24s cubic-bezier(.22, 1, .36, 1),
+        border-color .24s ease !important;
+}
+
+.lapaz-slider-btn:hover {
+    background: var(--moss) !important;
+    color: #0F2A2A !important;
+    border-color: var(--moss) !important;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 960px) {
+    :root {
+        --lapaz-progress-height: 3px;
+        --lapaz-progress-idle-width: 16px;
+        --lapaz-progress-active-width: 46px;
+        --lapaz-progress-gap: .42rem;
+    }
+
+    .lapaz-slider-status {
+        flex-basis: clamp(92px, 30vw, 132px) !important;
+        width: clamp(92px, 30vw, 132px) !important;
+    }
+
+    .lapaz-slider-btn {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-dot.active.running::after,
+    .rooms-slider-dot.is-active::before,
+    .lapaz-slider-status.is-running::before {
+        animation: none !important;
+        transform: scaleX(1);
+    }
+}
+
+
+/* Attraction/Nearby progress below cards: prev left, dots center, next right */
+.lapaz-slider-ui {
+    width: 100%;
+    margin: 1rem auto 0 !important;
+    display: grid !important;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    justify-content: stretch !important;
+    gap: .75rem;
+}
+
+.lapaz-slider-dots {
+    grid-column: 2;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: var(--lapaz-progress-gap) !important;
+    min-width: 0;
+}
+
+.lapaz-slider-ui > .lapaz-slider-btn:first-child {
+    grid-column: 1;
+    justify-self: start;
+}
+
+.lapaz-slider-ui > .lapaz-slider-btn:last-child {
+    grid-column: 3;
+    justify-self: end;
+}
+
+.lapaz-slider-dot {
+    position: relative !important;
+    appearance: none;
+    border: 0 !important;
+    width: var(--lapaz-progress-idle-width) !important;
+    min-width: var(--lapaz-progress-idle-width) !important;
+    height: var(--lapaz-progress-height) !important;
+    padding: 0 !important;
+    border-radius: var(--lapaz-progress-radius) !important;
+    background: var(--lapaz-progress-bg) !important;
+    overflow: hidden !important;
+    cursor: pointer;
+    transform: translateY(0);
+    transition:
+        width .34s cubic-bezier(.22, 1, .36, 1),
+        background .34s ease,
+        transform .34s ease,
+        opacity .34s ease !important;
+}
+
+.lapaz-slider-dot::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--lapaz-progress-fill);
+    box-shadow: var(--lapaz-progress-glow);
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.lapaz-slider-dot.is-active {
+    width: var(--lapaz-progress-active-width) !important;
+    min-width: var(--lapaz-progress-active-width) !important;
+    background: var(--lapaz-progress-active-bg) !important;
+    transform: translateY(-1px);
+}
+
+.lapaz-slider-dot.is-active.is-running::before {
+    animation: lapazUnifiedProgress var(--lapaz-slide-duration) linear forwards !important;
+}
+
+/* Hide old single status bar if old markup is cached */
+.lapaz-slider-status,
+.lapaz-slider-controls {
+    display: none !important;
+}
+
+.lapaz-slider-ui > .lapaz-slider-btn {
+    display: inline-flex !important;
+    width: 34px !important;
+    height: 34px !important;
+}
+
+@media (max-width: 960px) {
+    .lapaz-slider-ui {
+        grid-template-columns: 36px 1fr 36px;
+        margin-top: .85rem !important;
+        gap: .55rem;
+    }
+
+    .lapaz-slider-ui > .lapaz-slider-btn {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lapaz-slider-dot.is-active.is-running::before {
+        animation: none !important;
+        transform: scaleX(1);
+    }
+}
+
+/* Attraction/Nearby: nút trước/sau nằm sát hai bên progress */
+.lapaz-slider-ui {
+    width: 100%;
+    margin: 1rem auto 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: .45rem !important;
+}
+
+.lapaz-slider-dots {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: var(--lapaz-progress-gap) !important;
+    width: auto !important;
+    min-width: 0;
+    flex: 0 0 auto !important;
+    order: 2;
+}
+
+.lapaz-slider-ui > .lapaz-slider-btn:first-child {
+    order: 1;
+    flex: 0 0 auto;
+    margin-right: .08rem !important;
+}
+
+.lapaz-slider-ui > .lapaz-slider-btn:last-child {
+    order: 3;
+    flex: 0 0 auto;
+    margin-left: .08rem !important;
+}
+
+.lapaz-slider-ui > .lapaz-slider-btn {
+    display: inline-flex !important;
+    width: 34px !important;
+    height: 34px !important;
+}
+
+@media (max-width: 960px) {
+    .lapaz-slider-ui {
+        margin-top: .85rem !important;
+        gap: .35rem !important;
+    }
+
+    .lapaz-slider-ui > .lapaz-slider-btn {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}

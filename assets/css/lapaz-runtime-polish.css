@@ -1,0 +1,119 @@
+/* La Paz runtime polish: shared motion, scroll safety, map fallback UI. */
+
+:root {
+    --lapaz-slide-duration: 5s;
+    --lapaz-ease-soft: cubic-bezier(.16, 1, .3, 1);
+    --lapaz-ease-smooth: cubic-bezier(.22, 1, .36, 1);
+    --lapaz-ease-standard: cubic-bezier(.4, 0, .2, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+section[id] {
+    scroll-margin-top: 92px;
+}
+
+@media (max-width: 960px) {
+    html {
+        scroll-padding-top: 76px;
+    }
+
+    section[id] {
+        scroll-margin-top: 76px;
+    }
+
+    @supports (height: 100dvh) {
+        .hero {
+            height: 100dvh;
+        }
+    }
+}
+
+.hero-slide {
+    transition:
+        opacity 1.15s var(--lapaz-ease-standard),
+        transform 7.5s var(--lapaz-ease-smooth) !important;
+}
+
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale,
+.room-card,
+.ac,
+.nb-card {
+    transition-timing-function: var(--lapaz-ease-soft) !important;
+}
+
+.map-box {
+    position: relative;
+}
+
+.map-box.is-map-loading::after {
+    content: "Đang tải bản đồ…";
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    padding: .55rem .85rem;
+    border: 1px solid rgba(232, 184, 0, .22);
+    border-radius: 999px;
+    background: rgba(15, 42, 42, .86);
+    color: var(--ink-2);
+    font-size: .68rem;
+    letter-spacing: .08em;
+    pointer-events: none;
+}
+
+.map-box.is-map-loaded::after {
+    display: none;
+}
+
+.map-reload-btn {
+    display: none;
+    width: fit-content;
+    margin: .75rem auto 0;
+    border: 1px solid rgba(232, 184, 0, .28);
+    border-radius: 999px;
+    background: rgba(240, 232, 200, .045);
+    color: var(--moss);
+    padding: .52rem .9rem;
+    font-size: .58rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.map-box.is-map-failed .map-reload-btn {
+    display: inline-flex;
+}
+
+@media (max-width: 960px) {
+    .map-box.is-map-loading::after {
+        top: 35%;
+        font-size: .58rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
