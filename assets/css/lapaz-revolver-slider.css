@@ -599,3 +599,376 @@
         flex-basis: 180px !important;
     }
 }
+
+/* ── La Paz morph polish: focus gap + softer transition ──
+   Không đổi cấu trúc HTML/JS.
+   Mục tiêu:
+   - Desktop: 3 thẻ chính có khoảng cách thở, không dính vào nhau.
+   - Focus card rõ nét.
+   - Chuyển cảnh mềm hơn theo kiểu morph: fade + slide + scale + radius nhẹ.
+*/
+
+:root {
+    --lapaz-revolver-focus-gap: clamp(10px, 1vw, 18px);
+    --lapaz-revolver-ease-morph: cubic-bezier(.18, .86, .22, 1);
+    --lapaz-revolver-ease-fade: cubic-bezier(.22, 1, .36, 1);
+    --lapaz-revolver-dur-morph: .82s;
+    --lapaz-revolver-dur-fade: .62s;
+}
+
+/* Desktop: tạo gap thật giữa 3 thẻ chính mà không phá bố cục 2 thẻ rìa */
+@media (min-width: 961px) {
+    .attr-grid[data-lapaz-revolver="active"] {
+        --lapaz-desktop-focus-w: calc((90% - (var(--lapaz-revolver-focus-gap) * 3)) / 3);
+    }
+
+    .attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus {
+        margin-left: calc(var(--lapaz-revolver-focus-gap) / 2) !important;
+        margin-right: calc(var(--lapaz-revolver-focus-gap) / 2) !important;
+    }
+}
+
+/* Transition chung mềm hơn, tránh cảm giác đổi trạng thái bị cứng */
+.attr-grid[data-lapaz-revolver="active"] .ac,
+.nearby-grid[data-lapaz-revolver="active"] .nb-card {
+    transition:
+        opacity var(--lapaz-revolver-dur-fade) var(--lapaz-revolver-ease-fade),
+        filter var(--lapaz-revolver-dur-fade) var(--lapaz-revolver-ease-fade),
+        transform var(--lapaz-revolver-dur-morph) var(--lapaz-revolver-ease-morph),
+        border-radius var(--lapaz-revolver-dur-morph) var(--lapaz-revolver-ease-morph),
+        box-shadow .46s var(--lapaz-revolver-ease-fade),
+        background .34s ease,
+        border-color .34s ease !important;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+/* Focus phải sắc nét tuyệt đối */
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: translateY(-2px) scale(1) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus img,
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus .ac-img {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+}
+
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus .ac-img::before,
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus .ac-img::after {
+    opacity: 0 !important;
+}
+
+/* Edge vẫn mờ nhưng dịu hơn, không làm bẩn thị giác của thẻ chính */
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-edge {
+    opacity: .32 !important;
+    filter: blur(2.1px) saturate(.78) brightness(.88) !important;
+    -webkit-filter: blur(2.1px) saturate(.78) brightness(.88) !important;
+    transform: translateY(7px) scale(.965) !important;
+}
+
+/* Nearby đồng bộ cảm giác nét/mượt */
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-focus {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: translateY(-2px) scale(1) !important;
+}
+
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-edge {
+    opacity: .32 !important;
+    filter: blur(2.1px) saturate(.78) brightness(.88) !important;
+    -webkit-filter: blur(2.1px) saturate(.78) brightness(.88) !important;
+    transform: translateY(7px) scale(.965) !important;
+}
+
+/* Morph animation: cảm giác tan/chuyển mềm hơn thay vì giật trạng thái */
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-enter,
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-enter {
+    animation: lapazMorphFocusIn .82s var(--lapaz-revolver-ease-morph) both !important;
+}
+
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-edge.is-revolver-enter,
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-edge.is-revolver-enter {
+    animation: lapazMorphEdgeIn .86s var(--lapaz-revolver-ease-morph) both !important;
+}
+
+.attr-grid[data-lapaz-revolver="active"].is-revolver-next .ac.is-revolver-focus,
+.nearby-grid[data-lapaz-revolver="active"].is-revolver-next .nb-card.is-revolver-focus {
+    animation: lapazMorphNextFocus .82s var(--lapaz-revolver-ease-morph) both !important;
+}
+
+.attr-grid[data-lapaz-revolver="active"].is-revolver-prev .ac.is-revolver-focus,
+.nearby-grid[data-lapaz-revolver="active"].is-revolver-prev .nb-card.is-revolver-focus {
+    animation: lapazMorphPrevFocus .82s var(--lapaz-revolver-ease-morph) both !important;
+}
+
+@keyframes lapazMorphFocusIn {
+    0% {
+        opacity: .22;
+        filter: blur(3px) saturate(.76);
+        transform: translateY(14px) scale(.972);
+        border-radius: 28px;
+    }
+
+    58% {
+        opacity: 1;
+        filter: blur(.35px) saturate(1);
+        transform: translateY(-1px) scale(1.003);
+        border-radius: 22px;
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+        transform: translateY(-2px) scale(1);
+    }
+}
+
+@keyframes lapazMorphEdgeIn {
+    0% {
+        opacity: .04;
+        filter: blur(5px) saturate(.58) brightness(.82);
+        transform: translateY(18px) scale(.935);
+        border-radius: 30px;
+    }
+
+    100% {
+        opacity: .32;
+        filter: blur(2.1px) saturate(.78) brightness(.88);
+        transform: translateY(7px) scale(.965);
+    }
+}
+
+@keyframes lapazMorphNextFocus {
+    0% {
+        opacity: .64;
+        filter: blur(2.2px) saturate(.86);
+        transform: translateX(18px) translateY(6px) scale(.978);
+        border-radius: 28px;
+    }
+
+    58% {
+        opacity: 1;
+        filter: blur(.35px) saturate(1);
+        transform: translateX(-1px) translateY(-2px) scale(1.004);
+        border-radius: 22px;
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+        transform: translateX(0) translateY(-2px) scale(1);
+    }
+}
+
+@keyframes lapazMorphPrevFocus {
+    0% {
+        opacity: .64;
+        filter: blur(2.2px) saturate(.86);
+        transform: translateX(-18px) translateY(6px) scale(.978);
+        border-radius: 28px;
+    }
+
+    58% {
+        opacity: 1;
+        filter: blur(.35px) saturate(1);
+        transform: translateX(1px) translateY(-2px) scale(1.004);
+        border-radius: 22px;
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+        transform: translateX(0) translateY(-2px) scale(1);
+    }
+}
+
+/* Hover focus nhẹ để không phá cảm giác morph */
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus:hover {
+    transform: translateY(-4px) scale(1.002) !important;
+}
+
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-focus:hover {
+    transform: translateY(-3px) scale(1.002) !important;
+}
+
+/* Mobile giữ layout hiện tại, chỉ làm animation/blur dịu hơn */
+@media (max-width: 960px) {
+    .attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus,
+    .nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-focus {
+        filter: none !important;
+        -webkit-filter: none !important;
+        transform: translateY(-2px) scale(1) !important;
+    }
+
+    .attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-edge,
+    .nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-edge {
+        opacity: .30 !important;
+        filter: blur(1.9px) saturate(.76) brightness(.86) !important;
+        -webkit-filter: blur(1.9px) saturate(.76) brightness(.86) !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .attr-grid[data-lapaz-revolver="active"] .ac,
+    .nearby-grid[data-lapaz-revolver="active"] .nb-card {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus,
+    .nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-focus {
+        filter: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ── Fix morph: giữ góc bo ổn định, chuyển cảnh mềm hơn ── */
+
+:root {
+    --lapaz-revolver-radius: 22px;
+    --lapaz-revolver-ease-morph: cubic-bezier(.18, .86, .22, 1);
+    --lapaz-revolver-dur-morph: .82s;
+}
+
+/* Giữ border-radius cố định, không morph góc bo nữa */
+.attr-grid[data-lapaz-revolver="active"] .ac,
+.nearby-grid[data-lapaz-revolver="active"] .nb-card {
+    border-radius: var(--lapaz-revolver-radius) !important;
+    transition:
+        opacity .62s cubic-bezier(.22, 1, .36, 1),
+        filter .62s cubic-bezier(.22, 1, .36, 1),
+        transform var(--lapaz-revolver-dur-morph) var(--lapaz-revolver-ease-morph),
+        box-shadow .42s cubic-bezier(.22, 1, .36, 1),
+        background .32s ease,
+        border-color .32s ease !important;
+}
+
+/* Thẻ focus luôn nét */
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus,
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-focus {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: translateY(-2px) scale(1) !important;
+}
+
+/* Ảnh trong thẻ chính không bị mờ */
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus img,
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-focus .ac-img {
+    opacity: 1 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+}
+
+/* Edge vẫn mờ nhẹ */
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-edge,
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-edge {
+    opacity: .32 !important;
+    filter: blur(2.1px) saturate(.78) brightness(.88) !important;
+    -webkit-filter: blur(2.1px) saturate(.78) brightness(.88) !important;
+    transform: translateY(7px) scale(.965) !important;
+}
+
+/* Ghi đè animation morph cũ: không còn animate border-radius */
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-enter,
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-enter {
+    animation: lapazMorphFocusStable .82s var(--lapaz-revolver-ease-morph) both !important;
+}
+
+.attr-grid[data-lapaz-revolver="active"] .ac.is-revolver-edge.is-revolver-enter,
+.nearby-grid[data-lapaz-revolver="active"] .nb-card.is-revolver-edge.is-revolver-enter {
+    animation: lapazMorphEdgeStable .86s var(--lapaz-revolver-ease-morph) both !important;
+}
+
+.attr-grid[data-lapaz-revolver="active"].is-revolver-next .ac.is-revolver-focus,
+.nearby-grid[data-lapaz-revolver="active"].is-revolver-next .nb-card.is-revolver-focus {
+    animation: lapazMorphNextStable .82s var(--lapaz-revolver-ease-morph) both !important;
+}
+
+.attr-grid[data-lapaz-revolver="active"].is-revolver-prev .ac.is-revolver-focus,
+.nearby-grid[data-lapaz-revolver="active"].is-revolver-prev .nb-card.is-revolver-focus {
+    animation: lapazMorphPrevStable .82s var(--lapaz-revolver-ease-morph) both !important;
+}
+
+@keyframes lapazMorphFocusStable {
+    0% {
+        opacity: .24;
+        filter: blur(2.4px) saturate(.78);
+        transform: translateY(12px) scale(.978);
+    }
+
+    58% {
+        opacity: 1;
+        filter: blur(.25px) saturate(1);
+        transform: translateY(-1px) scale(1.002);
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+        transform: translateY(-2px) scale(1);
+    }
+}
+
+@keyframes lapazMorphEdgeStable {
+    0% {
+        opacity: .08;
+        filter: blur(4px) saturate(.62) brightness(.84);
+        transform: translateY(14px) scale(.945);
+    }
+
+    100% {
+        opacity: .32;
+        filter: blur(2.1px) saturate(.78) brightness(.88);
+        transform: translateY(7px) scale(.965);
+    }
+}
+
+@keyframes lapazMorphNextStable {
+    0% {
+        opacity: .66;
+        filter: blur(1.8px) saturate(.88);
+        transform: translateX(16px) translateY(5px) scale(.982);
+    }
+
+    58% {
+        opacity: 1;
+        filter: blur(.25px) saturate(1);
+        transform: translateX(-1px) translateY(-2px) scale(1.002);
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+        transform: translateX(0) translateY(-2px) scale(1);
+    }
+}
+
+@keyframes lapazMorphPrevStable {
+    0% {
+        opacity: .66;
+        filter: blur(1.8px) saturate(.88);
+        transform: translateX(-16px) translateY(5px) scale(.982);
+    }
+
+    58% {
+        opacity: 1;
+        filter: blur(.25px) saturate(1);
+        transform: translateX(1px) translateY(-2px) scale(1.002);
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+        transform: translateX(0) translateY(-2px) scale(1);
+    }
+}
