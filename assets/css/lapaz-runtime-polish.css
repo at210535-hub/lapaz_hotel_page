@@ -1,4 +1,4 @@
-/* La Paz runtime polish: shared motion, scroll safety, map fallback UI. */
+/* La Paz runtime polish: stable nav scroll + map fallback UI. */
 
 :root {
     --lapaz-slide-duration: 5s;
@@ -9,7 +9,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 92px;
+    scroll-padding-top: 0;
 }
 
 body {
@@ -17,18 +17,10 @@ body {
 }
 
 section[id] {
-    scroll-margin-top: 92px;
+    scroll-margin-top: 0;
 }
 
 @media (max-width: 960px) {
-    html {
-        scroll-padding-top: 76px;
-    }
-
-    section[id] {
-        scroll-margin-top: 76px;
-    }
-
     @supports (height: 100dvh) {
         .hero {
             height: 100dvh;
@@ -61,12 +53,12 @@ section[id] {
     position: absolute;
     left: 50%;
     top: 40%;
-    z-index: 3;
+    z-index: 4;
     transform: translate(-50%, -50%);
     padding: .55rem .85rem;
     border: 1px solid rgba(232, 184, 0, .22);
     border-radius: 999px;
-    background: rgba(15, 42, 42, .86);
+    background: rgba(15, 42, 42, .88);
     color: var(--ink-2);
     font-size: .68rem;
     letter-spacing: .08em;
@@ -96,10 +88,34 @@ section[id] {
     display: inline-flex;
 }
 
+.map-fallback-link {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(232, 184, 0, .34);
+    border-radius: 999px;
+    background: rgba(15, 42, 42, .92);
+    color: var(--moss);
+    padding: .62rem 1rem;
+    font-size: .62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.map-box.is-map-failed .map-fallback-link {
+    display: inline-flex;
+}
+
 @media (max-width: 960px) {
-    .map-box.is-map-loading::after {
+    .map-box.is-map-loading::after,
+    .map-fallback-link {
         top: 35%;
-        font-size: .58rem;
+        font-size: .56rem;
     }
 }
 
