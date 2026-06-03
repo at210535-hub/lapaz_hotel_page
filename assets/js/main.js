@@ -17,7 +17,7 @@
         'components/scroll-progress.js',
         'layout/active-nav.js',
         'layout/divider-ornaments.js',
-        'components/floating-booking.js',
+        // 'components/floating-booking.js',
         'components/mobile-bottom-bar.js',
         'sections/hero-slide-progress.js',
         'components/motion-polish.js',
