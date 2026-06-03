@@ -1,31 +1,69 @@
-// La Paz runtime polish: mobile-safe nav scroll + map recovery.
-// Mục tiêu: đóng mobile menu trước, rồi scroll tới divider. Không re-align nhiều lần gây giật.
+// La Paz runtime polish: one source of truth for anchor scrolling + map recovery.
+// Keep this file loaded AFTER main.js, lapaz-revolver-slider.js and rooms-mobile-slider.js.
 (function initLaPazRuntimePolish() {
+    'use strict';
+
     const SLIDE_MS = 5000;
     const MOBILE_BP = 960;
+    const MENU_CLOSE_DELAY = 190;
+    const SCROLL_CORRECT_DELAY = 760;
+    const SCROLL_CORRECT_DELAY_2 = 1150;
+    const CORRECTION_THRESHOLD = 12;
 
     function ready(fn) {
-        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
-        else fn();
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fn, { once: true });
+        } else {
+            fn();
+        }
     }
 
     ready(() => {
         document.documentElement.style.setProperty('--lapaz-slide-duration', `${SLIDE_MS / 1000}s`);
-        initStableAnchorScroll();
-        initSaferGoogleMapRecovery();
+        initAnchorScroll();
+        initMapRecovery();
     });
 
     function isMobile() {
         return window.innerWidth <= MOBILE_BP;
     }
 
-    function getNavHeight() {
-        const nav = document.querySelector('nav');
+    function prefersReducedMotion() {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function getNav() {
+        return document.getElementById('nav') || document.querySelector('nav');
+    }
+
+    function measureScrolledNavHeight() {
+        const nav = getNav();
         if (!nav) return 0;
 
-        const style = window.getComputedStyle(nav);
-        const fixedLike = style.position === 'fixed' || style.position === 'sticky';
-        return fixedLike ? Math.ceil(nav.getBoundingClientRect().height) : 0;
+        const currentStyle = window.getComputedStyle(nav);
+        const fixedLike = currentStyle.position === 'fixed' || currentStyle.position === 'sticky';
+        if (!fixedLike) return 0;
+
+        // If already scrolled, actual height is the right value.
+        if (window.scrollY > 40 || nav.classList.contains('scrolled')) {
+            return Math.ceil(nav.getBoundingClientRect().height);
+        }
+
+        // At page top the nav is taller. For any section jump, final nav will be scrolled.
+        // Measure a hidden clone with .scrolled to avoid landing too low on first click.
+        const clone = nav.cloneNode(true);
+        clone.classList.add('scrolled');
+        clone.style.position = 'fixed';
+        clone.style.visibility = 'hidden';
+        clone.style.pointerEvents = 'none';
+        clone.style.left = '0';
+        clone.style.right = '0';
+        clone.style.top = '0';
+        clone.style.transition = 'none';
+        document.body.appendChild(clone);
+        const h = Math.ceil(clone.getBoundingClientRect().height);
+        clone.remove();
+        return h || Math.ceil(nav.getBoundingClientRect().height);
     }
 
     function isSpacer(node) {
@@ -39,7 +77,7 @@
     }
 
     function getDividerBeforeSection(section) {
-        let node = section.previousElementSibling;
+        let node = section?.previousElementSibling || null;
 
         while (node) {
             if (node.classList?.contains('divider')) return node;
@@ -56,89 +94,94 @@
         try {
             return document.querySelector(decodeURIComponent(hash));
         } catch (error) {
-            return document.querySelector(hash);
+            try {
+                return document.querySelector(hash);
+            } catch (_) {
+                return null;
+            }
         }
     }
 
-    function closeMobileMenuNow() {
-        // Nếu file mobile-menu.js expose closeMenu thì ưu tiên dùng luôn.
+    function getAnchorForTarget(target) {
+        return getDividerBeforeSection(target) || target;
+    }
+
+    function computeTop(target) {
+        const anchor = getAnchorForTarget(target);
+        const navHeight = measureScrolledNavHeight();
+        const docTop = window.scrollY + anchor.getBoundingClientRect().top;
+        return Math.max(0, Math.round(docTop - navHeight));
+    }
+
+    function closeMobileMenu() {
         if (typeof window.closeMenu === 'function') {
-            try {
-                window.closeMenu();
-            } catch (error) {
-                // fallback bên dưới
-            }
+            try { window.closeMenu(); } catch (_) { /* fallback below */ }
         }
 
+        const nav = getNav();
         const menu = document.getElementById('mNav') || document.querySelector('.m-nav');
         const burger = document.querySelector('.burger');
 
-        if (menu) {
-            menu.classList.remove('open', 'active', 'show', 'is-open', 'on');
-            menu.setAttribute('aria-hidden', 'true');
-        }
-
-        if (burger) {
-            burger.classList.remove('open', 'active', 'is-open', 'on');
-        }
+        menu?.classList.remove('open', 'active', 'show', 'is-open', 'on');
+        burger?.classList.remove('open', 'active', 'is-open', 'on');
+        nav?.classList.remove('menu-open');
 
         document.body.classList.remove('menu-open', 'nav-open', 'm-nav-open', 'is-menu-open');
         document.documentElement.classList.remove('menu-open', 'nav-open', 'm-nav-open', 'is-menu-open');
     }
 
-    function computeTop(target) {
-        const divider = getDividerBeforeSection(target);
-        const anchor = divider || target;
-        const navHeight = getNavHeight();
+    function applyCafeJump(link) {
+        const cafeJump = link?.dataset?.cafeJump;
+        if (!cafeJump) return;
 
-        return Math.max(
-            0,
-            window.scrollY + anchor.getBoundingClientRect().top - navHeight
-        );
+        window.setTimeout(() => {
+            const tab = document.querySelector(`#cafe .cafe-menu-tab[data-cafe-tab="${cafeJump}"]`);
+            tab?.click();
+        }, 420);
     }
 
-    function scrollToTarget(target, behavior) {
+    function correctIfNeeded(target) {
         const top = computeTop(target);
-        window.scrollTo({
-            top,
-            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : behavior
-        });
+        if (Math.abs(window.scrollY - top) > CORRECTION_THRESHOLD) {
+            window.scrollTo({ top, behavior: 'auto' });
+        }
+    }
 
-        // Chỉ chỉnh lại 1 lần nhẹ nếu mobile browser đổi chiều cao viewport/nav sau khi bắt đầu scroll.
-        window.setTimeout(() => {
-            const correctedTop = computeTop(target);
-            if (Math.abs(window.scrollY - correctedTop) > 14) {
-                window.scrollTo({ top: correctedTop, behavior: 'auto' });
-            }
-        }, isMobile() ? 520 : 260);
+    function scrollToTarget(target, options = {}) {
+        const behavior = prefersReducedMotion() ? 'auto' : (options.behavior || 'smooth');
+        const top = computeTop(target);
+
+        window.scrollTo({ top, behavior });
+
+        // One or two light corrections after smooth scroll/layout settling.
+        window.setTimeout(() => correctIfNeeded(target), SCROLL_CORRECT_DELAY);
+        if (isMobile()) {
+            window.setTimeout(() => correctIfNeeded(target), SCROLL_CORRECT_DELAY_2);
+        }
     }
 
     function scrollToHash(hash, options = {}) {
         const target = getTargetFromHash(hash);
         if (!target) return false;
 
-        const delay = options.fromMobileMenu ? 170 : 0;
+        const delay = options.fromMobileMenu ? MENU_CLOSE_DELAY : 0;
 
         window.setTimeout(() => {
-            scrollToTarget(target, 'smooth');
+            scrollToTarget(target, { behavior: options.behavior || 'smooth' });
 
             if (options.updateHistory && window.location.hash !== hash) {
-                window.history.pushState(null, '', hash);
+                history.pushState(null, '', hash);
             }
 
-            if (options.cafeJump) {
-                window.setTimeout(() => {
-                    const tab = document.querySelector(`#cafe .cafe-menu-tab[data-cafe-tab="${options.cafeJump}"]`);
-                    if (tab) tab.click();
-                }, 420);
-            }
+            applyCafeJump(options.link);
         }, delay);
 
         return true;
     }
 
-    function initStableAnchorScroll() {
-        // Capture để chặn smooth-scroll/hash-scroll cũ, nhưng tự đóng menu trước khi chặn.
+    function initAnchorScroll() {
+        // Capture phase makes this handler win over old inline/default hash behavior.
+        // We do NOT stop propagation so inline closeMenu() still works.
         document.addEventListener('click', (event) => {
             const link = event.target.closest('a[href^="#"]');
             if (!link) return;
@@ -147,44 +190,45 @@
 
             if (!hash || hash === '#') {
                 event.preventDefault();
-                event.stopPropagation();
-                event.stopImmediatePropagation();
-
-                closeMobileMenuNow();
+                closeMobileMenu();
                 window.setTimeout(() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    window.history.pushState(null, '', window.location.pathname + window.location.search);
-                }, isMobile() ? 120 : 0);
+                    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+                    history.pushState(null, '', window.location.pathname + window.location.search);
+                }, link.closest('.m-nav') ? MENU_CLOSE_DELAY : 0);
                 return;
             }
 
             const target = getTargetFromHash(hash);
             if (!target) return;
 
-            const fromMobileMenu = Boolean(link.closest('.m-nav'));
-            const cafeJump = link.dataset.cafeJump;
-
             event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
 
-            if (fromMobileMenu) closeMobileMenuNow();
+            const fromMobileMenu = Boolean(link.closest('.m-nav'));
+            if (fromMobileMenu) closeMobileMenu();
 
             scrollToHash(hash, {
                 updateHistory: true,
                 fromMobileMenu,
-                cafeJump
+                link,
             });
         }, true);
 
+        // Direct hash entry/reload: wait for load and web fonts/images that affect layout.
         if (window.location.hash) {
-            window.setTimeout(() => {
-                scrollToHash(window.location.hash, { updateHistory: false });
-            }, 180);
+            window.addEventListener('load', () => {
+                window.setTimeout(() => {
+                    scrollToHash(window.location.hash, { updateHistory: false, behavior: 'auto' });
+                    const target = getTargetFromHash(window.location.hash);
+                    if (target) {
+                        window.setTimeout(() => correctIfNeeded(target), 450);
+                        window.setTimeout(() => correctIfNeeded(target), 950);
+                    }
+                }, 120);
+            }, { once: true });
         }
     }
 
-    function initSaferGoogleMapRecovery() {
+    function initMapRecovery() {
         document.querySelectorAll('iframe.map-iframe').forEach((iframe) => {
             const box = iframe.closest('.map-box');
             if (!box) return;
@@ -239,7 +283,7 @@
                     const url = new URL(src, window.location.href);
                     url.searchParams.set('lapaz_reload', String(Date.now()));
                     return url.toString();
-                } catch (error) {
+                } catch (_) {
                     return `${src}${src.includes('?') ? '&' : '?'}lapaz_reload=${Date.now()}`;
                 }
             }
@@ -257,18 +301,14 @@
                     box.classList.add('is-map-failed');
                     return;
                 }
-
                 reloadMap(false);
             }
 
             function reloadMap(force) {
                 attempts = force ? 0 : attempts + 1;
                 loaded = false;
-
                 box.classList.add('is-map-loading');
                 box.classList.remove('is-map-loaded', 'is-map-failed');
-
-                // Không xóa src ngay lập tức quá nhiều lần; mobile dễ bị nháy trắng.
                 iframe.src = cacheBust(originalSrc);
                 watch();
             }
@@ -276,11 +316,8 @@
             function startMap() {
                 if (started) return;
                 started = true;
-
                 box.classList.add('is-map-loading');
                 watch();
-
-                // Nếu iframe bị trình duyệt giữ ở trạng thái blank, reload nhẹ 1 lần khi gần viewport.
                 setTimeout(() => {
                     if (!loaded) reloadMap(false);
                 }, 1800);
@@ -293,7 +330,6 @@
                         observer.disconnect();
                     }
                 }, { rootMargin: '360px 0px' });
-
                 observer.observe(box);
             } else {
                 startMap();
