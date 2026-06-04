@@ -22,46 +22,85 @@
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="dns-prefetch" href="https://www.google.com">
 
-    <!--
-        NHÓM 1 — HERO (tải ngay, ưu tiên cao nhất)
-        imagesrcset + imagesizes giúp browser chọn đúng kích thước:
-        mobile (<960px) tải _sm.webp (~50KB), desktop tải full (~150KB).
-    -->
-    <link rel="preload" as="image" href="assets/images/hotel/2.webp"
-        imagesrcset="assets/images/hotel/2_sm.webp 480w, assets/images/hotel/2.webp 1280w" imagesizes="(max-width: 960px) 100vw, 50vw"
-        fetchpriority="high">
-    <link rel="preload" as="image" href="assets/images/hotel/1.webp"
-        imagesrcset="assets/images/hotel/1_sm.webp 480w, assets/images/hotel/1.webp 960w" imagesizes="(max-width: 960px) 50vw, 25vw"
-        fetchpriority="high">
-    <link rel="preload" as="image" href="assets/images/hotel/6.webp"
-        imagesrcset="assets/images/hotel/6_sm.webp 480w, assets/images/hotel/6.webp 960w" imagesizes="(max-width: 960px) 50vw, 25vw"
-        fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/gallery/hero_1.webp"
+        imagesrcset="assets/images/gallery/hero_1_sm.webp 480w, assets/images/gallery/hero_1.webp 1280w"
+        imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/gallery/hero_2.webp"
+        imagesrcset="assets/images/gallery/hero_2_sm.webp 480w, assets/images/gallery/hero_2.webp 1280w"
+        imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/gallery/hero_3.webp"
+        imagesrcset="assets/images/gallery/hero_3_sm.webp 480w, assets/images/gallery/hero_3.webp 1280w"
+        imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/gallery/hero_4.webp"
+        imagesrcset="assets/images/gallery/hero_4_sm.webp 480w, assets/images/gallery/hero_4.webp 1280w"
+        imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/gallery/hero_5.webp"
+        imagesrcset="assets/images/gallery/hero_5_sm.webp 480w, assets/images/gallery/hero_5.webp 1280w"
+        imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
 
-    <!--
-        NHÓM 2 — ABOUT + GALLERY (tải sớm, ưu tiên thấp hơn hero)
-        Chỉ preload ảnh full — browser tự chọn _sm nếu cần qua srcset trong <img>.
-    -->
-    <link rel="preload" as="image" href="assets/images/hotel/4.webp"
-        imagesrcset="assets/images/hotel/4_sm.webp 480w, assets/images/hotel/4.webp 800w" imagesizes="(max-width: 960px) 100vw, 35vw"
-        fetchpriority="low">
-    <link rel="preload" as="image" href="assets/images/hotel/3.webp"
-        imagesrcset="assets/images/hotel/3_sm.webp 480w, assets/images/hotel/3.webp 800w" imagesizes="(max-width: 960px) 50vw, 18vw"
-        fetchpriority="low">
-    <link rel="preload" as="image" href="assets/images/hotel/5.webp"
-        imagesrcset="assets/images/hotel/5_sm.webp 480w, assets/images/hotel/5.webp 800w" imagesizes="(max-width: 960px) 50vw, 18vw"
-        fetchpriority="low">
-    <link rel="preload" as="image" href="assets/images/hotel/11.webp"
-        imagesrcset="assets/images/hotel/11_sm.webp 480w, assets/images/hotel/11.webp 800w" imagesizes="(max-width: 960px) 50vw, 40vw"
-        fetchpriority="low">
-    <link rel="preload" as="image" href="assets/images/hotel/7.webp"
-        imagesrcset="assets/images/hotel/7_sm.webp 480w, assets/images/hotel/7.webp 800w" imagesizes="(max-width: 960px) 50vw, 25vw"
-        fetchpriority="low">
-    <link rel="preload" as="image" href="assets/images/hotel/8.webp"
-        imagesrcset="assets/images/hotel/8_sm.webp 480w, assets/images/hotel/8.webp 800w" imagesizes="(max-width: 960px) 50vw, 33vw"
-        fetchpriority="low">
-    <link rel="preload" as="image" href="assets/images/hotel/10.webp"
-        imagesrcset="assets/images/hotel/10_sm.webp 480w, assets/images/hotel/10.webp 800w" imagesizes="(max-width: 960px) 50vw, 42vw"
-        fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/gallery/lapaz_cafe.webp"
+        imagesrcset="assets/images/gallery/lapaz_cafe_sm.webp 480w, assets/images/gallery/lapaz_cafe.webp 800w"
+        imagesizes="(max-width: 960px) 100vw, 35vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/gallery/lapaz_cafe_bill_board.webp"
+        imagesrcset="assets/images/gallery/lapaz_cafe_bill_board_sm.webp 480w, assets/images/gallery/lapaz_cafe_bill_board.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 18vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/gallery/lapaz_parking_area.webp"
+        imagesrcset="assets/images/gallery/lapaz_parking_area_sm.webp 480w, assets/images/gallery/lapaz_parking_area.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 18vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/rooms/phong_1_giuong.webp"
+        imagesrcset="assets/images/rooms/phong_1_giuong_sm.webp 480w, assets/images/rooms/phong_1_giuong.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/rooms/phong_2_giuong.webp"
+        imagesrcset="assets/images/rooms/phong_2_giuong_sm.webp 480w, assets/images/rooms/phong_2_giuong.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+
+    <link rel="preload" as="image" href="assets/images/attractions/chua_hang.webp"
+        imagesrcset="assets/images/attractions/chua_hang_sm.webp 480w, assets/images/attractions/chua_hang.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/attractions/cuc_phuong.webp"
+        imagesrcset="assets/images/attractions/cuc_phuong_sm.webp 480w, assets/images/attractions/cuc_phuong.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/attractions/kim_boi.webp"
+        imagesrcset="assets/images/attractions/kim_boi_sm.webp 480w, assets/images/attractions/kim_boi.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/attractions/suoi_ca_cam_thuy.webp"
+        imagesrcset="assets/images/attractions/suoi_ca_cam_thuy_sm.webp 480w, assets/images/attractions/suoi_ca_cam_thuy.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/attractions/thac_may.webp"
+        imagesrcset="assets/images/attractions/thac_may_sm.webp 480w, assets/images/attractions/thac_may.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/attractions/trang_an.webp"
+        imagesrcset="assets/images/attractions/trang_an_sm.webp 480w, assets/images/attractions/trang_an.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+
+    <link rel="preload" as="image" href="assets/images/cafe-products/coffee-phin.webp"
+        imagesrcset="assets/images/cafe-products/coffee-phin_sm.webp 480w, assets/images/cafe-products/coffee-phin.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/cafe-products/juice.webp"
+        imagesrcset="assets/images/cafe-products/juice_sm.webp 480w, assets/images/cafe-products/juice.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/cafe-products/matcha.webp"
+        imagesrcset="assets/images/cafe-products/matcha_sm.webp 480w, assets/images/cafe-products/matcha.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/cafe-products/milk-tea.webp"
+        imagesrcset="assets/images/cafe-products/milk-tea_sm.webp 480w, assets/images/cafe-products/milk-tea.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/cafe-products/pudding.webp"
+        imagesrcset="assets/images/cafe-products/pudding_sm.webp 480w, assets/images/cafe-products/pudding.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/cafe-products/smoothie.webp"
+        imagesrcset="assets/images/cafe-products/smoothie_sm.webp 480w, assets/images/cafe-products/smoothie.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/cafe-products/tea.webp"
+        imagesrcset="assets/images/cafe-products/tea_sm.webp 480w, assets/images/cafe-products/tea.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/cafe-products/topping.webp"
+        imagesrcset="assets/images/cafe-products/topping_sm.webp 480w, assets/images/cafe-products/topping.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+    <link rel="preload" as="image" href="assets/images/cafe-products/yogurt-ice.webp"
+        imagesrcset="assets/images/cafe-products/yogurt-ice_sm.webp 480w, assets/images/cafe-products/yogurt-ice.webp 800w"
+        imagesizes="(max-width: 960px) 50vw, 40vw" fetchpriority="low">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"
         rel="stylesheet">
@@ -77,8 +116,8 @@
     <!-- NAV -->
     <nav id="nav">
         <a href="#" class="logo">
-            <img src="logo_lapaz.png" alt="La Paz Hotel" class="logo-img" width="44" height="28">
-            <span class="logo-text">La Paz <em>Hotel</em></span>
+            <img src="logo_lapaz.png" alt="La Paz Hotel & Coffee" class="logo-img" width="44" height="28">
+            <span class="logo-text">La Paz <em>Hotel & Coffee</em></span>
         </a>
         <ul class="nav-links">
             <li><a href="#about">Giới thiệu</a></li>
@@ -133,11 +172,11 @@
             <div class="hero-r-bg" aria-hidden="true"></div>
 
             <div class="hero-slides" aria-hidden="true">
-                <div class="hero-slide active" style="background-image:url('assets/images/hotel/2.webp')"></div>
-                <div class="hero-slide" style="background-image:url('assets/images/hotel/1.webp')"></div>
-                <div class="hero-slide" style="background-image:url('assets/images/hotel/6.webp')"></div>
-                <div class="hero-slide" style="background-image:url('assets/images/hotel/11.webp')"></div>
-                <div class="hero-slide" style="background-image:url('assets/images/hotel/4.webp')"></div>
+                <div class="hero-slide active" style="background-image:url('assets/images/gallery/hero_1.webp')"></div>
+                <div class="hero-slide" style="background-image:url('assets/images/gallery/hero_2.webp')"></div>
+                <div class="hero-slide" style="background-image:url('assets/images/gallery/hero_3.webp')"></div>
+                <div class="hero-slide" style="background-image:url('assets/images/gallery/hero_4.webp')"></div>
+                <div class="hero-slide" style="background-image:url('assets/images/gallery/hero_5.webp')"></div>
             </div>
 
             <!-- Counter góc trên phải -->
@@ -156,15 +195,15 @@
     <!-- ABOUT -->
     <section class="about" id="about">
         <div class="about-imgs reveal-left">
-            <img decoding="async" class="a-big" src="assets/images/hotel/2.webp"
-                srcset="assets/images/hotel/2_sm.webp 480w, assets/images/hotel/2.webp 800w" sizes="(max-width: 960px) 100vw, 35vw"
-                alt="La Paz Hotel cây xanh" width="1200" height="800">
-            <img decoding="async" src="assets/images/hotel/3.webp"
-                srcset="assets/images/hotel/3_sm.webp 480w, assets/images/hotel/3.webp 800w" sizes="(max-width: 960px) 50vw, 18vw"
-                alt="La Paz Hotel phòng nghỉ" width="800" height="533">
-            <img decoding="async" src="assets/images/hotel/5.webp"
-                srcset="assets/images/hotel/5_sm.webp 480w, assets/images/hotel/5.webp 800w" sizes="(max-width: 960px) 50vw, 18vw"
-                alt="La Paz Hotel sân vườn" width="800" height="533">
+            <img decoding="async" class="a-big" src="assets/images/gallery/hero_2.webp"
+                srcset="assets/images/gallery/hero_2_sm.webp 480w, assets/images/gallery/hero_2.webp 800w"
+                sizes="(max-width: 960px) 100vw, 35vw" alt="La Paz Hotel cây xanh" width="1200" height="800">
+            <img decoding="async" src="assets/images/gallery/hero_3.webp"
+                srcset="assets/images/gallery/hero_3_sm.webp 480w, assets/images/gallery/hero_3.webp 800w"
+                sizes="(max-width: 960px) 50vw, 18vw" alt="La Paz Hotel phòng nghỉ" width="800" height="533">
+            <img decoding="async" src="assets/images/gallery/hero_5.webp"
+                srcset="assets/images/gallery/hero_5_sm.webp 480w, assets/images/gallery/hero_5.webp 800w"
+                sizes="(max-width: 960px) 50vw, 18vw" alt="La Paz Hotel sân vườn" width="800" height="533">
         </div>
         <div class="about-text reveal-right">
             <div class="reveal">
@@ -173,9 +212,9 @@
                 <br>
             </div>
             <div class="about-img-mobile about-img-mobile--1 reveal">
-                <img decoding="async" src="assets/images/hotel/4_sm.webp"
-                    srcset="assets/images/hotel/2_sm.webp 480w, assets/images/hotel/2.webp 800w" sizes="100vw"
-                    alt="La Paz Hotel cây xanh" width="800" height="533">
+                <img decoding="async" src="assets/images/gallery/hero_4_sm.webp"
+                    srcset="assets/images/gallery/hero_4_sm.webp 480w, assets/images/gallery/hero_4.webp 800w"
+                    sizes="100vw" alt="La Paz Hotel cây xanh" width="800" height="533">
             </div>
             <div class="reveal reveal-delay-1">
                 <p style="margin-top:1.4rem">
@@ -186,12 +225,12 @@
                 </p>
             </div>
             <div class="about-img-mobile about-img-mobile--2 reveal">
-                <img decoding="async" src="assets/images/hotel/3_sm.webp"
-                    srcset="assets/images/hotel/3_sm.webp 480w, assets/images/hotel/3.webp 800w" sizes="50vw"
-                    alt="La Paz Hotel phòng nghỉ" width="800" height="533">
-                <img decoding="async" src="assets/images/hotel/5_sm.webp"
-                    srcset="assets/images/hotel/5_sm.webp 480w, assets/images/hotel/5.webp 800w" sizes="50vw"
-                    alt="La Paz Hotel sân vườn" width="800" height="533">
+                <img decoding="async" src="assets/images/gallery/hero_3_sm.webp"
+                    srcset="assets/images/gallery/hero_3_sm.webp 480w, assets/images/gallery/hero_3.webp 800w"
+                    sizes="50vw" alt="La Paz Hotel phòng nghỉ" width="800" height="533">
+                <img decoding="async" src="assets/images/gallery/hero_5_sm.webp"
+                    srcset="assets/images/gallery/hero_5_sm.webp 480w, assets/images/gallery/hero_5.webp 800w"
+                    sizes="50vw" alt="La Paz Hotel sân vườn" width="800" height="533">
             </div>
             <div class="reveal reveal-delay-1">
                 <p style="margin-top:1.4rem">Các dịch vụ và tiện ích trong khuôn viên La Paz Hotel:</p>
@@ -210,37 +249,37 @@
     <section class="gallery" id="gallery">
         <div class="sh reveal">
             <p class="sh-eye">Không gian</p>
-            <h2 class="sh-h">La Paz Hotel <em>qua ảnh</em></h2>
+            <h2 class="sh-h">La Paz <em>qua ảnh</em></h2>
         </div>
         <div class="gal-grid">
             <div class="gi reveal-scale">
-                <img decoding="async" src="assets/images/hotel/11.webp"
-                    srcset="assets/images/hotel/11_sm.webp 480w, assets/images/hotel/11.webp 800w"
+                <img decoding="async" src="assets/images/gallery/hero_2.webp"
+                    srcset="assets/images/gallery/hero_2_sm.webp 480w, assets/images/gallery/hero_2.webp 800w"
                     sizes="(max-width: 960px) 50vw, 40vw" alt="La Paz Coffee toàn cảnh" width="800" height="533">
             </div>
             <div class="gi reveal-scale reveal-delay-1">
-                <img decoding="async" src="assets/images/hotel/6.webp"
-                    srcset="assets/images/hotel/6_sm.webp 480w, assets/images/hotel/6.webp 800w" sizes="(max-width: 960px) 50vw, 25vw"
-                    alt="La Paz Hotel toàn cảnh" width="800" height="533">
+                <img decoding="async" src="assets/images/gallery/lapaz_cafe_bill_board_sm.webp"
+                    srcset="assets/images/gallery/lapaz_cafe_bill_board_sm.webp 480w, assets/images/gallery/lapaz_cafe_bill_board.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 25vw" alt="La Paz Hotel toàn cảnh" width="800" height="533">
             </div>
             <div class="gi reveal-scale reveal-delay-2">
-                <img decoding="async" src="assets/images/hotel/3.webp"
-                    srcset="assets/images/hotel/3_sm.webp 480w, assets/images/hotel/3.webp 800w" sizes="(max-width: 960px) 50vw, 33vw"
-                    alt="La Paz Hotel phòng nghỉ" width="800" height="533">
+                <img decoding="async" src="assets/images/gallery/hero_4.webp"
+                    srcset="assets/images/gallery/hero_4_sm.webp 480w, assets/images/gallery/hero_4.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 33vw" alt="La Paz Hotel phòng nghỉ" width="800" height="533">
             </div>
             <div class="gi reveal-scale">
-                <img decoding="async" src="assets/images/hotel/7.webp"
-                    srcset="assets/images/hotel/7_sm.webp 480w, assets/images/hotel/7.webp 800w" sizes="(max-width: 960px) 50vw, 25vw"
-                    alt="La Paz Hotel đèn lồng" width="800" height="533">
+                <img decoding="async" src="assets/images/gallery/lapaz_cafe.webp"
+                    srcset="assets/images/gallery/lapaz_cafe_sm.webp 480w, assets/images/gallery/lapaz_cafe.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 25vw" alt="La Paz Hotel đèn lồng" width="800" height="533">
             </div>
             <div class="gi reveal-scale reveal-delay-1">
-                <img decoding="async" src="assets/images/hotel/4.webp"
-                    srcset="assets/images/hotel/4_sm.webp 480w, assets/images/hotel/4.webp 800w" sizes="(max-width: 960px) 50vw, 33vw"
-                    alt="La Paz Hotel Cafe" width="800" height="533">
+                <img decoding="async" src="assets/images/gallery/hero_3.webp"
+                    srcset="assets/images/gallery/hero_3_sm.webp 480w, assets/images/gallery/hero_3.webp 800w"
+                    sizes="(max-width: 960px) 50vw, 33vw" alt="La Paz Hotel Cafe" width="800" height="533">
             </div>
             <div class="gi reveal-scale reveal-delay-2">
-                <img decoding="async" src="assets/images/hotel/10.webp"
-                    srcset="assets/images/hotel/10_sm.webp 480w, assets/images/hotel/10.webp 800w"
+                <img decoding="async" src="assets/images/gallery/lapaz_parking_area.webp"
+                    srcset="assets/images/gallery/lapaz_parking_area_sm.webp 480w, assets/images/gallery/lapaz_parking_area.webp 800w"
                     sizes="(max-width: 960px) 50vw, 42vw" alt="La Paz Coffee toàn cảnh" width="800" height="533">
             </div>
         </div>
@@ -943,7 +982,31 @@
             </div>
 
             <div class="ac reveal-right reveal-delay-2">
-                <img loading="lazy" decoding="async" class="ac-img" src="assets/images/attractions/suoi_ca_cam_thuy.webp"
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="assets/images/attractions/chua_tac_duc.webp"
+                    srcset="assets/images/attractions/chua_tac_duc_sm.webp 480w, assets/images/attractions/chua_tac_duc.webp 800w"
+                    sizes="(max-width: 960px) 100vw, 33vw" alt="Chùa Tác Đức" width="800" height="533">
+                <div class="ac-body">
+                    <p class="ac-dist">~9 km · 15 phút</p>
+                    <h3 class="ac-name">Chùa Tác Đức</h3>
+                    <p class="ac-desc">Điểm đến thanh tịnh dưới chân núi Khụ Khôi, nổi tiếng với không gian yên bình và
+                        cây gạo cổ thụ hàng trăm năm tuổi.</p>
+                    <div class="ac-btns">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Chùa+Tác+Đức+Yên+Thủy" target="_blank"
+                            class="ac-mapbtn secondary">
+                            <span>📍</span> Vị trí
+                        </a>
+                        <a href="https://www.google.com/maps/dir/La+Paz+Hotel+Y%C3%AAn+Th%E1%BB%A7y,+11+%C4%90%C6%B0%E1%BB%9Dng+B%C3%A0+Tri%E1%BB%87u,+T.T+H%C3%A0ng+Tr%E1%BA%A1m,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/Ch%C3%B9a+T%C3%A1c+%C4%90%E1%BB%A9c,+CHJ7%2B45J,+Y%C3%AAn+Th%E1%BB%A7y,+Ph%C3%BA+Th%E1%BB%8D,+Vi%E1%BB%87t+Nam/data=!4m14!4m13!1m5!1m1!19sChIJz4w7DOQpNDERT06TEpm3Lj4!2m2!1d105.6186946!2d20.395457!1m5!1m1!19sChIJgdNwO7MnNDERfsgG1xkM-fo!2m2!1d105.5624862!2d20.429886399999997!3e0"
+                            target="_blank" class="ac-mapbtn">
+                            <span>🚗</span> Đường đi từ khách sạn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ac reveal-right reveal-delay-2">
+                <img loading="lazy" decoding="async" class="ac-img"
+                    src="assets/images/attractions/suoi_ca_cam_thuy.webp"
                     srcset="assets/images/attractions/suoi_ca_cam_thuy_sm.webp 480w, assets/images/attractions/suoi_ca_cam_thuy.webp 800w"
                     sizes="(max-width: 960px) 100vw, 33vw" alt="Suối cá Cẩm Thủy" width="800" height="533">
                 <div class="ac-body">

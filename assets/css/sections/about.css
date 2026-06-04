@@ -10,7 +10,7 @@
 .about-imgs {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 450px 140px;
+    grid-template-rows: 450px 240px;
     gap: 8px;
 }
 
